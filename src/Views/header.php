@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!----======== CSS ======== -->
-    <link rel="stylesheet" href="./public/css/slidemenu.css">
-    
+    <link rel="stylesheet" href="/VCards/public/css/slidemenu.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!----===== Boxicons CSS ===== -->
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
     
@@ -22,7 +22,7 @@
 
                 <div class="text logo-text">
                     <div style="display: flex; justify-content: center; margin: 0.5rem 0;">
-                      <img id="logo_menu" src="./public/imgs/logo_vcards.png" alt="logo vcards" width="25px">
+                      <img id="logo_menu" src="/VCards/public/imgs/logo_vcards.png" alt="logo vcards" width="25px">
                     </div>
                     <span class="profession">Vcards</span>
                 </div>
@@ -134,11 +134,11 @@
             
             if(body.classList.contains("dark")){
                 modeText.innerText = "Light mode";
-                imgLogo.src = './public/imgs/logo_vcards_branco.png';
-                
+                imgLogo.src = "/VCards/public/imgs/logo_vcards_branco.png" ;
+
             }else{
                 modeText.innerText = "Dark mode";
-                imgLogo.src = './public/imgs/logo_vcards.png';
+                imgLogo.src = './VCards/public/imgs/logo_vcards.png';
             }
 
 
