@@ -32,12 +32,12 @@
 
                 <form class="login_form" action="login.php" method="post" onsubmit="return validaLogin()">
                     <div class="group">
-                        <input required="" type="email" placeholder="Email" class="input">
+                        <input type="email" placeholder="Email" class="input">
                         <span class="highlight"></span>
                         <span class="bar"></span>
                     </div>
                     <div class="group">
-                        <input required="" type="password" placeholder="Senha" class="input">
+                        <input type="password" placeholder="Senha" class="input">
                         <span class="highlight"></span>
                         <span class="bar"></span>                        
                     </div>
@@ -54,13 +54,7 @@
                 if ($modo == "criar") {
         ?> 
                 <div class="container login_main">
-                    <h3>Criar Conta</h3>
-                    
-                    <div class="login_create_profiles">
-                        <a href="#" class="login_create_profile">Visitante</a>
-                        <a href="#" class="login_create_profile">Expositor</a>
-                        <a href="#" class="login_create_profile">Organizador</a>
-                    </div>
+                    <h3>Criar Conta</h3>                  
 
                     <form style="margin-top: 5%" class="login_form" action="login.php" method="post" onsubmit="return validaLoginCreate()">
                         <div style="margin-top: 0" class="group">
@@ -120,8 +114,27 @@
                     <a style="text-align:center" class="login_submit" href="login.php">Voltar</a>
                 </div>
         <?php
+                } else if ($modo == "rSenhaNova") {
+        ?>
+                <div class="container login_main">
+                    <h3>Recuperar Conta</h3>                
+                    <form style="margin-top: 5%" class="login_form" action="login.php?modo=rSenhaEnviado" method="post" onsubmit="return validaLoginCreate()">
+                        <div style="margin: 20% 0" class="group">
+                            <input name="senha" type="password" placeholder="Nova Senha" class="input">
+                            <span class="highlight"></span>
+                            <span class="bar"></span>                        
+                        </div>
+                        <div style="margin: 5% 0 20% 0" class="group">
+                            <input type="password" placeholder="Repetir Nova Senha" class="input">
+                            <span class="highlight"></span>
+                            <span class="bar"></span>                        
+                        </div>                                                
+                        <button class="login_submit" style="text-align: center">Confirmar Senha</button>
+                    </form>                    
+                    <a class="login_links" href="login.php">Sair</a>
+                </div>
+        <?php
                 }
-
             }
         ?>
     </main>

@@ -16,7 +16,7 @@
 </head>
 <body>
     <?php
-        include '.\public\header.php'
+        include 'header.php'
     ?>
 
     <section class="home">
