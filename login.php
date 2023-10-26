@@ -32,12 +32,12 @@
 
                 <form class="login_form" action="login.php" method="post" onsubmit="return validaLogin()">
                     <div class="group">
-                        <input required="" type="email" placeholder="Email" class="input">
+                        <input type="email" placeholder="Email" class="input" name="email">
                         <span class="highlight"></span>
                         <span class="bar"></span>
                     </div>
                     <div class="group">
-                        <input required="" type="password" placeholder="Senha" class="input">
+                        <input type="password" placeholder="Senha" class="input" name="senha">
                         <span class="highlight"></span>
                         <span class="bar"></span>                        
                     </div>
@@ -62,35 +62,35 @@
                         <a href="#" class="login_create_profile">Organizador</a>
                     </div>
 
-                    <form style="margin-top: 5%" class="login_form" action="login.php" method="post" onsubmit="return validaLoginCreate()">
+                    <form style="margin-top: 5%" class="login_form" action="criaLogin.php" method="post" onsubmit="return validaLoginCreate()">
                         <div style="margin-top: 0" class="group">
-                            <input required="" type="text" placeholder="Nome" class="input">
+                            <input type="text" placeholder="Nome" class="input" name="nomeLogin" >
                             <span class="highlight"></span>
                             <span class="bar"></span>
                         </div>
                         <div style="margin-top: 0" class="group">
-                            <input required="" type="text" placeholder="Número" class="input">
+                            <input required="" type="text" placeholder="Número" class="input" name="numeroLogin">
                             <span class="highlight"></span>
                             <span class="bar"></span>                        
                         </div>
                         <div style="margin-top: 0" class="group">
-                            <input required="" type="Email" placeholder="Email" class="input">
+                            <input required="" type="Email" placeholder="Email" class="input" name="emailLogin">
                             <span class="highlight"></span>
                             <span class="bar"></span>                        
                         </div>
                         <div style="margin-top: 0" class="group">
-                            <input required="" type="password" placeholder="Senha" class="input">
+                            <input required="" type="password" placeholder="Senha" class="input" name="senhaLogin">
                             <span class="highlight"></span>
                             <span class="bar"></span>                        
                         </div>
                         <div style="margin-top: 0" class="group">
-                            <input required="" type="password" placeholder="Repetir Senha" class="input">
+                            <input required="" type="password" placeholder="Repetir Senha" class="input" name="reSenhaLogin">
                             <span class="highlight"></span>
                             <span class="bar"></span>                        
                         </div>                        
-                        <button class="login_submit" style="text-align: center">Criar Conta</button>
+                        <input type="submit" value="CRIA CONTA">
                     </form>                    
-                    <a class="login_links" href="login.php">Voltar</a>
+                    <a class="login_links" href="">Voltar</a>
                 </div>
         <?php
                 } else if ($modo == "rSenha") {
