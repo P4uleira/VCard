@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!----======== CSS ======== -->
-    <link rel="stylesheet" href="/VCards/public/css/slidemenu.css">
+    <link rel="stylesheet" href="./public/css/slidemenu.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!----===== Boxicons CSS ===== -->
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
@@ -22,7 +22,7 @@
 
                 <div class="text logo-text">
                     <div style="display: flex; justify-content: center; margin: 0.5rem 0;">
-                      <img id="logo_menu" src="/VCards/public/imgs/logo_vcards.png" alt="logo vcards" width="25px">
+                      <img id="logo_menu" src="./public/imgs/logo_vcards.png" alt="logo vcards" width="25px">
                     </div>
                     <span class="profession">Vcards</span>
                 </div>
@@ -49,14 +49,14 @@
 
                     <li class="nav-link">
                         <a href="#">
-                            <i class='bx bx-bar-chart-alt-2 icon' ></i>
+                            <i class='bx bx-star icon' ></i>
                             <span class="text nav-text">Meus favoritos</span>
                         </a>
                     </li>
 
                     <li class="nav-link">
                         <a href="#">
-                            <i class='bx bx-bell icon'></i>
+                            <i class='bx bx-bordel-all icon'></i>
                             <span class="text nav-text">Todos os cards</span>
                         </a>
                     </li>
@@ -88,8 +88,8 @@
             <div class="bottom-content">
                 <li class="">
                     <a href="#">
-                        <i class='bx bx-log-out icon' ></i>
-                        <span class="text nav-text">Sair</span>
+                        <i class='bx bx-log-in icon' ></i>
+                        <span class="text nav-text">Login</span>
                     </a>
                 </li>
 
@@ -134,11 +134,11 @@
             
             if(body.classList.contains("dark")){
                 modeText.innerText = "Light mode";
-                imgLogo.src = "/VCards/public/imgs/logo_vcards_branco.png" ;
+                imgLogo.src = "./public/imgs/logo_vcards_branco.png" ;
 
             }else{
                 modeText.innerText = "Dark mode";
-                imgLogo.src = './VCards/public/imgs/logo_vcards.png';
+                imgLogo.src = './public/imgs/logo_vcards.png';
             }
 
 
