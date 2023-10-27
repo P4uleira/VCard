@@ -17,4 +17,22 @@
         }
         $con->close();
     }
+
+    function login($email, $senha) {
+        $sql = "SELECT codigo_visitante FROM visitante WHERE email = $email AND senha = $senha ";
+        $conn = conection();
+        $resultado = $conn->query($query);
+
+        if ($resultado->num_rows == 1) {
+            $row = $result->fetch_assoc(); 
+            $id = $row["codigo_visitante"]; 
+            
+            return $id;
+        } else {
+            return 0;
+        }
+        
+        $conn->close();
+
+    }
 ?>
