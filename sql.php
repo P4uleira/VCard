@@ -7,11 +7,11 @@
         return $conn = new mysqli($servername, $username, $password, $database);
     }
 
-    function insereUsuario($nome, $telefone, $email, $id, $endereço, $usuario, $senha) {
+    function insereUsuario($nome, $telefone, $email, $endereço, $usuario, $senha) {
         $con = conection();
         $sql = "INSERT INTO visitante (nome, telefone, email, endereco, usuario, senha) VALUES ('$nome', '$telefone', '$email', '$endereço', '$usuario','$senha' )";
         if ($con->query($sql) === TRUE) {
-            echo "Dados inseridos com sucesso!";
+            header('index.php');
         } else {
             echo "Erro ao inserir dados: " . $con->error;
         }
@@ -21,10 +21,10 @@
     function login($email, $senha) {
         $sql = "SELECT codigo_visitante FROM visitante WHERE email = $email AND senha = $senha ";
         $conn = conection();
-        $resultado = $conn->query($query);
+        $resultado = $conn->query($sql);
 
         if ($resultado->num_rows == 1) {
-            $row = $result->fetch_assoc(); 
+            $row = $resultado->fetch_assoc(); 
             $id = $row["codigo_visitante"]; 
             
             return $id;

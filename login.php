@@ -73,6 +73,16 @@
                             <span class="bar"></span>                        
                         </div>
                         <div style="margin-top: 0" class="group">
+                            <input required="" type="text" placeholder="Endereço" class="input" name="enderecoLogin">
+                            <span class="highlight"></span>
+                            <span class="bar"></span>                        
+                        </div>
+                        <div style="margin-top: 0" class="group">
+                            <input required="" type="text" placeholder="Nome de Usuário" class="input" name="nomeUsuarioLogin">
+                            <span class="highlight"></span>
+                            <span class="bar"></span>                        
+                        </div>
+                        <div style="margin-top: 0" class="group">
                             <input required="" type="password" placeholder="Senha" class="input" name="senhaLogin">
                             <span class="highlight"></span>
                             <span class="bar"></span>                        

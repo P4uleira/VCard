@@ -1,18 +1,17 @@
 <?php
     include 'sql.php';
     
-    $nome;$numeroT;$email;$senha;
-    
-    if(isset($_POST["nomeLogin"]) && isset($_POST["numeroLogin"]) && isset($_POST["emailLogin"]) && isset($_POST["senhaLogin"])){
+    if(isset($_POST["nomeLogin"]) && isset($_POST["numeroLogin"]) && isset($_POST["emailLogin"]) && isset($_POST["enderecoLogin"])&& isset($_POST["nomeUsuarioLogin"])&& isset($_POST["senhaLogin"])){
         $nome = $_POST['nomeLogin'];
         $numeroT = $_POST['numeroLogin'];
         $email = $_POST['emailLogin'];
+        $endereco = $_POST['enderecoLogin'];
+        $usuario = $_POST['nomeUsuarioLogin'];
         $senha = $_POST['senhaLogin'];
-        criaConta($nome,$numeroT,$email,$senha);
+        criaConta($nome, $numeroT, $email,$endereco,$usuario, $senha);
     }
-
-    function criaConta($nome, $numeroT, $email, $senha) {
-        insereUsuario($nome, $numeroT, $email,"1",  "toptp", "paulingostoso", $senha);
-        header('header.php');
+    
+    function criaConta($nome, $numeroT, $email,$endereco,$usuario, $senha) {
+        insereUsuario($nome, $numeroT, $email,$endereco, $usuario, $senha);
     }
 ?>
