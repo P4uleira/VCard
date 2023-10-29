@@ -1,9 +1,8 @@
 <?php
     session_start();
 
-    if (isset($_SESSION['$loginID'])) {
-        $user_id = $_SESSION['$loginID'];
-        echo "Você está logado com o ID do usuário: $user_id";
+    if (!isset($_SESSION['user'])) {
+        header('Location: login.php');
     }
 ?>
 

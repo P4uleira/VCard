@@ -128,7 +128,7 @@
         ?>
                 <div class="container login_main">
                     <h3>Recuperar Conta</h3>                
-                    <form style="margin-top: 5%" class="login_form" action="login.php?modo=rSenhaEnviado" method="post" onsubmit="return validaLoginCreate()">
+                    <form style="margin-top: 5%" class="login_form" action="login.php?modo=rSenhaEnviado" method="post">
                         <div style="margin: 20% 0" class="group">
                             <input name="senha" type="password" placeholder="Nova Senha" class="input">
                             <span class="highlight"></span>
