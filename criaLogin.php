@@ -1,5 +1,6 @@
 <?php
     include 'sql.php';
+    
     $nome;$numeroT;$email;$senha;
     
     if(isset($_POST["nomeLogin"]) && isset($_POST["numeroLogin"]) && isset($_POST["emailLogin"]) && isset($_POST["senhaLogin"])){
