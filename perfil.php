@@ -1,3 +1,12 @@
+<?php
+    session_start();
+
+    if (isset($_SESSION['$loginID'])) {
+        $user_id = $_SESSION['$loginID'];
+        echo "Você está logado com o ID do usuário: $user_id";
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <body>

@@ -19,20 +19,29 @@
     }
 
     function login($email, $senha) {
-        $sql = "SELECT codigo_visitante FROM visitante WHERE email = $email AND senha = $senha ";
         $conn = conection();
-        $resultado = $conn->query($sql);
-
-        if ($resultado->num_rows == 1) {
-            $row = $resultado->fetch_assoc(); 
-            $id = $row["codigo_visitante"]; 
-            
-            return $id;
-        } else {
-            return 0;
-        }
         
-        $conn->close();
-
+        $sql = "SELECT codigo_visitante FROM visitante WHERE email = ? AND senha = ?";
+        $stmt = $conn->prepare($sql);
+    
+        if ($stmt) {
+            $stmt->bind_param("ss", $email, $senha);
+    
+            $stmt->execute();
+    
+            $stmt->bind_result($id);
+    
+            if ($stmt->fetch()) {
+                $stmt->close();
+                $conn->close();
+                return $id;
+            } else {
+                $stmt->close();
+                $conn->close();
+                return 0;
+            }
+        } else {
+            echo "Erro na preparação da consulta: " . $conn->error;
+        }
     }
 ?>

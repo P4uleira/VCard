@@ -30,7 +30,7 @@
             <div class="container login_main">
                 <h3>Login</h3>
 
-                <form class="login_form" action="login.php" method="post" onsubmit="return validaLogin()">
+                <form class="login_form" action="validaLogin.php" method="post">
                     <div class="group">
                         <input type="email" placeholder="Email" class="input" name="email">
                         <span class="highlight"></span>
@@ -42,7 +42,7 @@
                         <span class="bar"></span>                        
                     </div>
                     <br>
-                    <button class="login_submit" style="text-align: center">Entrar</button>
+                    <input class="login_submit" style="text-align: center" type="submit" value="Entrar">
                 </form>
                 <a class="login_links" href="login.php?modo=rSenha">Esqueci minha senha</a>
                 <a class="login_links" href="login.php?modo=criar">Criar conta</a>
@@ -56,7 +56,7 @@
                 <div class="container login_main">
                     <h3>Criar Conta</h3>                  
 
-                    <form style="margin-top: 5%" class="login_form" action="criaLogin.php" method="post" onsubmit="return validaLoginCreate()">
+                    <form style="margin-top: 5%" class="login_form" action="criaLogin.php" method="post">
                         <div style="margin-top: 0" class="group">
                             <input type="text" placeholder="Nome" class="input" name="nomeLogin" >
                             <span class="highlight"></span>
@@ -91,8 +91,8 @@
                             <input required="" type="password" placeholder="Repetir Senha" class="input" name="reSenhaLogin">
                             <span class="highlight"></span>
                             <span class="bar"></span>                        
-                        </div>                        
-                        <input type="submit" value="CRIA CONTA">
+                        </div>  
+                        <input class="login_submit" style="text-align: center" type="submit" value="CRIA CONTA">                      
                     </form>                    
                     <a class="login_links" href="">Voltar</a>
                 </div>
