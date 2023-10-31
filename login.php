@@ -56,7 +56,7 @@
                 <div class="container login_main">
                     <h3>Criar Conta</h3>                  
 
-                    <form style="margin-top: 5%" class="login_form" action="criaLogin.php" method="post">
+                    <form style="margin-top: 5%" class="login_form" action="criaVisitante.php" method="post">
                         <div style="margin-top: 0" class="group">
                             <input type="text" placeholder="Nome" class="input" name="nomeLogin" >
                             <span class="highlight"></span>
