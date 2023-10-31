@@ -39,7 +39,7 @@
         $_SESSION["logado"] = true;
         $_SESSION["user"] = $loginID;
 
-        header("Location: index.php");
+        header("Location: perfil.php");
     } else {
         header("Location: login.php?err=1");
     }

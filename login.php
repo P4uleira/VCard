@@ -92,9 +92,9 @@
                             <span class="highlight"></span>
                             <span class="bar"></span>                        
                         </div>  
-                        <input class="login_submit" style="text-align: center" type="submit" value="CRIA CONTA">                      
+                        <input class="login_submit" style="text-align: center" type="submit" value="Cria Conta">                      
                     </form>                    
-                    <a class="login_links" href="">Voltar</a>
+                    <a class="login_links" href="login.php">Voltar</a>
                 </div>
         <?php
                 } else if ($modo == "rSenha") {

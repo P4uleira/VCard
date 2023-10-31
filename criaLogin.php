@@ -13,5 +13,6 @@
     
     function criaConta($nome, $numeroT, $email,$endereco,$usuario, $senha) {
         insereUsuario($nome, $numeroT, $email,$endereco, $usuario, $senha);
+        header('location: login.php');
     }
 ?>
