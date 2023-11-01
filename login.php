@@ -43,6 +43,13 @@
                     </div>
                     <br>
                     <input class="login_submit" style="text-align: center" type="submit" value="Entrar">
+                    <?php
+                        if (isset($_GET['err'])) {
+                    ?>
+                    <p style="text-align: center; color: red">O e-mail ou senha inseridos estão incorretos</p> 
+                    <?php
+                        }
+                    ?>
                 </form>
                 <a class="login_links" href="login.php?modo=rSenha">Esqueci minha senha</a>
                 <a class="login_links" href="login.php?modo=criar">Criar conta</a>

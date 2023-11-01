@@ -20,7 +20,7 @@ function login($email, $senha) {
         if ($resultado->fetch()) {
             $resultado->close();
             $conn->close();
-            return ['user_type' => 'visitante', 'user_id' => $id];
+            return ['user_type' => 'visitante', 'user_id' => $id];            
         }
         $resultado->close();
     } else {
@@ -92,7 +92,12 @@ if ($loginData !== null) {
     $_SESSION["user_type"] = $loginData['user_type'];
     $_SESSION["user_id"] = $loginData['user_id'];
 
-    header("Location: perfil.php");
+    switch ($_SESSION["user_type"]) {
+        case 'visitante':
+            header("Location: visitante.php");
+            break;
+    }
+      
 } else {
     header("Location: login.php?err=1");
 }
