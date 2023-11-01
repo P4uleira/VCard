@@ -12,7 +12,7 @@
 
 <body>
     <?php
-    include 'headerorganizadores.php';
+    include 'headerOrganizador.php';
     ?>
 </body>
 

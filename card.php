@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,16 +14,16 @@
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmM"
-        crossorigin="anonymous">
-    </script>
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmM" crossorigin="anonymous">
+        </script>
     <title>Informações do Card</title>
 </head>
-  
+
 
 <body>
-<header>
-        <div class="login_header_logo"><img style="width: 185px;" src="./public/imgs/vcardsbg.png" alt="logo Vcards"></div>
+    <header>
+        <div class="login_header_logo"><img style="width: 185px;" src="./public/imgs/vcardsbg.png" alt="logo Vcards">
+        </div>
     </header>
     <main>
         <div class="container login_main">
@@ -30,11 +31,11 @@
             <img src="caminho-para-imagem.jpg" alt="Imagem do Projeto">
             <p>Pequena descrição do projeto</p>
             <div class="login_create_profiles">
-            <button class="login_submit" type="button" id="favoritarButton" onclick="favoritar()">
-        <span id="favoritarContent">
-        <img src="./public/imgs/coracao1.svg" alt="Favoritar" style="width: 25px;"> Favoritar
-    </span>
-</button>
+                <button class="login_submit" type="button" id="favoritarButton" onclick="favoritar()">
+                    <span id="favoritarContent">
+                        <img src="./public/imgs/coracao1.svg" alt="Favoritar" style="width: 25px;"> Favoritar
+                    </span>
+                </button>
 
                 <span id="contadorVisualizacoes">Aguarde...</span>
             </div>
@@ -42,67 +43,67 @@
     </main>
 
     <script>
-       let favoritado = false;
+        let favoritado = false;
 
-       function favoritar() {
-    if (favoritado) {
-        document.getElementById('favoritarContent').innerHTML = `
+        function favoritar() {
+            if (favoritado) {
+                document.getElementById('favoritarContent').innerHTML = `
             <img src="./public/imgs/coracao1.svg" alt="Favoritar" style="width: 25px;">
             Favoritar
         `;
-     
-        removeFromFavorites();
-    } else {
-        document.getElementById('favoritarContent').innerHTML = `
+
+                removeFromFavorites();
+            } else {
+                document.getElementById('favoritarContent').innerHTML = `
             <img src="./public/imgs/coracao2.svg" alt="Favoritado" style="width: 25px;">
             Favoritado
         `;
 
-        addToFavorites();
-    }
+                addToFavorites();
+            }
 
-    favoritado = !favoritado;
-}
+            favoritado = !favoritado;
+        }
 
-function addToFavorites() {
-   
-    fetch('adicionar_favorito.php', {
-        method: 'POST',
-        body: JSON.stringify({ pagina: 'URL_da_Pagina' }),
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    })
-    .then(response => {
-        if (response.ok) {
-            console.log('Página adicionada à galeria de favoritos');
-        }
-    })
-    .catch(error => {
-        console.error('Erro ao adicionar página aos favoritos: ' + error);
-    });
-}
+        function addToFavorites() {
 
-function removeFromFavorites() {
-    
-    fetch('remover_favorito.php', {
-        method: 'POST',
-        body: JSON.stringify({ pagina: 'URL_da_Pagina' }),
-        headers: {
-            'Content-Type': 'application/json'
+            fetch('adicionar_favorito.php', {
+                method: 'POST',
+                body: JSON.stringify({ pagina: 'URL_da_Pagina' }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(response => {
+                    if (response.ok) {
+                        console.log('Página adicionada à galeria de favoritos');
+                    }
+                })
+                .catch(error => {
+                    console.error('Erro ao adicionar página aos favoritos: ' + error);
+                });
         }
-    })
-    .then(response => {
-        if (response.ok) {
-            console.log('Página removida da galeria de favoritos');
-        }
-    })
-    .catch(error => {
-        console.error('Erro ao remover página dos favoritos: ' + error);
-    });
-}
 
-       
+        function removeFromFavorites() {
+
+            fetch('remover_favorito.php', {
+                method: 'POST',
+                body: JSON.stringify({ pagina: 'URL_da_Pagina' }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(response => {
+                    if (response.ok) {
+                        console.log('Página removida da galeria de favoritos');
+                    }
+                })
+                .catch(error => {
+                    console.error('Erro ao remover página dos favoritos: ' + error);
+                });
+        }
+
+
         function atualizarContador() {
             fetch('contador.php')
                 .then(response => response.text())
@@ -112,8 +113,9 @@ function removeFromFavorites() {
                 });
         }
 
-        
+
         atualizarContador();
     </script>
 </body>
+
 </html>
