@@ -1,19 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!----======== CSS ======== -->
-    <link rel="stylesheet" href="./public/css/slidemenu.css">
-
-    <!----===== Boxicons CSS ===== -->
-    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
-
-    <title>Vcards</title>
-
-</head>
 <body>
     <header>
         <div class="header">
@@ -32,8 +18,12 @@
         <div id="sidebarMenu">
             <ul class="sidebarMenuInner">
                 
-                <br><br><br>            
-                <li><a style="color: #F0F0F0;" href="login.php"><strong>Fazer login</strong></a></li>
+                <br><br><br>
+                <li><a style="color: #F0F0F0;" href="meusAlugados.php">Escanear QRcode</a></li>
+                <br>
+                <li><a style="color: #F0F0F0;" href="index.php?cat=28">Meus favoritos</a></li>
+                <li><a style="color: #F0F0F0;" href="index.php?cat=878">Todos os cards</a></li>                
+                <li><a style="color: #F0F0F0;" href="login.php"><strong>Sair</strong></a></li>
                 
             </ul>
         </div>
