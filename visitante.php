@@ -11,7 +11,7 @@
 
 <body>
     <?php 
-        include 'headerVisitante.php';
+        include './headers/headerVisitante.php';
     ?>
 </body>
 
