@@ -18,6 +18,7 @@
     </script>
     <title>Informações do Card</title>
 </head>
+  
 
 <body>
 <header>
