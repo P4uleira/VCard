@@ -10,7 +10,7 @@
     {
         $conn = conection();
 
-        $sql = "SELECT codigo_visitante FROM visitante WHERE Usuario = ? AND Senha = ?";
+        $sql = "SELECT ID_visitante FROM Visitantes WHERE Usuario = ? AND Senha = ?";
         $resultado = $conn->prepare($sql);
 
         if ($resultado) {
@@ -64,7 +64,7 @@
             echo "Erro na preparação da consulta: " . $conn->error;
         }
 
-        $sql = "SELECT ID_Admin FROM Admin WHERE Usuario = ? AND Senha = ?";
+        $sql = "SELECT ID_Admin FROM Administrador WHERE Usuario = ? AND Senha = ?";
         $resultado = $conn->prepare($sql);
 
         if ($resultado) {
