@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="./public/css/login.css">
+    <link rel="stylesheet" href="../public/css/login.css">
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -20,7 +21,7 @@
 </head>
 <body>
     <header>
-        <div class="login_header_logo"><img style="width: 185px;" src="./public/imgs/vcardsbg.png" alt="logo Vcards" ></div>
+        <div class="login_header_logo"><img style="width: 185px;" src="../public/imgs/vcardsbg.png" alt="logo Vcards" ></div>
     </header>
 </body>
     <main>
@@ -30,9 +31,9 @@
             <div class="container login_main">
                 <h3>Login</h3>
 
-                <form class="login_form" action="validaLogin.php" method="post">
+                <form class="login_form" action="../model/validaLogin.php" method="post">
                     <div class="group">
-                        <input type="email" placeholder="Email" class="input" name="email">
+                        <input type="text" placeholder="Usuário" class="input" name="usuario">
                         <span class="highlight"></span>
                         <span class="bar"></span>
                     </div>
@@ -63,7 +64,7 @@
                 <div class="container login_main">
                     <h3>Criar Conta</h3>                  
 
-                    <form style="margin-top: 5%" class="login_form" action="criaVisitante.php" method="post">
+                    <form style="margin-top: 5%" class="login_form" action="../model/criaVisitante.php" method="post">
                         <div style="margin-top: 0" class="group">
                             <input type="text" placeholder="Nome" class="input" name="nomeLogin" >
                             <span class="highlight"></span>
@@ -110,7 +111,7 @@
                     <h3>Recuperar Conta</h3><br>
                     <h6 style="text-align: center; color: #887F7F;">Insira seu e-mail cadastrado para</br>conseguir redefinir sua senha</h6>
                     
-                    <form style="margin-top: 5%" class="login_form" action="login.php?modo=rSenhaEnviado" method="post" onsubmit="return validaLoginCreate()">
+                    <form style="margin-top: 5%" class="login_form" action="login.php?modo=rSenhaEnviado" method="post">
                         <div style="margin: 20% 0" class="group">
                             <input required="" type="Email" placeholder="Email" class="input">
                             <span class="highlight"></span>
