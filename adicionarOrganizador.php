@@ -36,12 +36,16 @@
         </div>
     </header>
     <div class="inputs">
+    <form action="" method="post" enctype="multipart/form-data">
         <input class="inputadc" placeholder="Adicione um Título">
         <input class="inputadc" placeholder="Adicione o Conteúdo da Apresentaçao">
-        <input class="inputadc" placeholder="Adicione uma Imagem">
         <input class="inputadc" placeholder="Categoria">
         <input class="inputadc" placeholder="URLs">
         <input class="inputadc" placeholder="Informaçoes de contato">
+        <label for="imagem">Selecione uma imagem:</label>
+        <input type="file" name="imagem" id="imagem">
+        <input type="submit" class="btn btn-primary" value="Enviar">
+    </form>
     </div>
 </body>
 
