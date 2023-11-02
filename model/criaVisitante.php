@@ -8,11 +8,11 @@
         $endereco = $_POST['enderecoLogin'];
         $usuario = $_POST['nomeUsuarioLogin'];
         $senha = $_POST['senhaLogin'];
-        criaConta($nome, $numeroT, $email,$endereco,$usuario, $senha);
+        criaVisitante($nome, $numeroT, $email,$endereco,$usuario, $senha);
     }
     
-    function criaConta($nome, $numeroT, $email,$endereco,$usuario, $senha) {
-        insereUsuario($nome, $numeroT, $email,$endereco, $usuario, $senha);
-        header('location: login.php');
+    function criaVisitante($nome, $numeroT, $email,$endereco,$usuario, $senha) {
+        insereVisitante($nome, $numeroT, $email,$endereco, $usuario, $senha);
+        header('location: ../views/login.php');
     }
 ?>

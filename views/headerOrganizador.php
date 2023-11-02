@@ -6,7 +6,7 @@
         <div class="header">
             <div class="header_logo">
                 <a class="tituloPrincipal" href="index.php">
-                    <img width="60 px" src="./public/imgs/logo_vcards_branco.png" alt="logo vCards">
+                    <img width="60 px" src="../public/imgs/logo_vcards_branco.png" alt="logo vCards">
                 </a>
             </div>
         </div>
@@ -20,7 +20,7 @@
             <ul class="sidebarMenuInner">
 
                 <br><br><br>
-                <li><a style="color: #F0F0F0;" href="adicionar-organizador.php">Adicionar</a></li>
+                <li><a style="color: #F0F0F0;" href="adicionar-organizador.php">Criar Evento</a></li>
                 <li><a style="color: #F0F0F0;" href="">Editar</a></li>
                 <li><a style="color: #F0F0F0;" href="">Excluir</a></li>
                 <li><a style="color: #F0F0F0;" href="index.php?cat=878">Todos os cards</a></li>

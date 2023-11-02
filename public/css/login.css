@@ -31,7 +31,7 @@ body {
     cursor: pointer;
     background-color: #ffffff;
     text-decoration: none;
-    margin:2rem 0 3% 0;
+    margin: 2rem 0 3% 0;
     font-size: 1.1rem;
 }
 
@@ -58,9 +58,9 @@ body {
 .group {
     position: relative;
     margin-top: 0.5rem;
-   }
-   
-   .input {
+}
+
+.input {
     font-size: 16px;
     padding: 10px 10px 10px 5px;
     display: block;
@@ -68,13 +68,13 @@ body {
     border: none;
     border-bottom: 1px solid #669BBC;
     background: transparent;
-   }
-   
-   .input:focus {
+}
+
+.input:focus {
     outline: none;
-   }
-   
-   label {
+}
+
+label {
     color: #669BBC;
     font-size: 18px;
     font-weight: normal;
@@ -85,21 +85,23 @@ body {
     transition: 0.2s ease all;
     -moz-transition: 0.2s ease all;
     -webkit-transition: 0.2s ease all;
-   }
-   
-   .input:focus ~ label, .input:valid ~ label {
+}
+
+.input:focus~label,
+.input:valid~label {
     top: -20px;
     font-size: 14px;
     color: #010101;
-   }
-   
-   .bar {
+}
+
+.bar {
     position: relative;
     display: block;
     width: 100%;
-   }
-   
-   .bar:before, .bar:after {
+}
+
+.bar:before,
+.bar:after {
     content: '';
     height: 2px;
     width: 0;
@@ -109,21 +111,22 @@ body {
     transition: 0.2s ease all;
     -moz-transition: 0.2s ease all;
     -webkit-transition: 0.2s ease all;
-   }
-   
-   .bar:before {
+}
+
+.bar:before {
     left: 50%;
-   }
-   
-   .bar:after {
+}
+
+.bar:after {
     right: 50%;
-   }
-   
-   .input:focus ~ .bar:before, .input:focus ~ .bar:after {
+}
+
+.input:focus~.bar:before,
+.input:focus~.bar:after {
     width: 50%;
-   }
-   
-   .highlight {
+}
+
+.highlight {
     position: absolute;
     height: 60%;
     width: 100px;
@@ -131,19 +134,19 @@ body {
     left: 0;
     pointer-events: none;
     opacity: 0.5;
-   }
-   
-   .input:focus ~ .highlight {
+}
+
+.input:focus~.highlight {
     animation: inputHighlighter 0.3s ease;
-   }
-   
-   @keyframes inputHighlighter {
+}
+
+@keyframes inputHighlighter {
     from {
-     background: #5264AE;
+        background: #5264AE;
     }
-   
+
     to {
-     width: 0;
-     background: transparent;
+        width: 0;
+        background: transparent;
     }
-   }
+}
