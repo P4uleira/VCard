@@ -28,8 +28,7 @@
         $con->close();
     }
 
-    function excluirUsuario($usuario_a_excluir)
-    {
+    function excluirUsuario($usuario_a_excluir){
         $conn = conection();
 
         // Verifica em qual tabela o usuário está
@@ -49,5 +48,16 @@
         }
 
         $conn->close();
+    }
+
+    function insereEvento($idOrganizador,$nomeEvento, $codigoConvite){
+        $con = conection();
+        $sql = "INSERT INTO eventos (id_organizador, nome, chave_convite) VALUES ('$idOrganizador', '$nomeEvento', '$codigoConvite')";
+
+        if ($con->query($sql) === FALSE) {
+            echo "Erro ao inserir dados: " . $con->error;
+        } 
+        
+        $con->close();
     }
 ?>
