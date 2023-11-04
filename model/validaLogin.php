@@ -10,18 +10,18 @@
     {
         $conn = conection();
 
-        $sql = "SELECT codigo_visitante FROM visitante WHERE Usuario = ? AND Senha = ?";
+        $sql = "SELECT codigo_visitante, Usuario FROM visitante WHERE Usuario = ? AND Senha = ?";
         $resultado = $conn->prepare($sql);
 
         if ($resultado) {
             $resultado->bind_param("ss", $usuario, $senha);
             $resultado->execute();
-            $resultado->bind_result($id);
+            $resultado->bind_result($id, $nomeUsuario);
 
             if ($resultado->fetch()) {
                 $resultado->close();
                 $conn->close();
-                return ['user_type' => 'visitante', 'user_id' => $id];
+                return ['user_type' => 'visitante', 'user_id' => $id, 'user_nickname' => $nomeUsuario];
             }
             $resultado->close();
         } else {
@@ -92,6 +92,9 @@
         $_SESSION["logado"] = true;
         $_SESSION["user_type"] = $loginData['user_type'];
         $_SESSION["user_id"] = $loginData['user_id'];
+        if (array_key_exists('user_nickname', $loginData)) {
+            $_SESSION["user_nickname"] = $loginData['user_nickname'];
+        }
 
         switch ($_SESSION["user_type"]) {
             case 'visitante':

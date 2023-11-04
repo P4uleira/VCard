@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Inria+Sans&display=swap');
+
+body {
+    font-family: 'Inria Sans', sans-serif;
+    background-color: #FDF0D5;
+}
+
+.visitante_main {
+    margin-top: 85px;
+}
+
+.h_qrCode {
+    text-align: center;
+}
+
+.link_qrCode {
+    text-decoration: none;
+    color: black;
+}
