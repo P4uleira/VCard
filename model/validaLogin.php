@@ -10,7 +10,7 @@
     {
         $conn = conection();
 
-        $sql = "SELECT ID_visitante FROM Visitantes WHERE Usuario = ? AND Senha = ?";
+        $sql = "SELECT ID_visitante FROM visitantes WHERE Usuario = ? AND Senha = ?";
         $resultado = $conn->prepare($sql);
 
         if ($resultado) {
@@ -28,7 +28,7 @@
             echo "Erro na preparação da consulta: " . $conn->error;
         }
 
-        $sql = "SELECT ID_usuario FROM Participantes WHERE Usuario = ? AND Senha = ?";
+        $sql = "SELECT ID_usuario FROM participantes WHERE Usuario = ? AND Senha = ?";
         $resultado = $conn->prepare($sql);
 
         if ($resultado) {
@@ -46,7 +46,7 @@
             echo "Erro na preparação da consulta: " . $conn->error;
         }
 
-        $sql = "SELECT ID_Organizacao FROM Organizacao WHERE Usuario = ? AND Senha = ?";
+        $sql = "SELECT ID_Organizador FROM organizadores WHERE Usuario = ? AND Senha = ?";
         $resultado = $conn->prepare($sql);
 
         if ($resultado) {
@@ -64,7 +64,7 @@
             echo "Erro na preparação da consulta: " . $conn->error;
         }
 
-        $sql = "SELECT ID_Admin FROM Administrador WHERE Usuario = ? AND Senha = ?";
+        $sql = "SELECT ID_Admin FROM administradores WHERE Usuario = ? AND Senha = ?";
         $resultado = $conn->prepare($sql);
 
         if ($resultado) {

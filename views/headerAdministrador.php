@@ -20,7 +20,7 @@
             <ul class="sidebarMenuInner">
 
                 <br><br><br>
-                <li><a style="color: #F0F0F0;" href="headerAdministrador.php">Criar Organizador</a></li>
+                <li><a style="color: #F0F0F0;" href="Administrador.php">Criar Organizador</a></li>
                 <li><a style="color: #F0F0F0;" href="Administrador.php?esc=excluir">Excluir usuário</a></li>
                 <li><a style="color: #F0F0F0;" href="">Editar usuário</a></li>
                 <li><a style="color: #F0F0F0;" href="index.php?cat=878">Listar usuários</a></li>
