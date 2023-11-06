@@ -28,7 +28,7 @@
             echo "Erro na preparação da consulta: " . $conn->error;
         }
 
-        $sql = "SELECT ID_usuario FROM participantes WHERE Usuario = ? AND Senha = ?";
+        $sql = "SELECT ID_Participantes FROM participantes WHERE Usuario = ? AND Senha = ?";
         $resultado = $conn->prepare($sql);
 
         if ($resultado) {
@@ -46,7 +46,7 @@
             echo "Erro na preparação da consulta: " . $conn->error;
         }
 
-        $sql = "SELECT ID_Organizador FROM organizadores WHERE Usuario = ? AND Senha = ?";
+        $sql = "SELECT 	ID_Organizadores FROM organizadores WHERE Usuario = ? AND Senha = ?";
         $resultado = $conn->prepare($sql);
 
         if ($resultado) {
