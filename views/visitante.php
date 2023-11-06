@@ -16,6 +16,9 @@
         include 'headerVisitante.php';
     ?>
     <main>
+        <?php 
+            if (!isset($_GET['idCard'])) {
+        ?>
         <div class="container visitante_main">
             <h4 class="h_qrCode"><a class="link_qrCode" href="">Escanear QRcode</a></h4>
             <div style="display: flex; align-items: center; flex-direction: column; margin-top: 3.5rem">
@@ -24,7 +27,56 @@
                 </a>
             </div> 
         </div>
+        <?php
+            } else {
+                $id_card = $_GET['idCard'];
+                $cardData = exibe_card($id_card);
+                
+                
+
+            }
+        ?>
     </main>
 </body>
 
 </html>
+
+<?php 
+    include '../model/sql.php';
+    function exibe_card($id) {
+        $conn = conection();
+
+        $sql = "SELECT `c.ID_Card`, `p.Nome`, `cat.Nome_Categoria`, `c.Titulo`, `c.Imagem`, `c.Descricao`, `c.Contagem`, `c.URL`, `c.Email`, `c.Telefone`, `c.Data_publicacao` 
+        FROM `cards c` 
+        LEFT JOIN `participantes p` ON `p.ID_Usuario` = `c.ID_Usuario`
+        LEFT JOIN `categorias cat` ON `cat.ID_Categoria` = `c.ID_Categoria`
+        WHERE ID_Card = ? ;";
+        $resultado = $conn->prepare($sql);
+
+        if ($resultado) {
+            $resultado->bind_param("ss", $id);
+            $resultado->execute();
+            $resultado->bind_result($id_card ,$nome_participante, $nome_categoria, $card_titulo, $card_img, $card_desc, $card_cont, $card_url, $card_email, $card_telef, $card_dt);
+
+            if ($resultado->fetch()) {
+                $resultado->close();
+                $conn->close();
+                return [
+                'id_card' => $id_card, 
+                'nome_participante' => $nome_participante, 
+                'nome_categoria' => $nome_categoria, 
+                'card_titulo' => $card_titulo, 
+                'card_img' => $card_img, 
+                'card_desc' => $card_desc, 
+                'card_cont' => $card_cont,
+                'card_url' => $card_url,
+                'card_email' => $card_email,
+                'card_tel' => $card_telef,
+                'card_dt' => $card_dt
+                ];
+            }
+            $resultado->close();
+        } else {
+            echo "Erro na preparação da consulta: " . $conn->error;
+        }
+    }

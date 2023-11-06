@@ -27,6 +27,10 @@
     <main>
         <?php 
             if (!isset($_GET['modo'])) {
+                if(isset($_GET['sair'])) {
+                    session_start();
+                    session_destroy();
+                }
         ?>
             <div class="container login_main">
                 <h3>Login</h3>
