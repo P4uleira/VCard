@@ -10,7 +10,7 @@
     {
         $conn = conection();
 
-        $sql = "SELECT ID_visitante, Usuario FROM visitantes WHERE Usuario = ? AND Senha = ?";
+        $sql = "SELECT ID_Visitantes, Usuario FROM visitantes WHERE Usuario = ? AND Senha = ?";
         $resultado = $conn->prepare($sql);
 
         if ($resultado) {

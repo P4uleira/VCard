@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Inria+Sans&display=swap');
 html,
 body {
     overflow-x: hidden;
@@ -8,7 +9,22 @@ body {
     background: #D3D3D3 !important;
     padding: 0;
     margin: 0;
-    font-family: 'Roboto Mono', monospace;
+    font-family: 'Inria Sans', sans-serif;
+}
+
+.eEvento {
+    margin: 15vh 5% 10% 5%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center
+    
+}
+
+.eEvento_result {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap
 }
 
 .header {
