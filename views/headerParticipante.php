@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
+<?php
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+?>
 <body>
     <header>
         <div class="header">
@@ -16,14 +20,14 @@
             <div class="spinner horizontal"></div>
             <div class="spinner diagonal part-2"></div>
         </label>
-        <div id="sidebarMenu">
+        <div style="z-index: 2" id="sidebarMenu">
             <ul class="sidebarMenuInner">
 
                 <br><br><br>
-                <li><a style="color: #F0F0F0;" href="Administrador.php">Criar Organizador</a></li>
-                <li><a style="color: #F0F0F0;" href="Administrador.php?esc=excluir">Excluir usuário</a></li>
-                <li><a style="color: #F0F0F0;" href="">Editar usuário</a></li>
-                <li><a style="color: #F0F0F0;" href="index.php?cat=878">Listar usuários</a></li>
+                <li><a style="color: #F0F0F0;" href="participante.php?modo=cCard">Criar Card</a></li>
+                <li><a style="color: #F0F0F0;" href="participante.php?modo=eCard">Editar Card</a></li>
+                <li><a style="color: #F0F0F0;" href="participante.php?modo=exCard">Excluir Card</a></li>
+                <br>
                 <li><a style="color: #F0F0F0;" href="login.php"><strong>Sair</strong></a></li>
 
             </ul>

@@ -11,6 +11,7 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>
@@ -68,7 +69,7 @@
                 <div class="container login_main">
                     <h3>Criar Conta</h3>                  
 
-                    <form style="margin-top: 5%" class="login_form" action="../model/criaVisitante.php" method="post">
+                    <form style="margin-top: 5%" class="login_form" action="../model/criaVisitante.php" onsubmit="return validaCadastro() method="post">
                         <div style="margin-top: 0" class="group">
                             <input type="text" placeholder="Nome" class="input" name="nomeLogin" >
                             <span class="highlight"></span>
@@ -90,7 +91,7 @@
                             <span class="bar"></span>                        
                         </div>
                         <div style="margin-top: 0" class="group">
-                            <input required="" type="text" placeholder="Nome de Usuário" class="input" name="nomeUsuarioLogin">
+                            <input required="" type="text" id="nickname" placeholder="Nome de Usuário" class="input" name="nomeUsuarioLogin">
                             <span class="highlight"></span>
                             <span class="bar"></span>                        
                         </div>
@@ -160,4 +161,5 @@
             }
         ?>
     </main>
+    <script type="text/javascript" src="../model/javascript/login.js"></script>
 </html>

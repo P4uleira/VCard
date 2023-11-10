@@ -9,7 +9,7 @@
     <header>
         <div class="header">
             <div class="header_logo">
-                <a class="tituloPrincipal" href="index.php">
+                <a class="tituloPrincipal" href="../views/organizador.php">
                     <img width="60 px" src="../public/imgs/logo_vcards_branco.png" alt="logo vCards">
                 </a>
             </div>
@@ -24,11 +24,12 @@
             <ul class="sidebarMenuInner">
 
                 <br><br><br>
-                <li><a style="color: #F0F0F0;" href="organizador.php?modo=cEvento">Criar Evento</a></li>
-                <li><a style="color: #F0F0F0;" href="organizador.php?modo=eEvento">Editar</a></li>
-                <li><a style="color: #F0F0F0;" href="">Excluir</a></li>
-                <li><a style="color: #F0F0F0;" href="index.php?cat=878">Todos os cards</a></li>
-                <li><a style="color: #F0F0F0;" href="login.php"><strong>Sair</strong></a></li>
+                <li><a style="color: #F0F0F0;" href="../views/organizador.php?modo=cEvento">Criar Evento</a></li>
+                <li><a style="color: #F0F0F0;" href="../model/criaParticipante.php">Criar Participante</a></li>
+                <li><a style="color: #F0F0F0;" href="../views/organizador.php?modo=eEvento">Editar Evento</a></li>
+                <li><a style="color: #F0F0F0;" href="../views/organizador.php?modo=exEvento">Excluir Evento</a></li>
+                <li><a style="color: #F0F0F0;" href="">Todos os cards</a></li>
+                <li><a style="color: #F0F0F0;" href="../views/login.php"><strong>Sair</strong></a></li>
 
             </ul>
         </div>

@@ -24,21 +24,16 @@
                 $modo = $_GET['modo'];
                 if($modo == 'cEvento'){           
         ?>
-            <div class="container login_main">
-                <br>
-                <br>
-                <h3>Criar Evento</h3>
-
-                <form class="login_form" action="../model/criaEvento.php" method="post">
-                    <div class="group">
-                        <input type="text" placeholder="Nome do Evento" class="input" name="nome">
+            <div class="container eEvento">
+                <h3 style="text-align: center; margin-bottom: 1.5rem">Criar Evento</h3>                
+                <form action="../model/criaEvento.php" method="post">
+                    <div class="form-group">
+                        <input type="text" placeholder="Nome do Evento" class="form-control" name="nome">
                         <span class="highlight"></span>
                         <span class="bar"></span>
-                    </div>
-                    <br>
-                    <input class="login_submit" style="text-align: center" type="submit" value="Criar Evento">
+                    </div>                    
+                    <input class="btn btn-primary" style="text-align: center" type="submit" value="Criar Evento">
                 </form>
-            </div>
         <?php
             } else if ($modo == 'eEvento') {
         ?>
@@ -54,17 +49,37 @@
             while ($row = mysqli_fetch_assoc($result)) {
                 echo '<option value="' . $row['Codigo_Evento'] . '">' . $row['Nome'] . '</option>';
             }
+            
         ?>
-                </select>
-            </div>
+                </select><br>            
         <?php
                     if(isset($_GET['idEvento'])){
                         $idEvento = $_GET['idEvento'];
                         listaEvento($idEvento);
                     }
-                }
-            }
+            } else if ($modo == 'exEvento') {
         ?>
+            <div class="eEvento">
+                <h3 style="text-align: center; margin-bottom: 1.5rem">Excluir Eventos</h3>
+                <br>   
+        <?php
+            $idOrganizador = $_SESSION['user_id'];
+            include '../model/sql.php'; 
+            listarEventos($idOrganizador);
+            }
+            } else {
+        ?>
+            <div class="eEvento list-group">
+                <h5 style="text-align: center">Opções de Organizador</h5><br>
+                <a style="cursor: pointer" href="../views/organizador.php?modo=cEvento" class="list-group-item list-group-item-action">Criar Evento</a><br>
+                <a style="cursor: pointer" href="../model/criaParticipante.php" class="list-group-item list-group-item-action">Criar Participante</a><br>
+                <a style="cursor: pointer" href="../views/organizador.php?modo=eEvento" class="list-group-item list-group-item-action">Editar Evento</a><br>
+                <a style="cursor: pointer" href="../views/organizador.php?modo=exEvento" class="list-group-item list-group-item-action">Excluir Evento</a><br>
+            </div>
+        <?php
+            }
+        ?>            
+            </div>
     </main>
 </body>
 <script type="text/javascript" src="../model/javascript/organizador.js"></script>
