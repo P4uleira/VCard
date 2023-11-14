@@ -24,16 +24,17 @@ $('#telNumero').on('input', function() {
 
 $('#criaLogin').submit(function(event) {
     event.preventDefault();
-    var temErro = false;
+
+    $("#mensagemNome").css("display", "none");
+    $("#mensagemNumero").css("display", "none");
+    $("#mensagemEmail").css("display", "none");
+    var temErro = 0;
 
     // validação Nome
     if($("#nome").val() == ""){
         $("#mensagemNome").text("Preencha o nome.");
         $("#mensagemNome").css("display", "block");
-        temErro = true;
-    }else {
-        $("#mensagemNome").css("display", "none");
-        temErro = false;
+        temErro++;
     }
 
     // validação Número de Telefone
@@ -41,16 +42,21 @@ $('#criaLogin').submit(function(event) {
     if($("#telNumero").val() == ""){
         $("#mensagemNumero").text("Preencha o número de telefone.");
         $("#mensagemNumero").css("display", "block");
-        temErro = true;
+        temErro++;
     }else if (!regex.test($("#telNumero").val())){
         $("#mensagemNumero").text("Número inválido.");
         $("#mensagemNumero").css("display", "block");
-        temErro = true;
-    }else {
-        $("#mensagemNumero").css("display", "none");
-        temErro = false;
+        temErro++;
     }
 
+    // Validação Email
+    if($("#email").val() == ""){
+        $("#mensagemEmail").text("Preencha o campo de email.");
+        $("#mensagemEmail").css("display", "block");
+        temErro++;        
+    }
+    
+    console.log(temErro);
 
     // validação Usuario
     var userNickname = $("#nickname").val();
@@ -60,13 +66,12 @@ $('#criaLogin').submit(function(event) {
         data: { validaNick: userNickname },
         dataType: 'JSON',
         success: function(response) {
-            if (response.encontrou === "existe") {
-                let nicknameSpan = document.getElementById("mensagemUsuario");
-                nicknameSpan.innerText = "O nome de Usuário ja está em uso! Utilize Outro.";
-                nicknameSpan.style.display = "block";
+            if (response.encontrou === "existe") {             
+                $("#mensagemUsuario").text("O nome de Usuário ja está em uso! Utilize Outro.");
+                $("#mensagemUsuario").css("display", "block");
             } else {
-                nicknameSpan.style.display = "none";
-                if (temErro != true) {
+                $("#mensagemUsuario").css("display", "none");
+                if (temErro <= 0) {
                     $('#criaLogin')[0].submit(); // Envie o formulário se o nome de usuário estiver disponível
                 }
             }

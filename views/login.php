@@ -85,9 +85,10 @@
                             <span class="mensagem-erro" id="mensagemNumero"></span>                        
                         </div>
                         <div style="margin-top: 0" class="group">
-                            <input type="Email" placeholder="Email" class="input" name="emailLogin">
+                            <input id="email" type="Email" placeholder="Email" class="input" name="emailLogin">
                             <span class="highlight"></span>
-                            <span class="bar"></span>                        
+                            <span class="bar"></span>
+                            <span class="mensagem-erro" id="mensagemEmail"></span>                          
                         </div>
                         <div style="margin-top: 0" class="group">
                             <input type="text" placeholder="Endereço" class="input" name="enderecoLogin">
