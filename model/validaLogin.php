@@ -1,8 +1,21 @@
 <?php
     include 'sql.php';
 
-    if(isset($_GET['nickname'])) {
-        
+    if(isset($_POST['validaNick'])) {
+        $nickname = $_POST['validaNick'];        
+        $encontrou = "nexiste";
+        $conn = conection();
+        $sql = "SELECT Usuario from visitantes WHERE Usuario = '$nickname' UNION 
+                SELECT Usuario from participantes WHERE Usuario = '$nickname' UNION 
+                SELECT Usuario from organizadores WHERE Usuario = '$nickname' UNION 
+                SELECT Usuario from administradores WHERE Usuario = '$nickname'";
+
+        $resultado = $conn->query($sql);
+        if ($resultado->num_rows > 0) {
+            $encontrou = "existe";            
+        }
+        echo json_encode(array("encontrou"=>$encontrou));
+        $conn->close();
     } else {
 
         session_start();

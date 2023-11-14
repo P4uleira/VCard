@@ -11,13 +11,15 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>   
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+    
+    
     <title>Login</title>
 </head>
 <body>
@@ -48,11 +50,11 @@
                         <span class="bar"></span>                        
                     </div>
                     <br>
-                    <input class="login_submit" style="text-align: center" type="submit" value="Entrar">
+                    <input class="btn btn-outline-info btn-block" style="text-align: center" type="submit" value="Entrar"><br>
                     <?php
                         if (isset($_GET['err'])) {
                     ?>
-                    <p style="text-align: center; color: red">O e-mail ou senha inseridos estão incorretos</p> 
+                    <p style="text-align: center; color: red">O Usuario ou senha inseridos estão incorretos</p> 
                     <?php
                         }
                     ?>
@@ -69,45 +71,45 @@
                 <div class="container login_main">
                     <h3>Criar Conta</h3>                  
 
-                    <form style="margin-top: 5%" class="login_form" action="../model/criaVisitante.php" onsubmit="return validaCadastro() method="post">
+                    <form id="criaLogin" style="margin-top: 5%" class="login_form" action="../model/teste.php" method="post">
                         <div style="margin-top: 0" class="group">
-                            <input type="text" placeholder="Nome" class="input" name="nomeLogin" >
+                            <input id="nome" type="text" placeholder="Nome" class="input" name="nomeLogin" >
                             <span class="highlight"></span>
                             <span class="bar"></span>
+                            <span class="mensagem-erro" id="mensagemNome"></span>
                         </div>
                         <div style="margin-top: 0" class="group">
-                            <input required="" type="text" placeholder="Número" class="input" name="numeroLogin">
+                            <input id="telNumero" placeholder="Numero de Telefone" type="text" class="input" name="numeroLogin">
+                            <span class="highlight"></span>
+                            <span class="bar"></span>
+                            <span class="mensagem-erro" id="mensagemNumero"></span>                        
+                        </div>
+                        <div style="margin-top: 0" class="group">
+                            <input type="Email" placeholder="Email" class="input" name="emailLogin">
                             <span class="highlight"></span>
                             <span class="bar"></span>                        
                         </div>
                         <div style="margin-top: 0" class="group">
-                            <input required="" type="Email" placeholder="Email" class="input" name="emailLogin">
+                            <input type="text" placeholder="Endereço" class="input" name="enderecoLogin">
                             <span class="highlight"></span>
                             <span class="bar"></span>                        
                         </div>
                         <div style="margin-top: 0" class="group">
-                            <input required="" type="text" placeholder="Endereço" class="input" name="enderecoLogin">
+                            <input required type="text" id="nickname" placeholder="Nome de Usuário" class="input" name="nomeUsuarioLogin">
                             <span class="highlight"></span>
-                            <span class="bar"></span>                        
-                        </div>
-                        <div style="margin-top: 0" class="group">
-                            <input required="" type="text" id="nickname" placeholder="Nome de Usuário" class="input" name="nomeUsuarioLogin">
-                            <span class="highlight"></span>
-                            <span class="bar"></span>                        
+                            <span class="bar"></span>
+                            <span class="mensagem-erro" id="mensagemUsuario"></span>                        
                         </div>
                         <div style="margin-top: 0" class="group">
                             <input required="" type="password" placeholder="Senha" class="input" name="senhaLogin">
                             <span class="highlight"></span>
                             <span class="bar"></span>                        
-                        </div>
-                        <div style="margin-top: 0" class="group">
-                            <input required="" type="password" placeholder="Repetir Senha" class="input" name="reSenhaLogin">
-                            <span class="highlight"></span>
-                            <span class="bar"></span>                        
-                        </div>  
-                        <input class="login_submit" style="text-align: center" type="submit" value="Cria Conta">                      
+                        </div><br>
+                        <div class="form-group">
+                            <input class="btn btn-outline-info btn-block" style="text-align: center" type="submit" value="Criar Conta">                      
+                        </div>                         
                     </form>                    
-                    <a class="login_links" href="login.php">Voltar</a>
+                    <a style="margin-bottom: 2rem" class="login_links" href="login.php">Voltar</a>
                 </div>
         <?php
                 } else if ($modo == "rSenha") {
@@ -162,4 +164,5 @@
         ?>
     </main>
     <script type="text/javascript" src="../model/javascript/login.js"></script>
+    
 </html>

@@ -11,6 +11,11 @@ body {
     margin: 48px 0;
 }
 
+.mensagem-erro {
+    color: red;
+    display: none;
+}
+
 .login_main {
     display: flex;
     flex-direction: column;
@@ -20,19 +25,6 @@ body {
 .login_form {
     width: 85%;
     margin-top: 2rem;
-}
-
-.login_submit {
-    width: 100%;
-    color: #003049;
-    border-radius: 15px;
-    border: 1.5px solid #003049;
-    padding: 5px;
-    cursor: pointer;
-    background-color: #ffffff;
-    text-decoration: none;
-    margin: 2rem 0 3% 0;
-    font-size: 1.1rem;
 }
 
 .login_links {

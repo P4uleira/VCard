@@ -60,7 +60,7 @@
         $conn->close();
     }
 
-    
+
     // Funções com a tabela de eventos.
 
     function insereEvento($idOrganizador,$nomeEvento, $codigoConvite){
