@@ -33,7 +33,7 @@
         $sql = "INSERT INTO participantes (ID_Organizadores, Nome, Usuario, Senha, fk_Codigo_Evento) VALUES ($idOrg, '$nome', '$usuario', '$senha', $evento)";
 
         if ($conn->query($sql) === FALSE) {
-            echo "Erro ao inserir dados: " . $con->error;            
+            echo "Erro ao inserir dados: " . $conn->error;            
         }
         $conn->close();         
     }
@@ -79,7 +79,7 @@
         $sql = "UPDATE `eventos` SET `Nome` = '$novoNomeEvento' WHERE `Codigo_Evento` = $idEvento AND `fk_ID_Organizadores` = $idUsuario";
 
         if ($conn->query($sql) === FALSE) {
-            echo "<script>alert(Erro ao inserir dados: " . $con->error . ")</script>";
+            echo "<script>alert(Erro ao inserir dados: " . $conn->error . ")</script>";
         } 
         
         $conn->close();        
@@ -171,7 +171,7 @@
         $sql = "DELETE FROM `eventos` WHERE `Codigo_Evento` =  $evento_a_excluir";
 
         if ($conn->query($sql) === FALSE) {
-            echo "<script>alert(Erro ao deletar evento: " . $con->error . ")</script>";
+            echo "<script>alert(Erro ao deletar evento: " . $conn->error . ")</script>";
         }
         
         $conn->close();  
