@@ -45,110 +45,85 @@ body {
     height: 50px;
     border-radius: 7px;
     border: 0;
-    outline: auto grey;
+    outline: auto white;
     padding-inline: 15px;
     font-size: 16px;
 }
 
 .inputadc:focus {
     box-shadow: 0 0 50px rgb(255, 255, 255);
-    border: 1px solid grey;
+    border: 1px solid white;
 }
 
 /*label de imagem*/
-.custum-file-upload {
-    height: 70px;
-    width: 3550px;
-    display: flex;
-    flex-direction: column;
-    align-items: space-between;
-    gap: 10px;
-    cursor: pointer;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(255, 255, 255, 1);
-    padding: 1.5rem;
-    border-radius: 10px;
-    box-shadow: 0px 48px 35px -48px rgba(0,0,0,0.1);
-  }
-  
-  .custum-file-upload .icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .custum-file-upload .icon svg {
-    height: 30px;
-    fill: rgba(75, 85, 99, 1);
-  }
-  
-  .custum-file-upload .text {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .custum-file-upload .text span {
-    font-weight: 100;
-    color: rgba(75, 85, 99, 1);
-  }
-  
-  .custum-file-upload input {
-    display: none;
-  }
+.file-upload-form {
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.file-upload-label input {
+  display: none;
+}
+.file-upload-label svg {
+  height: 20px;
+  fill: rgb(82, 82, 82);
+  margin-bottom: 10px;
+}
+.file-upload-label {
+  cursor: pointer;
+  background-color: #ddd;
+  padding: 1px 8px;
+  border-radius: 40px;
+  border: 2px dashed rgb(82, 82, 82);
+  box-shadow: 0px 0px 200px -50px rgba(0, 0, 0, 0.719);
+}
+.file-upload-design {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.browse-button {
+  background-color: white;
+  padding: 5px 15px;
+  border-radius: 10px;
+  color: white;
+  transition: all 0.3s;
+}
+.browse-button:hover {
+  background-color: rgb(14, 14, 14);
+}
+
 
 
 /*botão*/
 
-.animated-button {
-    position: relative;
-    display: inline-block;
-    padding: 12px 24px;
-    border: none;
-    font-size: 16px;
-    background-color: Black;
-    border-radius: 100px;
-    font-weight: 600;
-    color: White;
-    box-shadow: 0 0 0 2px #ffffff20;
-    cursor: pointer;
-    overflow: hidden;
-    transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
-  }
-  
-  .animated-button span:last-child {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 20px;
-    height: 20px;
-    background-color: red;
-    border-radius: 50%;
-    opacity: 0;
-    transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
-  }
-  
-  .animated-button span:first-child {
-    position: relative;
-    z-index: 1;
-  }
-  
-  .animated-button:hover {
-    box-shadow: 0 0 0 5px red;
-    color: white;
-  }
-  
-  .animated-button:active {
-    scale: 1.30;
-  }
-  
-  .animated-button:hover span:last-child {
-    width: 210px;
-    height: 150px;
-    opacity: 1;
-  }
+.buttonPart {
+  padding: 12.5px 30px;
+  border: 0;
+  border-radius: 100px;
+  background-color: black;
+  color: #ffffff;
+  font-weight: Bold;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+}
+
+.buttonPart:hover {
+  background-color: black;
+  box-shadow: 0 0 20px black;
+  transform: scale(1.1);
+}
+
+.buttonPart:active {
+  background-color: black;
+  transition: all 0.25s;
+  -webkit-transition: all 0.25s;
+  box-shadow: none;
+  transform: scale(0.98);
+}
   
   
   
