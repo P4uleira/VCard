@@ -3,8 +3,7 @@ html, body {
     overflow-x: hidden;
     height: 100%;
 }
-body {
-    background: #FFF6E0 !important;
+body {    
     padding: 0;
     margin: 0;
     font-family: 'Roboto Mono', monospace;
@@ -15,9 +14,9 @@ body {
     width: 100%;
     max-width: 100%;
     box-shadow: none;
-    background-color: #ffff !important;
+    background-color: #2B2D31  !important;
     position: fixed;
-    height: 60px!important;
+    height: 62px!important;
     overflow: hidden;
     z-index: 10;
 }
@@ -56,8 +55,7 @@ body {
     margin-top: 60px;
     transform: translateX(-250px);
     transition: transform 250ms ease-in-out;
-    background: #003049;
-    opacity: 99%;
+    background: #313338;    
 }
 .sidebarMenuInner{
     margin:0;
@@ -69,8 +67,9 @@ body {
     color: #fff;
     text-transform: uppercase;
     font-weight: bold;
-    padding: 10px 20px;
-    cursor: pointer;        
+    padding: 10px 25px;
+    cursor: pointer;
+    font-family: monospace;        
 }
 .sidebarMenuInner li span{
     display: block;
@@ -80,7 +79,7 @@ body {
 .sidebarMenuInner li a{
     color: #fff;
     text-transform: capitalize;
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: bold;
     cursor: pointer;
     text-decoration: none;

@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Inria+Sans&display=swap');
 
 body {
-    font-family: 'Inria Sans', sans-serif;
-    background-color: #FDF0D5;
+    font-family: 'Inria Sans', sans-serif !important;
+    background-color: #EDF2FA !important;
 }
 
 .visitante_main {

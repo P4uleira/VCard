@@ -1,9 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Inria+Sans&display=swap');
-html,
-body {
-    overflow-x: hidden;
-    height: 100%;
-}
 
 .btn {
     color: #fff !important;
@@ -21,8 +16,6 @@ body {
 
 body {
     background: #ffffff !important;
-    padding: 0;
-    margin: 0;
     font-family: 'Inria Sans', sans-serif;
 }
 
@@ -35,39 +28,9 @@ body {
     
 }
 
-.header {
-    display: block;
-    margin: 0 auto;
-    width: 100%;
-    max-width: 100%;
-    box-shadow: none;
-    background-color: #0B090A !important;
-    position: fixed;
-    height: 60px !important;
-    overflow: hidden;
-    z-index: 10;
-}
 
-.header_logo {
-    display: flex;
-    justify-content: center;
-    height: 60px;
-    align-items: center;
-}
 
-.main {
-    margin: 0 auto;
-    display: block;
-    height: 100%;
-    margin-top: 60px;
-}
 
-.mainInner {
-    display: table;
-    height: 100%;
-    width: 100%;
-    text-align: center;
-}
 
 .mainInner div {
     display: table-cell;
