@@ -38,23 +38,20 @@
                         <input class=" form-control" placeholder="Titulo" name="titulo">
                     </div>
                     <div class="form-group">
-                        <textarea name="conteudo"  class=" form-control" rows="5" placeholder="Conteudo da Apresentação"></textarea>
+                        <textarea name="conteudo"  class="form-control" rows="5" placeholder="Conteudo da Apresentação"></textarea>
                     </div>
 
                     <!-- trocar por um select -->
                     <div class="form-group">
-                        <input name="categoria" class=" form-control" placeholder="Categoria">
-                    </div>
-                    <div class="form-group">
-                        <input name=" class=" form-control" placeholder="URLs">
+                        <input name="categoria" class="form-control" placeholder="Categoria">
                     </div>
                     
                     <h5>Informações para contato</h5>
                     <div class="form-group">
-                        <input name=" class=" form-control" placeholder="Telefone">
+                        <input name="telefon" class="form-control" placeholder="Telefone">
                     </div>
                     <div class="form-group">
-                        <input name=" class=" form-control" placeholder="Email">
+                        <input name="email" class="form-control" placeholder="Email">
                     </div>
                     
                     <button class="animated-button btn-block">

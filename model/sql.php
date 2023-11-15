@@ -30,7 +30,16 @@
 
     function insereParticipante($idOrg, $nome, $usuario, $senha, $evento) {
         $conn = conection();
-        $sql = "INSERT INTO participantes (ID_Organizadores, Nome, Usuario, Senha, fk_Codigo_Evento) VALUES ($idOrg, '$nome', '$usuario', '$senha', $evento)";
+        $sql = "INSERT INTO participantes (fk_ID_Organizadores,fk_Codigo_evento, Nome, Usuario, Senha) VALUES ($idOrg, $evento, '$nome', '$usuario', '$senha')";
+
+        if ($conn->query($sql) === FALSE) {
+            echo "Erro ao inserir dados: " . $conn->error;            
+        }
+        $conn->close();         
+    }
+    function insereCategoria($nome) {
+        $conn = conection();
+        $sql = "INSERT INTO categorias (Nome_Categoria) VALUES ('$nome')";
 
         if ($conn->query($sql) === FALSE) {
             echo "Erro ao inserir dados: " . $conn->error;            
@@ -176,4 +185,5 @@
         
         $conn->close();  
     }
+
 ?>

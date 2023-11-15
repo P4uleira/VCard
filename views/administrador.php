@@ -48,15 +48,12 @@
 
         <?php
             } else if (isset($_GET['esc'])) {
-                $esc = $_GET['esc'];
-
-                if ($esc == "excluir") {
         ?>
 
             <div class="container login_main">
                 <h3>Excluir usuário</h3>
 
-                <form class="login_form" action="./model/exclui.php" method="post">
+                <form class="login_form" action="../model/exclui.php" method="post">
                     <br>
                     <br>
                     <div class="form-group">
@@ -71,9 +68,26 @@
             </div>
 
             <?php
-                } 
+                } else if(isset($_GET['cCat'])) {
+            ?>
+               <div class="container login_main">
+                <h3>Criar uma nova categoria</h3>
 
-            }
+                <form class="login_form" action="../model/criaCategoria.php" method="post">
+                    <br>
+                    <br>
+                    <div class="form-group">
+                        <input type="text" placeholder="Nome da Categoria" class="form-control" name="nomeCategoria">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                    </div>
+                    
+                    <br>
+                    <input class="btn btn-info btn-block" style="text-align: center" type="submit" value="Criar Categoria">
+                </form>
+            </div>
+            <?php
+                }
             ?>
     </main>
 </body>
