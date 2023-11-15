@@ -91,20 +91,22 @@
                             <span class="mensagem-erro" id="mensagemEmail"></span>                          
                         </div>
                         <div style="margin-top: 0" class="group">
-                            <input type="text" placeholder="Endereço" class="input" name="enderecoLogin">
+                            <input id="endereco" type="text" placeholder="Endereço" class="input" name="enderecoLogin">
                             <span class="highlight"></span>
-                            <span class="bar"></span>                        
+                            <span class="bar"></span>
+                            <span class="mensagem-erro" id="mensagemEndereco"></span>                         
                         </div>
                         <div style="margin-top: 0" class="group">
-                            <input required type="text" id="nickname" placeholder="Nome de Usuário" class="input" name="nomeUsuarioLogin">
+                            <input id="usuario" type="text" id="nickname" placeholder="Nome de Usuário" class="input" name="nomeUsuarioLogin">
                             <span class="highlight"></span>
                             <span class="bar"></span>
                             <span class="mensagem-erro" id="mensagemUsuario"></span>                        
                         </div>
                         <div style="margin-top: 0" class="group">
-                            <input required="" type="password" placeholder="Senha" class="input" name="senhaLogin">
+                            <input id="senha" type="password" placeholder="Senha" class="input" name="senhaLogin">
                             <span class="highlight"></span>
-                            <span class="bar"></span>                        
+                            <span class="bar"></span>
+                            <span class="mensagem-erro" id="mensagemSenha"></span>                        
                         </div><br>
                         <div class="form-group">
                             <input class="btn btn-outline-info btn-block" style="text-align: center" type="submit" value="Criar Conta">                      

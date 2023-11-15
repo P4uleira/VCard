@@ -1,11 +1,11 @@
+// Função para colocar mascara de preenchimento no campo de Telefone
 $('#telNumero').on('input', function() {
-    var inputValue = $(this).val().replace(/\D/g, ''); // Remove caracteres não numéricos
+    var inputValue = $(this).val().replace(/\D/g, ''); 
     var formattedValue = formatarTelefone(inputValue);
     $(this).val(formattedValue);
   });
 
-  // Formata o número de telefone
-  function formatarTelefone(value) {
+function formatarTelefone(value) {
     var formattedValue = '';
 
     for (var i = 0; i < value.length; i++) {
@@ -22,6 +22,7 @@ $('#telNumero').on('input', function() {
     return formattedValue;
 }
 
+// Validação do Formulario de Cadastro
 $('#criaLogin').submit(function(event) {
     event.preventDefault();
 
@@ -40,7 +41,7 @@ $('#criaLogin').submit(function(event) {
     // validação Número de Telefone
     var regex = /^\(\d{2}\) \d{5}-\d{4}$/;
     if($("#telNumero").val() == ""){
-        $("#mensagemNumero").text("Preencha o número de telefone.");
+        $("#mensagemNumero").text("Preencha o campo de número de telefone.");
         $("#mensagemNumero").css("display", "block");
         temErro++;
     }else if (!regex.test($("#telNumero").val())){
@@ -55,8 +56,27 @@ $('#criaLogin').submit(function(event) {
         $("#mensagemEmail").css("display", "block");
         temErro++;        
     }
-    
-    console.log(temErro);
+
+    // Validação Endereço
+    if($("#endereco").val() == ""){
+        $("#mensagemEndereco").text("Preencha o campo de endereço.");
+        $("#mensagemEndereco").css("display", "block");
+        temErro++;        
+    }
+
+    // Validação Senha
+    if($("#senha").val() == ""){
+        $("#mensagemSenha").text("Preencha o campo de senha.");
+        $("#mensagemSenha").css("display", "block");
+        temErro++;        
+    }
+
+    // Validação Usuario
+    if($("#usuario").val() == ""){
+        $("#mensagemUsuario").text("Preencha o campo de usuário.");
+        $("#mensagemUsuario").css("display", "block");
+        temErro++;        
+    }
 
     // validação Usuario
     var userNickname = $("#nickname").val();
@@ -72,7 +92,7 @@ $('#criaLogin').submit(function(event) {
             } else {
                 $("#mensagemUsuario").css("display", "none");
                 if (temErro <= 0) {
-                    $('#criaLogin')[0].submit(); // Envie o formulário se o nome de usuário estiver disponível
+                    $('#criaLogin')[0].submit(); 
                 }
             }
         }
