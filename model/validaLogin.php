@@ -16,7 +16,8 @@
         }
         echo json_encode(array("encontrou"=>$encontrou));
         $conn->close();
-    } else {
+        
+    } else if (isset($_POST['usuario']) && isset($_POST['senha'])) {
 
         session_start();
 
@@ -128,7 +129,7 @@
             }
 
         } else {
-            header("Location: /views/login.php?err=1");
+            header("Location: ../views/login.php?err");
         }
     }
 ?>

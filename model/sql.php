@@ -38,6 +38,62 @@
         $conn->close();         
     }
 
+    function selectListaUsuarios($userEdit) {
+        $conn = conection();        
+        
+        $sql = "SELECT * FROM $userEdit";
+
+        $result = $conn->query($sql);
+        if ($result) {            
+            if ($result->num_rows > 0) {                
+                echo "<h3 style=\"text-align: center; margin-bottom: 1.5rem\">Escolha um usuario</h3>";
+                echo "<select class=\"container form-select\" name=\"eventos\" id=\"eventos\" onchange=\"aeventoSelecionado()\">";
+                echo "<option value=\"0\">Selecione um Usuario</option>";
+                while ($row2 = $result->fetch_assoc()) {  
+                    $nome = $row2['Nome'];                    
+                    $user = $row2['Usuario'];                    
+                    echo "<option value=\"$user\">$user - $nome</option>";                                            
+                }
+                echo "</select>";
+            }
+        }
+        $conn->close();
+    }
+
+    function listaUsuarios($usuarios) {
+        $conn = conection();
+        $sql = "SELECT nome, usuario, senha From $usuarios";
+
+        $result = $conn->query($sql);
+
+        if ($result) {
+            if ($result->num_rows > 0) {
+                echo "<h3 style=\"text-align: center; margin-bottom: 1.5rem; text-transform: capitalize;\">$usuarios</h3>";
+                echo "<table class=\"container table table-sm table-hover\" style=\"text-align: center\"><thead><tr>";
+                echo "<th scope=\"col\">Nome</th><th scope=\"col\">Usuario</th><th scope=\"col\">Senha</th><th scope=\"col\">Excluir usuario</th></tr></thead>";
+                echo "<tbody>";
+                while ($row2 = $result->fetch_assoc()) {
+                            
+                    $nome = $row2['nome'];
+                    $usuario = $row2['usuario'];
+                    $senha = $row2['senha']; 
+                    
+                    echo "<tr>";
+                    echo "<th scope=\"row\">$nome</th>";
+                    echo "<td>$usuario</td>";
+                    echo "<td>$senha</td>";
+                    echo "<td><a onclick=\"removeUsuario('$usuario')\" class=\"btn btn-danger\">Excluir</a></td>";
+                    echo "</tr>";                          
+                    
+                }
+                echo "</tbody></table>";
+            }else {
+                echo "<h3 style=\"text-align: center; margin-bottom: 1.5rem\">Ainda não foi criado nenhum evento</h3>";
+            }
+        }
+        $conn->close();    
+    }
+
     function excluirUsuario($usuario_a_excluir){
         $conn = conection();
 
