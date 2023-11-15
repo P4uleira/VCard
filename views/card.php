@@ -31,7 +31,9 @@
 
 <body>
     <header>
-        <?php include './headerVisitante.php'; ?>
+        <?php 
+            include './headerVisitante.php'; 
+        ?>
     </header>
     <main>
         <div class="container login_main">
@@ -49,81 +51,6 @@
             </div>
         </div>
     </main>
-
-    <script>
-        let favoritado = false;
-
-        function favoritar() {
-            if (favoritado) {
-                document.getElementById('favoritarContent').innerHTML = `
-            <img src="./public/imgs/coracao1.svg" alt="Favoritar" style="width: 25px;">
-            Favoritar
-        `;
-
-                removeFromFavorites();
-            } else {
-                document.getElementById('favoritarContent').innerHTML = `
-            <img src="./public/imgs/coracao2.svg" alt="Favoritado" style="width: 25px;">
-            Favoritado
-        `;
-
-                addToFavorites();
-            }
-
-            favoritado = !favoritado;
-        }
-
-        function addToFavorites() {
-
-            fetch('adicionar_favorito.php', {
-                method: 'POST',
-                body: JSON.stringify({ pagina: 'URL_da_Pagina' }),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-                .then(response => {
-                    if (response.ok) {
-                        console.log('Página adicionada à galeria de favoritos');
-                    }
-                })
-                .catch(error => {
-                    console.error('Erro ao adicionar página aos favoritos: ' + error);
-                });
-        }
-
-        function removeFromFavorites() {
-
-            fetch('remover_favorito.php', {
-                method: 'POST',
-                body: JSON.stringify({ pagina: 'URL_da_Pagina' }),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-                .then(response => {
-                    if (response.ok) {
-                        console.log('Página removida da galeria de favoritos');
-                    }
-                })
-                .catch(error => {
-                    console.error('Erro ao remover página dos favoritos: ' + error);
-                });
-        }
-
-
-        function atualizarContador() {
-            fetch('contador.php')
-                .then(response => response.text())
-                .then(data => {
-                    const contadorVisualizacoes = document.getElementById("contadorVisualizacoes");
-                    contadorVisualizacoes.textContent = data + " Visualizações";
-                });
-        }
-
-
-        atualizarContador();
-    </script>
 </body>
 
 </html>
