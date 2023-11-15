@@ -5,7 +5,7 @@
     <header>
         <div class="header">
             <div class="header_logo">
-                <a class="tituloPrincipal" href="index.php">
+                <a class="tituloPrincipal" href="../views/administrador.php">
                     <img width="60 px" src="../public/imgs/logo_vcards_branco.png" alt="logo vCards">
                 </a>
             </div>
@@ -20,7 +20,7 @@
             <ul class="sidebarMenuInner">
 
                 <br><br><br>
-                <li><a style="color: #F0F0F0;" href="Administrador.php">Criar Organizador</a></li>
+                <li><a style="color: #F0F0F0;" href="Administrador.php?cOrg">Criar Organizador</a></li>
                 <li><a style="color: #F0F0F0;" href="Administrador.php?esc=excluir">Excluir usuário</a></li>
                 <li><a style="color: #F0F0F0;" href="">Editar usuário</a></li>
                 <li><a style="color: #F0F0F0;" href="index.php?cat=878">Listar usuários</a></li>

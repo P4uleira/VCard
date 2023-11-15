@@ -5,7 +5,7 @@
     <header>
         <div class="header">
             <div class="header_logo">
-                <a class="tituloPrincipal" href="visitante.php">
+                <a class="tituloPrincipal" href="../views/visitante.php">
                     <img width="60px" src="../public/imgs/logo_vcards_branco.png" alt="logo vCards">
                 </a>
             </div>

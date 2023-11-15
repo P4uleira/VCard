@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../public/css/organizadores.css">
+    <link rel="stylesheet" href="../public/css/slidemenu.css">
     <link rel="stylesheet" href="../public/css/administrador.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -19,7 +20,7 @@
     ?>
     <main>
         <?php 
-            if (!isset($_GET['esc'])) {
+            if (isset($_GET['cOrg'])) {
         ?>
         <div class="container admin_container">
             <h3>Criar Organizador</h3>
@@ -41,12 +42,12 @@
                     <span class="bar"></span>                        
                 </div>
                 <br>
-                <input class="login_submit btn btn-primary" style="text-align: center" type="submit" value="Cria Conta">
+                <input class="btn btn-primary btn-block" style="text-align: center" type="submit" value="Cria Organizador ">
             </form>
         </div>
 
         <?php
-            } else {
+            } else if (isset($_GET['esc'])) {
                 $esc = $_GET['esc'];
 
                 if ($esc == "excluir") {
@@ -58,14 +59,14 @@
                 <form class="login_form" action="./model/exclui.php" method="post">
                     <br>
                     <br>
-                    <div class="group">
-                        <input type="text" placeholder="Nome do Usuário" class="input" name="nome">
+                    <div class="form-group">
+                        <input type="text" placeholder="Nome do Usuário" class="form-control" name="nome">
                         <span class="highlight"></span>
                         <span class="bar"></span>
                     </div>
                     
                     <br>
-                    <input class="login_submit" style="text-align: center" type="submit" value="Exclui Usuário">
+                    <input class="btn btn-info btn-block" style="text-align: center" type="submit" value="Exclui Usuário">
                 </form>
             </div>
 

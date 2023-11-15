@@ -17,57 +17,71 @@
 </head>
 
 <body>
-        <header>
-        <?php
+    <?php
         include './headerParticipante.php';
+    ?>
+        
+    <main>
+        <?php
+        if (isset($_GET['modo'])) {
+            $modo = $_GET['modo'];
+            if ($modo == 'cCard') {
         ?>
-        </header>
-
-            <main>
-                <?php
-                if (isset($_GET['modo'])) {
-                    $modo = $_GET['modo'];
-                    if ($modo == 'cCard') {
-                ?>
-                    <div class="container">
-                        <form action="" style="margin-top: 10rem" class="login_form" method="post" enctype="multipart/form-data">
-                            <input class="limpar-placeholder inputadc" class="form-control" placeholder="Titulo">
-                            <input class="limpar-placeholder inputadc" class="form-control" placeholder="Conteudo da Apresentação">
-                            <input class="limpar-placeholder inputadc" class="form-control" placeholder="Categoria">
-                            <input class="limpar-placeholder inputadc" class="form-control" placeholder="URLs">
-                            <input class="limpar-placeholder inputadc" class="form-control" placeholder="Informações de contato">
-                            <label class="custum-file-upload inputadc" for="imagem">
-
-                                <div class="text">
-                                    <span>Selecione uma Imagem</span>
-                                </div>
-                                <input type="file" name="imagem" id="imagem">
-                            </label><br>
-                            <button class="animated-button">
-                                <span>Cadastrar</span>
-                                <span></span>
-                            </button>
-                            </div>
-                        </form>
+            <div class="container eEvento">
+                <form action="" class="login_form" method="post" enctype="multipart/form-data">
+                    <h5 style="text-align: center; margin-bottom: 1.5rem">Criar Card</h5>
+                    <div class="form-group">
+                        <label class="custum-file-upload inputadc" for="imagem">Capa do Card</label>                                                
+                            <input class="custom-file-input" placeholder="Selecione uma Imagem" type="file" name="imagem" id="imagem"> 
+                    </div>
+                    <div class="form-group">                        
+                        <input class=" form-control" placeholder="Titulo" name="titulo">
+                    </div>
+                    <div class="form-group">
+                        <textarea name="conteudo"  class=" form-control" rows="5" placeholder="Conteudo da Apresentação"></textarea>
                     </div>
 
-                        <?php
-                    } else if ($modo == 'eCard') {
-                        ?>
+                    <!-- trocar por um select -->
+                    <div class="form-group">
+                        <input name="categoria" class=" form-control" placeholder="Categoria">
+                    </div>
+                    <div class="form-group">
+                        <input name=" class=" form-control" placeholder="URLs">
+                    </div>
+                    
+                    <h5>Informações para contato</h5>
+                    <div class="form-group">
+                        <input name=" class=" form-control" placeholder="Telefone">
+                    </div>
+                    <div class="form-group">
+                        <input name=" class=" form-control" placeholder="Email">
+                    </div>
+                    
+                    <button class="animated-button btn-block">
+                        <span>Cadastrar</span>
+                        <span></span>
+                    </button>
+                    </div>
+                </form>
+            </div>
 
-                        <?php
-                    } else if ($modo == 'excCard') {
-                        ?>
-
-                                <div class="container excCard">
-
-                                </div>
-
-                        <?php
-                    }
-                }
+                <?php
+            } else if ($modo == 'eCard') {
                 ?>
-            </main>
+
+                <?php
+            } else if ($modo == 'excCard') {
+                ?>
+
+                        <div class="container excCard">
+
+                        </div>
+
+                <?php
+            }
+        }
+        ?>
+    </main>
 </body>
 
 </html>
