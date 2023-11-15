@@ -43,7 +43,7 @@
             <div class="login_create_profiles">
                 <button class="login_submit" type="button" id="favoritarButton" onclick="favoritar()">
                     <span id="favoritarContent">
-                        <img src="./public/imgs/coracao1.svg" alt="Favoritar" style="width: 25px;"> Favoritar
+                        <img src="./public/imgs/coracao1.svg" alt="Favoritar" style="width: 25px;"> Favoritar 
                     </span>
                 </button>
 
