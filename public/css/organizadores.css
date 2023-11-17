@@ -20,7 +20,7 @@ body {
 }
 
 .eEvento {
-    margin: 15vh 5% 10% 5%;
+    margin: 15vh 5% 2rem 5%;
     display: flex;
     justify-content: center;
     flex-direction: column;    

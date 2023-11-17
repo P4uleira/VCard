@@ -85,7 +85,12 @@
             if (isset($_GET['user'])) {
                 include '../model/sql.php';
                 $userEdit = $_GET['user'];
-                selectListaUsuarios($userEdit); 
+                if (isset($_GET['userselect'])) {
+                    $userEditSelected = $_GET['userselect'];
+                    selectListaUsuarios($userEdit, $userEditSelected);
+                } else {
+                    selectListaUsuarios($userEdit);     
+                }
             }
         } else if(isset($_GET['cCat'])) {
         ?>
@@ -104,6 +109,17 @@
                     <br>
                     <input class="btn btn-info btn-block" style="text-align: center" type="submit" value="Criar Categoria">
                 </form>
+            </div>
+            <?php
+                } else {
+            ?>
+            <div class="eEvento list-group">
+                <h5 style="text-align: center">Opções de Administrador</h5><br>
+                <a style="cursor: pointer" class="list-group-item list-group-item-action" href="../views/administrador.php?cOrg">Criar Organizador</a><br>
+                <a style="cursor: pointer" class="list-group-item list-group-item-action" href="../views/administrador.php?cCat">Criar Categoria</a><br>
+                <a style="cursor: pointer" class="list-group-item list-group-item-action" href="../views/administrador.php?esc">Excluir usuário</a><br>
+                <a style="cursor: pointer" class="list-group-item list-group-item-action" href="../views/administrador.php?edit">Editar usuário</a><br>
+                <a style="cursor: pointer" class="list-group-item list-group-item-action" href="index.php?cat=878">Listar usuários</a><br>                
             </div>
             <?php
                 }

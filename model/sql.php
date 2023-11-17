@@ -47,7 +47,7 @@
         $conn->close();         
     }
 
-    function selectListaUsuarios($userEdit) {
+    function selectListaUsuarios($userEdit, $userSelect = "") {
         $conn = conection();        
         
         $sql = "SELECT * FROM $userEdit";
@@ -55,15 +55,89 @@
         $result = $conn->query($sql);
         if ($result) {            
             if ($result->num_rows > 0) {                
-                echo "<h3 style=\"text-align: center; margin-bottom: 1.5rem\">Escolha um usuario</h3>";
-                echo "<select class=\"container form-select\" name=\"eventos\" id=\"eventos\" onchange=\"aeventoSelecionado()\">";
+                echo "<h3 style=\"text-align: center; margin-bottom: 1.5rem\">Escolha um usuário</h3>";
+                echo "<div id=\"tipoUsuario\" style=\"display: none;\">$userEdit</div>";
+                echo "<select class=\"container form-select\" name=\"usuariosS\" id=\"usuariosS\">";
                 echo "<option value=\"0\">Selecione um Usuario</option>";
                 while ($row2 = $result->fetch_assoc()) {  
                     $nome = $row2['Nome'];                    
                     $user = $row2['Usuario'];                    
                     echo "<option value=\"$user\">$user - $nome</option>";                                            
                 }
-                echo "</select>";
+                echo "</select>";                
+                if ($userSelect != ""){
+                    $sql2 = "SELECT * FROM $userEdit WHERE Usuario = '$userSelect'";
+                                         
+                    $result2 = $conn->query($sql2);                                             
+                    $row2 = $result2->fetch_assoc();
+
+                    $nomeS = $row2['Nome'];                    
+                    $userS = $row2['Usuario']; 
+                    $senhaS = $row2['Senha'];
+
+                    echo "<br><form action=\"../model/criaVisitante.php\" method=\"post\" style=\"margin-bottom: 3rem\" class=\"container\">";
+                    if ($userEdit == "organizadores") {
+                        $id = $row2['ID_Organizadores'];
+
+                        echo "<div class=\"input-group mb-3\"><div class=\"input-group-prepend\">";
+                        echo "<span class=\"input-group-text\" id=\"basic-addon1\">ID</span></div>";
+                        echo "<input readonly name=\"id\" type=\"text\" class=\"form-control\" value=\"$id\" aria-label=\"ID\" aria-describedby=\"basic-addon1\"></div>";
+                    }                  
+                                                            
+                    echo "<div class=\"input-group mb-3\"><div class=\"input-group-prepend\">";
+                    echo "<span class=\"input-group-text\" id=\"basic-addon1\">Usuario</span></div>";
+                    echo "<input name=\"aUser\" type=\"text\" class=\"form-control\" value=\"$userS\" aria-label=\"Usuario\" aria-describedby=\"basic-addon1\"></div>";
+                    
+                    echo "<div class=\"input-group mb-3\"><div class=\"input-group-prepend\">";
+                    echo "<span class=\"input-group-text\" id=\"basic-addon1\">Nome</span></div>";
+                    echo "<input name=\"aNome\" type=\"text\" class=\"form-control\" value=\"$nomeS\" aria-label=\"Nome\" aria-describedby=\"basic-addon1\"></div>"; 
+
+                    echo "<div class=\"input-group mb-3\"><div class=\"input-group-prepend\">";
+                    echo "<span class=\"input-group-text\" id=\"basic-addon1\">Senha</span></div>";
+                    echo "<input name=\"aSenha\" type=\"text\" class=\"form-control\" value=\"$senhaS\" aria-label=\"Senha\" aria-describedby=\"basic-addon1\"></div>"; 
+                    
+                    if ($userEdit == "participantes") {
+                        $id = $row2['ID_Participantes'];
+                        $idOrgS = $row2['ID_Organizadores']; 
+                        $codigoEventoS = $row2['fk_Codigo_Evento']; 
+
+                        echo "<div class=\"input-group mb-3\"><div class=\"input-group-prepend\">";
+                        echo "<span class=\"input-group-text\" id=\"basic-addon1\">ID</span></div>";
+                        echo "<input readonly name=\"id\" type=\"text\" class=\"form-control\" value=\"$id\" aria-label=\"ID\" aria-describedby=\"basic-addon1\"></div>";
+
+                        echo "<div class=\"input-group mb-3\"><div class=\"input-group-prepend\">";
+                        echo "<span class=\"input-group-text\" id=\"basic-addon1\">ID Organizador</span></div>";
+                        echo "<input name=\"aIdOrg\" type=\"text\" class=\"form-control\" value=\"$idOrgS\" aria-label=\"ID Organizador\" aria-describedby=\"basic-addon1\"></div>"; 
+                        
+                        echo "<div class=\"input-group mb-3\"><div class=\"input-group-prepend\">";
+                        echo "<span class=\"input-group-text\" id=\"basic-addon1\">ID Evento</span></div>";
+                        echo "<input name=\"aIdEvento\" type=\"text\" class=\"form-control\" value=\"$codigoEventoS\" aria-label=\"ID Evento\" aria-describedby=\"basic-addon1\"></div>"; 
+                    } else if ($userEdit == "visitantes") {
+                        $id = $row2['ID_Visitantes'];                       
+                        $telS = $row2['Telefone'];
+                        $emailS = $row2['Email'];
+                        $endS = $row2['Endereco'];
+                        
+                        echo "<div class=\"input-group mb-3\"><div class=\"input-group-prepend\">";
+                        echo "<span class=\"input-group-text\" id=\"basic-addon1\">ID</span></div>";
+                        echo "<input readonly name=\"id\" type=\"text\" class=\"form-control\" value=\"$id\" aria-label=\"ID\" aria-describedby=\"basic-addon1\"></div>";
+
+                        echo "<div class=\"input-group mb-3\"><div class=\"input-group-prepend\">";
+                        echo "<span class=\"input-group-text\" id=\"basic-addon1\">Telefone</span></div>";
+                        echo "<input name=\"aTel\" type=\"text\" class=\"form-control\" value=\"$telS\" aria-label=\"Telefone\" aria-describedby=\"basic-addon1\"></div>"; 
+
+                        echo "<div class=\"input-group mb-3\"><div class=\"input-group-prepend\">";
+                        echo "<span class=\"input-group-text\" id=\"basic-addon1\">Email</span></div>";
+                        echo "<input name=\"aEmail\" type=\"text\" class=\"form-control\" value=\"$emailS\" aria-label=\"Email\" aria-describedby=\"basic-addon1\"></div>"; 
+
+                        echo "<div class=\"input-group mb-3\"><div class=\"input-group-prepend\">";
+                        echo "<span class=\"input-group-text\" id=\"basic-addon1\">Endereço</span></div>";
+                        echo "<input name=\"aEndereco\" type=\"text\" class=\"form-control\" value=\"$endS\" aria-label=\"Endereco\" aria-describedby=\"basic-addon1\"></div>"; 
+                    }
+                    echo "<button type=\"submit\" class=\"btn btn-primary btn-block\">Atualizar</button>";
+                    echo "</form>";
+                     
+                }
             }
         }
         $conn->close();

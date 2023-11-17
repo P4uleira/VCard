@@ -16,15 +16,14 @@
             <div class="spinner horizontal"></div>
             <div class="spinner diagonal part-2"></div>
         </label>
-        <div id="sidebarMenu">
+        <div style="z-index: 2" id="sidebarMenu">
             <ul class="sidebarMenuInner">
 
                 <br><br><br>
                 <li><a style="color: #F0F0F0;" href="../views/administrador.php?cOrg">Criar Organizador</a></li>
+                <li><a style="color: #F0F0F0;" href="../views/administrador.php?cCat">Criar Categoria</a></li>
                 <li><a style="color: #F0F0F0;" href="../views/administrador.php?esc">Excluir usuário</a></li>
-                <li><a style="color: #F0F0F0;" href="../views/administrador.php?edit">Editar usuário</a></li>
-                <li><a style="color: #F0F0F0;" href="Administrador.php?cOrg">Criar Organizador</a></li>
-                <li><a style="color: #F0F0F0;" href="Administrador.php?cCat">Criar Categoria</a></li>
+                <li><a style="color: #F0F0F0;" href="../views/administrador.php?edit">Editar usuário</a></li>                
                 <li><a style="color: #F0F0F0;" href="index.php?cat=878">Listar usuários</a></li>
                 <li><a style="color: #F0F0F0;" href="login.php"><strong>Sair</strong></a></li>
 
