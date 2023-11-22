@@ -1,15 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<?php
-    if (session_status() == PHP_SESSION_NONE) {
-        session_start();
-    }
-?>
+
 <body>
     <header>
         <div class="header">
             <div class="header_logo">
-                <a class="tituloPrincipal" href="index.php">
+                <a class="tituloPrincipal" href="../views/administrador.php">
                     <img width="60 px" src="../public/imgs/logo_vcards_branco.png" alt="logo vCards">
                 </a>
             </div>
@@ -23,14 +19,8 @@
         <div style="z-index: 2" id="sidebarMenu">
             <ul class="sidebarMenuInner">
 
-                <br><br><br>
-                <li><a style="color: #F0F0F0;" href="../views/participante.php?modo=cCard">Criar Card</a></li>
-                <li><a style="color: #F0F0F0;" href="../views/participante.php?modo=eCard">Editar Card</a></li>
-                <li><a style="color: #F0F0F0;" href="../views/participante.php?modo=Qrcode">Gera QRcode</a></li>
-                <li><a style="color: #F0F0F0;" href="../views/participante.php?modo=excCard">Excluir Card</a></li>
-                <br>
-                <li><a style="color: #F0F0F0;" href="login.php"><strong>Sair</strong></a></li>
-
+                <br><br><br>            
+                <li><a style="color: #F0F0F0;" href="index.php">Fazer Login</a></li>    
             </ul>
         </div>
     </header>
