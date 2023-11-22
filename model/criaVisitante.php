@@ -54,7 +54,7 @@
         if ($conn->query($sql) === TRUE) {
             header('location: ../views/administrador.php?edit');
         } else {
-            echo "Erro ao atualizar dados: " . $con->error;
+            echo "Erro ao atualizar dados: " . $conn->error;
         }
 
         $conn->close();
