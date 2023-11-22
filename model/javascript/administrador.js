@@ -8,8 +8,33 @@ $(document).ready(function(){
     });
   });
 
+  $('#formAtualiza').submit(function(event) {
+    event.preventDefault();
+    var temErro = 0;
 
-
+    // validação Usuario
+    var userNickname = $("#aUser").val();
+    
+    $.ajax({
+        type: "POST",
+        url: "../model/validaLogin.php",
+        data: { validaNick: userNickname },
+        dataType: 'JSON',
+        success: function(response) {
+            console.log(response)
+            if (response.encontrou === "existe") {             
+                $("#mensagemUsuario").text("O nome de Usuário ja está em uso! Utilize Outro.");
+                $("#mensagemUsuario").css("display", "block");
+            } else {
+                $("#mensagemUsuario").css("display", "none");
+                console.log(temErro)
+                if (temErro <= 0) {
+                    $('#formAtualiza')[0].submit(); 
+                }
+            }
+        }
+    });
+}); 
 
 function tipoUsuarioSelecionadoExcluir() {
     var selectUser = $("#tipouserexcluir");

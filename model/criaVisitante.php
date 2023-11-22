@@ -9,6 +9,7 @@
         $usuario = $_POST['nomeUsuarioLogin'];
         $senha = $_POST['senhaLogin'];        
         criaVisitante($nome, $numeroT, $email,$endereco,$usuario, $senha);
+
     } else if(isset($_POST["aUser"]) && isset($_POST["id"]) && isset($_POST["aNome"]) && isset($_POST["aSenha"])){
         $id =  $_POST["id"];
         $usuario = $_POST["aUser"];
@@ -29,7 +30,7 @@
 
         } else {
             $tipoUser = "organizadores";
-            atualizaUsuario($id, $nome, $usuario, $senha);
+            atualizaUsuario($id, $nome, $usuario, $senha, $tipoUser);
         }
 
     }

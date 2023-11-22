@@ -45,18 +45,18 @@
                 echo "Erro na preparação da consulta: " . $conn->error;
             }
 
-            $sql = "SELECT ID_Participantes FROM participantes WHERE Usuario = ? AND Senha = ?";
+            $sql = "SELECT ID_Participantes, Usuario FROM participantes WHERE Usuario = ? AND Senha = ?";
             $resultado = $conn->prepare($sql);
 
             if ($resultado) {
                 $resultado->bind_param("ss", $usuario, $senha);
                 $resultado->execute();
-                $resultado->bind_result($id);
+                $resultado->bind_result($id, $nomeUsuario);
 
                 if ($resultado->fetch()) {
                     $resultado->close();
                     $conn->close();
-                    return ['user_type' => 'participante', 'user_id' => $id];
+                    return ['user_type' => 'participante', 'user_id' => $id, 'user_nickname' => $nomeUsuario];
                 }
                 $resultado->close();
             } else {

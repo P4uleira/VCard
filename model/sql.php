@@ -75,7 +75,7 @@
                     $userS = $row2['Usuario']; 
                     $senhaS = $row2['Senha'];
 
-                    echo "<br><form action=\"../model/criaVisitante.php\" method=\"post\" style=\"margin-bottom: 3rem\" class=\"container\">";
+                    echo "<br><form id=\"formAtualiza\" action=\"../model/criaVisitante.php\" method=\"post\" style=\"margin-bottom: 3rem\" class=\"container\">";
                     if ($userEdit == "organizadores") {
                         $id = $row2['ID_Organizadores'];
 
@@ -86,7 +86,8 @@
                                                             
                     echo "<div class=\"input-group mb-3\"><div class=\"input-group-prepend\">";
                     echo "<span class=\"input-group-text\" id=\"basic-addon1\">Usuario</span></div>";
-                    echo "<input name=\"aUser\" type=\"text\" class=\"form-control\" value=\"$userS\" aria-label=\"Usuario\" aria-describedby=\"basic-addon1\"></div>";
+                    echo "<input id=\"aUser\" name=\"aUser\" type=\"text\" class=\"form-control\" value=\"$userS\" aria-label=\"Usuario\" aria-describedby=\"basic-addon1\"></div>";
+                    echo "<span class=\"mensagem-erro\" id=\"mensagemUsuario\"></span>";
                     
                     echo "<div class=\"input-group mb-3\"><div class=\"input-group-prepend\">";
                     echo "<span class=\"input-group-text\" id=\"basic-addon1\">Nome</span></div>";
