@@ -2,9 +2,11 @@
 <?php
     include 'sql.php';
 
-    if(isset($_FILES['imagem']) && isset($_POST['titulo']) && isset($_POST['conteudo']) && isset($_POST['telefone']) && isset($_POST['email'])){
+    if(isset($_FILES['imagem']) && isset($_POST['titulo']) && isset($_POST['conteudo'])&& isset($_POST['categoria']) && isset($_POST['telefone']) && isset($_POST['email'])){
+        
         $titulo = $_POST['titulo'];
         $descricao = $_POST['conteudo'];
+        $categoria = $_POST['categoria'];
         $telefone = $_POST['telefone'];
         $email = $_POST['email'];
         $capaCard = $_FILES['imagem'];
@@ -12,16 +14,18 @@
         $extensaoCard = explode(".", $capaCard['name']);
         $nomeArquivo  = $_SESSION['user_nickname'].".".$extensaoCard[1];
 
-        move_uploaded_file($capaCard["tmp_name"], '../public/imgs/Uploads/'.$nomeArquivo);        
+        date_default_timezone_set('America/Sao_Paulo');
+        $dataNow = date('Y-m-d'); 
 
-        //criaCard($titulo, $descricao, $telefone, $email);
+        move_uploaded_file($capaCard["tmp_name"], '../public/imgs/Uploads/'.$nomeArquivo); 
+
+        $idUsuario = $_SESSION['user_id'];
+        $visualizacao = 0;
+        
+        insereCard($idUsuario, $categoria, $titulo, $nomeArquivo, $descricao, $visualizacao, $email, $telefone, $dataNow);      
+
     }
 
-    function criaCard($titulo, $descricao, $telefone, $email){
-
-        $dataNow = date('d/m/Y');
-        insereCard($idParticipante, $idCategoria, $titulo, $imagem, $descricao, 0, $email, $telefone, $dataNow);
-    }
 ?>
 <!DOCTYPE html>
 <html lang="en">

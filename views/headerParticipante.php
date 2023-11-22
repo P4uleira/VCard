@@ -24,7 +24,7 @@
             <ul class="sidebarMenuInner">
 
                 <br><br><br>
-                <li><a style="color: #F0F0F0;" href="participante.php?modo=cCard">Criar Card</a></li>
+                <li><a style="color: #F0F0F0;" href="../views/participante.php?modo=cCard">Criar Card</a></li>
                 <li><a style="color: #F0F0F0;" href="participante.php?modo=eCard">Editar Card</a></li>
                 <li><a style="color: #F0F0F0;" href="participante.php?modo=exCard">Excluir Card</a></li>
                 <br>

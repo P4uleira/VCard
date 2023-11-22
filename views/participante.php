@@ -54,8 +54,16 @@
 
                     <!-- tem que fazer o select como o banco de dados -->
                     <select class="form-select" name="categoria" id="categoria">
-                    
                         <option value="0">Selecione uma Categoria</option>
+                        <?php
+                            include '../model/sql.php';
+                            $conn = conection();
+                            $query = "SELECT `ID_Categoria`, `Nome_Categoria` FROM `categorias`";
+                            $result = mysqli_query($conn, $query);
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                echo '<option value="' . $row['ID_Categoria'] . '">' . $row['Nome_Categoria'] . '</option>';
+                            }
+                        ?>
                     </select><br>
                     
                     <h5>Informações para contato</h5>

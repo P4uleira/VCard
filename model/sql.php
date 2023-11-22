@@ -28,6 +28,15 @@
         $con->close();
     }
 
+    function insereCard($idUsuario, $categoria, $titulo, $nomeArquivo, $descricao, $visualizacao, $email, $telefone, $dataNow){
+        $con = conection();
+        $sql = "INSERT INTO cards (fk_ID_Participantes, fk_ID_Categoria, Titulo, Imagem, Descricao, Contagem, Email, Telefone, Data_publicacao) VALUES ('$idUsuario', '$categoria', '$titulo', '$nomeArquivo', '$descricao', '$visualizacao', '$email', '$telefone', '$dataNow')";
+        if ($con->query($sql) === FALSE) {
+            echo "Erro ao inserir dados: " . $con->error;
+        } 
+        
+        $con->close();
+    }
     function insereParticipante($idOrg, $nome, $usuario, $senha, $evento) {
         $conn = conection();
         $sql = "INSERT INTO participantes (fk_ID_Organizadores,fk_Codigo_evento, Nome, Usuario, Senha) VALUES ($idOrg, $evento, '$nome', '$usuario', '$senha')";
