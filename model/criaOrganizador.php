@@ -5,9 +5,6 @@
         $nome = $_POST['nome'];
         $usuario = $_POST['usuario'];
         $senha = $_POST['senha'];
-        criaOrganizador($nome, $usuario, $senha);
-    }
-    function criaOrganizador($nome, $usuario, $senha){
         insereOrganizador($nome, $usuario, $senha);
         header('Location: ../views/administrador.php');
     }
