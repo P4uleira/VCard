@@ -95,6 +95,7 @@
             </div>
         </div>
     </main>
+    <script src="../public/javascript/card.js"></script>
 </body>
 
 </html>

@@ -34,6 +34,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exibe Card</title>
     <link rel="stylesheet" href="../public/css/organizadores.css">
+    <link rel="stylesheet" href="../public/css/cadProjeto.css">
     <link rel="stylesheet" href="../public/css/slidemenu.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
@@ -79,106 +80,7 @@
             </div>
         <?php } ?>
     </main>
+    <script src="../public/javascript/card.js"></script>
 </body>
-
-<style>
-    .card_container {
-        display: flex;
-        width: 100%;
-        justify-content: center;
-        transition: transform 0.5s;
-    }
-
-    .card_container_info {
-        display: flex;
-        width: 325px;
-        height: 525px;
-        flex-direction: column;
-        align-content: center;
-        justify-content: center;
-        align-items: center;
-        padding: 10px;
-        border-radius: 10px;
-        border: 1px solid;
-        transition: transform 0.5s;
-       
-    }
-
-    .card_container_info_costas {
-        display: none;
-        width: 325px;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 10px;
-        border-radius: 10px;
-        border: 1px solid;
-        transition: transform 0.5s;
-        height: 525px;        
-    }
-
-    .card_links {
-        height: 30px;
-        display: flex;
-        width: 100%;
-        justify-content: space-around;
-    }
-
-
-</style>
-
-<script>
-
-    $( document ).ready(function() {
-        var estadoCoracao = 0; 
-        $("#icon_coracao").click(function(){ 
-            if (estadoCoracao == 0) {
-                $("#icon_coracao").attr("src","../public/imgs/coracao_vermelho.svg");
-                estadoCoracao = 1;
-            } else {
-                $("#icon_coracao").attr("src","../public/imgs/coracao_branco.svg");
-                estadoCoracao = 0;
-            }
-
-        });
-
-        var estadoEstrela = 0; 
-        $("#icon_star").click(function(){ 
-            if (estadoEstrela == 0) {
-                $("#icon_star").attr("src","../public/imgs/star_amarela.svg");
-                estadoEstrela = 1;
-            } else {
-                $("#icon_star").attr("src","../public/imgs/star_branca.svg");
-                estadoEstrela = 0;
-            }
-
-        });
-
-
-    });
-
-
-    function rotacionar(lado) {       
-
-        if (lado == 0) {  
-            $("#card_container").css("transform", "rotateY(90deg)");        
-            $("#card_container_info_costas").css("transform", "rotateY(180deg)");             
-            setTimeout(() => {
-                $("#card_container_info").css("display", "none"); 
-                $("#card_container_info_costas").css("display", "flex");    
-                $("#card_container").css("transform", "rotateY(180deg)"); 
-            }, 300);
-                         
-        } else {
-            $("#card_container").css("transform", "rotateY(90deg)");            
-            setTimeout(() => {
-                $("#card_container_info_costas").css("display", "none");
-                $("#card_container_info").css("display", "flex"); 
-                $("#card_container").css("transform", "rotateY(0deg)");
-            }, 300);                                   
-        }
-    }
-
-</script>
 
 </html>

@@ -166,6 +166,6 @@
             }
         ?>
     </main>
-    <script type="text/javascript" src="../model/javascript/login.js"></script>
+    <script type="text/javascript" src="../public/javascript/login.js"></script>
     
 </html>

@@ -18,5 +18,5 @@
 <body>
     
 </body>
-<script type="text/javascript" src="../model/javascript/organizador.js"></script>
+<script type="text/javascript" src="../public/javascript/organizador.js"></script>
 </html>

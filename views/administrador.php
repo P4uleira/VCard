@@ -125,7 +125,7 @@
                 }
             ?>
     </main>
-    <script type="text/javascript" src="../model/javascript/administrador.js"></script>
+    <script type="text/javascript" src="../public/javascript/administrador.js"></script>
 </body>
 
 </html>

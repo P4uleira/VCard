@@ -8,3 +8,45 @@ min-height: 667px;
 max-height: 915px;
 justify-content: space-around;
 }
+
+.card_container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    transition: transform 0.5s;
+}
+
+.card_container_info {
+    display: flex;
+    width: 325px;
+    height: 525px;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid;
+    transition: transform 0.5s;
+   
+}
+
+.card_container_info_costas {
+    display: none;
+    width: 325px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid;
+    transition: transform 0.5s;
+    height: 525px;        
+}
+
+.card_links {
+    height: 30px;
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
