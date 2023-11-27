@@ -1,18 +1,26 @@
 $(document).ready(function(){    
-    $("#usuariosS").change(function(){
-        var tipousuario = $("#tipoUsuario").text();
-        var usuarioSelecionado = $(this).val();       
+    $("#organizacao").change(function(){        
+        var idOrg = $(this).val();       
 
-        window.location.href = "../views/administrador.php?edit&user=" + tipousuario + "&userselect=" + usuarioSelecionado;      
+        window.location.href = "../views/visitante.php?modo=tCard&orgSelect=" + idOrg;      
       
     });
+
+    $("#eventos").change(function(){ 
+        var url = new URL(window.location.href);       
+        var idEvent = $(this).val();
+        var idOrg = url.searchParams.get("orgSelect");       
+
+        window.location.href = "../views/visitante.php?modo=tCard&orgSelect=" + idOrg + "&evento=" + idEvent;      
+      
+    });
+
+
   });
 
 
-
-function organizacaoSelecionada() {
-    var selectUser = $("#organizacao");
-    var userSelected = selectUser.val();    
+//function organizacaoSelecionada() {
+    //var idOrg = $(this).val();    
     
-    window.location.href = "../views/administrador.php?esc&user=" + userSelected;
-}
+    //window.location.href = "../views/visitante.php?modo=tCard&orgSelect=" + idOrg;
+//}
