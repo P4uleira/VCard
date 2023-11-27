@@ -39,7 +39,7 @@
     }
     function insereParticipante($idOrg, $nome, $usuario, $senha, $evento) {
         $conn = conection();
-        $sql = "INSERT INTO participantes (fk_ID_Organizadores,fk_Codigo_evento, Nome, Usuario, Senha) VALUES ($idOrg, $evento, '$nome', '$usuario', '$senha')";
+        $sql = "INSERT INTO participantes (fk_ID_Organizadores, Nome, Usuario, Senha) VALUES ($idOrg, '$nome', '$usuario', '$senha')";
 
         if ($conn->query($sql) === FALSE) {
             echo "Erro ao inserir dados: " . $conn->error;            
