@@ -7,14 +7,12 @@
     if(isset($_POST['nome'])){
         $nomeEvento = $_POST['nome'];
         criaEvento($nomeEvento);
-    } else if(isset($_POST['novoNome'])){
-        echo "<script>console.log(Entrou Aqui)";
+    } else if(isset($_POST['novoNome'])){        
         $novoNomeEvento = $_POST['novoNome'];
         $idEvento = $_POST['idEvento'];              
         $idUsuario = $_SESSION['user_id'];        
         
-        atualizaEvento($idUsuario, $idEvento, $novoNomeEvento);
-        echo "console.log(Entrou Aqui .$novoNomeEvento)</script>";        
+        atualizaEvento($idUsuario, $idEvento, $novoNomeEvento);               
     }
 
 

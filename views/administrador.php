@@ -118,8 +118,7 @@
                 <a style="cursor: pointer" class="list-group-item list-group-item-action" href="../views/administrador.php?cOrg">Criar Organizador</a><br>
                 <a style="cursor: pointer" class="list-group-item list-group-item-action" href="../views/administrador.php?cCat">Criar Categoria</a><br>
                 <a style="cursor: pointer" class="list-group-item list-group-item-action" href="../views/administrador.php?esc">Excluir usuário</a><br>
-                <a style="cursor: pointer" class="list-group-item list-group-item-action" href="../views/administrador.php?edit">Editar usuário</a><br>
-                <a style="cursor: pointer" class="list-group-item list-group-item-action" href="index.php?cat=878">Listar usuários</a><br>                
+                <a style="cursor: pointer" class="list-group-item list-group-item-action" href="../views/administrador.php?edit">Editar usuário</a><br>                        
             </div>
             <?php
                 }

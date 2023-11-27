@@ -108,7 +108,7 @@
                     
                     if ($userEdit == "participantes") {
                         $id = $row2['ID_Participantes'];
-                        $idOrgS = $row2['ID_Organizadores']; 
+                        $idOrgS = $row2['fk_ID_Organizadores']; 
                         $codigoEventoS = $row2['fk_Codigo_Evento']; 
 
                         echo "<div class=\"input-group mb-3\"><div class=\"input-group-prepend\">";
