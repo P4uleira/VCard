@@ -16,26 +16,14 @@
         include 'headerVisitante.php';
     ?>
     <main>
-        <?php 
-            if (!isset($_GET['idCard'])) {
-        ?>
         <div class="container visitante_main">
-            <h4 class="h_qrCode"><a class="link_qrCode" href="">Escanear QRcode</a></h4>
-            <div style="display: flex; align-items: center; flex-direction: column; margin-top: 3.5rem">
-                <a class="tituloPrincipal" href="index.php">
-                    <img src="../public/imgs/qrcode.png">
-                </a>
-            </div> 
+            <h4 class="h_qrCode">Bem vindo <?php echo $_SESSION['user_nickname']?></h4>
+            <div>
+                <input type="button" value="Favoritos"> 
+                <input type="button" value="Todos os cards"> 
+                <input type="text"> 
+            </div>
         </div>
-        <?php
-            } else {
-                $id_card = $_GET['idCard'];
-                $cardData = exibe_card($id_card);
-                
-                
-
-            }
-        ?>
     </main>
 </body>
 
