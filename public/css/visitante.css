@@ -2,7 +2,7 @@
 
 body {
     font-family: 'Inria Sans', sans-serif !important;
-    background-color: #EDF2FA !important;
+    background-color: #EEEEEE !important;
 }
 
 .visitante_main {
@@ -16,4 +16,40 @@ body {
 .link_qrCode {
     text-decoration: none;
     color: black;
+}
+
+.pesquisa {
+    padding-top: 10px;
+    display: flex;
+    justify-content: center;
+    justify-content: space-between
+}
+
+.botao_Fav {
+    background-color: black;
+    border-radius: 20px;
+    color: #ffffff;
+    font-weight: Bold;
+    border: 0;
+}
+.botao_todoscards{
+    background-color: black;
+    border-radius: 20px;
+    color: #ffffff;
+    font-weight: Bold;
+    border: 0;
+}
+
+.input {
+    font-size: 16px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 30%;
+    border: none;
+    border-bottom: 1px solid #669BBC;
+    background: transparent;
+}
+
+.input:focus {
+    outline: none;
 }

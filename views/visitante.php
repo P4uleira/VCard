@@ -18,10 +18,10 @@
     <main>
         <div class="container visitante_main">
             <h4 class="h_qrCode">Bem vindo <?php echo $_SESSION['user_nickname']?></h4>
-            <div>
-                <input type="button" value="Favoritos"> 
-                <input type="button" value="Todos os cards"> 
-                <input type="text"> 
+            <div class="pesquisa">
+                <button class="botao_Fav"> Favoritos</button> 
+                <button class="botao_todoscards"> Todos os cards</button> 
+                <input class="input" type="text" placeholder="Pesquisar"> 
             </div>
         </div>
     </main>
