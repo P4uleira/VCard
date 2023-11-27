@@ -255,6 +255,12 @@
 
     }
 
+    /*function exibeCards($idOrg, $evento) {
+        $conn = conection();
+
+        $sql = "SELECT ID_Card, Titulo";
+    }*/
+
     function excluirCards($idCard) {
         $conn = conection();
 
