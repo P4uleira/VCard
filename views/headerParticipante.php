@@ -9,7 +9,7 @@
     <header>
         <div class="header">
             <div class="header_logo">
-                <a class="tituloPrincipal" href="index.php">
+                <a class="tituloPrincipal" href="../views/participante.php">
                     <img width="60 px" src="../public/imgs/logo_vcards_branco.png" alt="logo vCards">
                 </a>
             </div>
