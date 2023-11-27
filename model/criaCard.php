@@ -1,4 +1,10 @@
-<?php session_start(); ?>
+<?php
+    if(!session_start()){
+        header('location: ../views/login.php');
+    }else if($_SESSION['user_type'] != 'participante'){
+        header('location: ../views/login.php');
+    }
+?>
 <?php
     include 'sql.php';
 
@@ -28,7 +34,7 @@
 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
