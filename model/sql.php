@@ -39,13 +39,14 @@
     }
     function insereParticipante($idOrg, $nome, $usuario, $senha, $evento) {
         $conn = conection();
-        $sql = "INSERT INTO participantes (fk_ID_Organizadores,fk_Codigo_evento, Nome, Usuario, Senha) VALUES ($idOrg, $evento, '$nome', '$usuario', '$senha')";
+        $sql = "INSERT INTO participantes (fk_ID_Organizadores, Nome, Usuario, Senha) VALUES ($idOrg, '$nome', '$usuario', '$senha')";
 
         if ($conn->query($sql) === FALSE) {
             echo "Erro ao inserir dados: " . $conn->error;            
         }
         $conn->close();         
     }
+    
     function insereCategoria($nome) {
         $conn = conection();
         $sql = "INSERT INTO categorias (Nome_Categoria) VALUES ('$nome')";
@@ -251,7 +252,9 @@
                 echo "<span class=\"input-group-text\" id=\"inputGroup-sizing-default\">Nome do Evento</span></div>";
                 echo "<input id=\"eventoNome\" value=\"$Nome\" type=\"text\" class=\"form-control\" aria-label=\"Sizing example input\" aria-describedby=\"inputGroup-sizing-default\"></div>";
                 echo "<br><a onclick=\"salvarEdicaoEvento($id)\" class=\"btn btn-success\">Salvar Nome</a><br>";
-                $sql2 = "SELECT `ID_Participantes`, `Nome`, `Usuario` FROM `participantes` WHERE `ID_Organizadores` = $fk_ID_Organizadores AND `fk_Codigo_Evento` = $id";
+                $sql2 = "SELECT p.ID_Participantes, p.Nome, p.Usuario FROM participantes AS p
+                         LEFT JOIN participa AS par ON par.fk_id_participantes = p.ID_Participantes
+                         WHERE p.fk_ID_Organizadores = $fk_ID_Organizadores AND par.fk_Codigo_Evento = $id";
                 $result2 = $conn->query($sql2);
 
                 if ($result2) {

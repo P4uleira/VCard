@@ -99,6 +99,7 @@
                     <div class="container eEvento">
                         <form class="form-group">
                             <div class="form-group">
+                                
                                 <select class="form-select" name="editarCard" id="editarCard">
                                     <option value="0">Selecione um cartão</option>
                                 </select><br>
@@ -177,7 +178,7 @@
 
             if (selectedCardId > 0) {
                 // Gera o link da página com base no ID do card
-                var link = 'http://192.168.0.110/VCard/views/card.php?id=' + selectedCardId;
+                var link = 'http://192.168.6.103/VCard/views/card.php?id=' + selectedCardId;
 
                 // Limpa o conteúdo anterior, se houver
                 document.getElementById('qrcode-container').innerHTML = '';
