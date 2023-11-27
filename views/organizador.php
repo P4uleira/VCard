@@ -1,8 +1,13 @@
+<?php
+    if(!session_start()){
+        header('location: ./login.php');
+    }else if($_SESSION['user_type'] != 'organizador'){
+        header('location: ./login.php');
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
-<?php
-    session_start();
-?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -61,11 +66,34 @@
         ?>
             <div class="eEvento">
                 <h3 style="text-align: center; margin-bottom: 1.5rem">Excluir Eventos</h3>
-                <br>   
+                <br>
+                <?php
+            } else if ($modo == 'tCards') {
+        ?>
+            <div class="containerImg">
+            <div class="image-container2">
+                <img src="../public/imgs/example.png" alt="Imagem 1"><br>
+                <button class="buttonPart">Visualizar</button>
+            </div>
+            <div class="image-container2">
+                <img src="../public/imgs/example.png" alt="Imagem 2"><br>                
+            </div>
+                <button class="buttonPart">Visualizar</button>
+            </div>
+            <div class="containerImg">
+            <div class="image-container2">
+                <img src="../public/imgs/example.png" alt="Imagem 1"><br>
+                <button class="buttonPart">Visualizar</button>
+            </div>
+            <div class="image-container2">
+                <img src="../public/imgs/example.png" alt="Imagem 2"><br>
+                <button class="buttonPart">Visualizar</button>
+            </div>
+            </div>
         <?php
             $idOrganizador = $_SESSION['user_id'];
             include '../model/sql.php'; 
-            listarEventos($idOrganizador);
+            listarEventos($idOrganizador);/*alterar para id card*/
             }
             } else {
         ?>
@@ -75,6 +103,7 @@
                 <a style="cursor: pointer" href="../model/criaParticipante.php" class="list-group-item list-group-item-action">Criar Participante</a><br>
                 <a style="cursor: pointer" href="../views/organizador.php?modo=eEvento" class="list-group-item list-group-item-action">Editar Evento</a><br>
                 <a style="cursor: pointer" href="../views/organizador.php?modo=exEvento" class="list-group-item list-group-item-action">Excluir Evento</a><br>
+                <a style="cursor: pointer" href="../views/organizador.php?modo=tCards" class="list-group-item list-group-item-action">Todos os Cards</a><br>
             </div>
         <?php
             }

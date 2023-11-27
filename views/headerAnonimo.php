@@ -20,7 +20,7 @@
             <ul class="sidebarMenuInner">
 
                 <br><br><br>            
-                <li><a style="color: #F0F0F0;" href="index.php">Fazer Login</a></li>    
+                <li><a style="color: #F0F0F0;" href="login.php">Fazer Login</a></li>    
             </ul>
         </div>
     </header>

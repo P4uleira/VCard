@@ -1,3 +1,10 @@
+<?php
+    if(!session_start()){
+        header('location: ./login.php');
+    }else if($_SESSION['user_type'] != 'admin'){
+        header('location: ./login.php');
+    }
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 
