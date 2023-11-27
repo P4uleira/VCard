@@ -1,8 +1,13 @@
+<?php
+    if(!session_start()){
+        header('location: ./login.php');
+    }else if($_SESSION['user_type'] != 'organizador'){
+        header('location: ./login.php');
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
-<?php
-    session_start();
-?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

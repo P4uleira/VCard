@@ -1,4 +1,10 @@
-<?php session_start(); ?>
+<?php
+    if(!session_start()){
+        header('location: ./login.php');
+    }else if($_SESSION['user_type'] != 'visitante'){
+        header('location: ./login.php');
+    }
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -18,53 +24,36 @@
     <main>
         <div class="container visitante_main">
             <h4 class="h_qrCode">Bem vindo <?php echo $_SESSION['user_nickname']?></h4>
-            <div>
-                <input type="button" value="Favoritos"> 
-                <input type="button" value="Todos os cards"> 
-                <input type="text"> 
-            </div>
         </div>
+        <?php
+            if(isset($_GET['modo'])){
+                $modo = $_GET['modo'];
+                if($modo == 'tCard'){           
+        ?>
+        <div class="container eEvento">
+            <h3>TODOS OS CARDs</h3>
+
+            <div class="form-group">
+                <select class="form-select" id="organizacao" onchange="organizacaoSelecionada()">
+                    <option value="0">Selecione a organização</option>
+                    <?php
+                        include '../model/sql.php';
+                        $conn = conection();
+                        $query = "SELECT `ID_Organizadores`, `Nome` FROM `organizadores`";
+                        $result = mysqli_query($conn, $query);
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            echo '<option value="' . $row['ID_Organizadores'] . '">' . $row['Nome'] . '</option>';
+                        }
+                    ?>
+                </select> 
+            </div>  
+        </div>
+
+        <?php
+                }
+            }
+        ?>
     </main>
 </body>
 
 </html>
-
-<?php 
-    include '../model/sql.php';
-    function exibe_card($id) {
-        $conn = conection();
-
-        $sql = "SELECT `c.ID_Card`, `p.Nome`, `cat.Nome_Categoria`, `c.Titulo`, `c.Imagem`, `c.Descricao`, `c.Contagem`, `c.URL`, `c.Email`, `c.Telefone`, `c.Data_publicacao` 
-        FROM `cards c` 
-        LEFT JOIN `participantes p` ON `p.ID_Usuario` = `c.ID_Usuario`
-        LEFT JOIN `categorias cat` ON `cat.ID_Categoria` = `c.ID_Categoria`
-        WHERE ID_Card = ? ;";
-        $resultado = $conn->prepare($sql);
-
-        if ($resultado) {
-            $resultado->bind_param("ss", $id);
-            $resultado->execute();
-            $resultado->bind_result($id_card ,$nome_participante, $nome_categoria, $card_titulo, $card_img, $card_desc, $card_cont, $card_url, $card_email, $card_telef, $card_dt);
-
-            if ($resultado->fetch()) {
-                $resultado->close();
-                $conn->close();
-                return [
-                'id_card' => $id_card, 
-                'nome_participante' => $nome_participante, 
-                'nome_categoria' => $nome_categoria, 
-                'card_titulo' => $card_titulo, 
-                'card_img' => $card_img, 
-                'card_desc' => $card_desc, 
-                'card_cont' => $card_cont,
-                'card_url' => $card_url,
-                'card_email' => $card_email,
-                'card_tel' => $card_telef,
-                'card_dt' => $card_dt
-                ];
-            }
-            $resultado->close();
-        } else {
-            echo "Erro na preparação da consulta: " . $conn->error;
-        }
-    }

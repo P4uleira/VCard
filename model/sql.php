@@ -37,12 +37,19 @@
         
         $con->close();
     }
+
     function insereParticipante($idOrg, $nome, $usuario, $senha, $evento) {
         $conn = conection();
         $sql = "INSERT INTO participantes (fk_ID_Organizadores, Nome, Usuario, Senha) VALUES ($idOrg, '$nome', '$usuario', '$senha')";
 
         if ($conn->query($sql) === FALSE) {
             echo "Erro ao inserir dados: " . $conn->error;            
+        } else {
+            $sql2 = "INSERT INTO participa (fk_Codigo_Evento, fk_ID_Participantes) VALUES ($evento, (SELECT ID_Participantes FROM participantes WHERE Usuario = '$usuario'))";
+
+            if ($conn->query($sql2) === FALSE) {
+                echo "Erro ao inserir dados: " . $conn->error; 
+            }
         }
         $conn->close();         
     }
@@ -210,6 +217,55 @@
         $conn->close();
     }
 
+    function listaCards($idParticipante) {
+        $conn = conection();
+
+        $sql = "SELECT ID_Card, fk_ID_Categoria, Titulo FROM cards WHERE fk_ID_Participantes = $idParticipante";
+        $result = $conn->query($sql);
+
+        if ($result) {
+            if ($result->num_rows > 0) {                                             
+
+                echo "<table class=\"container table table-sm table-hover\" style=\"text-align: center\"><thead><tr>";
+                echo "<th scope=\"col\">ID</th><th scope=\"col\">Categoria</th><th scope=\"col\">Titulo</th><th scope=\"col\">Excluir Card</th></tr></thead>";
+                echo "<tbody>";
+                
+                while ($row = $result->fetch_assoc()) {
+                            
+                    $idCard = $row['ID_Card'];
+                    $idCardCat = $row['fk_ID_Categoria'];
+                    $idCardTit = $row['Titulo']; 
+                    
+                    echo "<tr>";
+                    echo "<th scope=\"row\">$idCard</th>";
+                    echo "<td>$idCardCat</td>";
+                    echo "<td>$idCardTit</td>";
+                    echo "<td><a onclick=\"removeCard('$idCard')\" class=\"btn btn-danger\">Excluir</a></td>";
+                    echo "</tr>";                          
+                    
+                }
+                echo "</tbody></table>";
+
+            } else {
+                echo "<h3 style=\"text-align: center; margin-bottom: 1.5rem\">Ainda não foi criado nenhum Card</h3>";
+            }
+        } 
+
+        $conn->close(); 
+
+    }
+
+    function excluirCards($idCard) {
+        $conn = conection();
+
+        $sql = "DELETE FROM cards WHERE ID_Card = $idCard";
+
+        if ($conn->query($sql) === FALSE) {
+            echo "<script>alert(Erro ao deletar card: " . $conn->error . ")</script>";
+        }
+        
+        $conn->close();
+    }
 
     // Funções com a tabela de eventos.
 

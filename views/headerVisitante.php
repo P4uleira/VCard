@@ -36,7 +36,7 @@
                 
                 <li><a style="color: #F0F0F0;" href="meusAlugados.php">Escanear QRcode</a></li>                
                 <li><a style="color: #F0F0F0;" href="./views/visitante.php?modo=fCard">Meus favoritos</a></li>
-                <li><a style="color: #F0F0F0;" href="./views/visitante.php?modo=tCard">Todos os cards</a></li>
+                <li><a style="color: #F0F0F0;" href="./visitante.php?modo=tCard">Todos os cards</a></li>
                 <li><a style="color: #F0F0F0;" href="login.php?sair"><strong>Sair</strong></a></li>
 
             </ul>

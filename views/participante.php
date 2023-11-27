@@ -1,4 +1,10 @@
-<?php session_start(); ?>
+<?php
+    if(!session_start()){
+        header('location: ./login.php');
+    }else if($_SESSION['user_type'] != 'participante'){
+        header('location: ./login.php');
+    }
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -154,17 +160,17 @@
                 <br>  
                 <?php
                 $idParticipante = $_SESSION['user_id'];
-                include '../model/sql.php'; 
-                listarEventos($idParticipante);
-                }
-                } else {
+                include '../model/sql.php';
+                listaCards($idParticipante);                
+            }
+        } else {
         ?>
             <div class="eEvento list-group">
                 <h5 style="text-align: center">Opções de Participante</h5><br>
                 <a style="cursor: pointer" href="../views/participante.php?modo=cCard" class="list-group-item list-group-item-action">Criar Card</a><br>
                 <a style="cursor: pointer" href="../views/participante.php?modo=eCard" class="list-group-item list-group-item-action">Editar Card</a><br>
                 <a style="cursor: pointer" href="../views/participante.php?modo=Qrcode" class="list-group-item list-group-item-action">Gerar QRCode</a><br>
-                <a style="cursor: pointer" href="../views/participante.php?modo=exCard" class="list-group-item list-group-item-action">Excluir Card</a><br>
+                <a style="cursor: pointer" href="../views/participante.php?modo=excCard" class="list-group-item list-group-item-action">Excluir Card</a><br>
             </div>
         <?php
             }
@@ -194,6 +200,7 @@
             }
         }
     </script>
+    <script src="../public/javascript/participante.js"></script>
 </body>
 
 </html>
