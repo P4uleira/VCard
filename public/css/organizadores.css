@@ -125,6 +125,27 @@ body {
   box-shadow: none;
   transform: scale(0.98);
 }
-  
+
+/* imagens */
+
+.containerImg {
+  width: 80%;
+  margin: 30px auto;
+  margin-top: 100px;
+  overflow: hidden; 
+}
+
+.image-container2 {
+  width: 44%; 
+  float: left;
+  margin-right: 6%;
+}
+
+.image-container2 img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
   
   
