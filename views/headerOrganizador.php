@@ -25,7 +25,7 @@
 
                 <br><br><br>
                 <li><a style="color: #F0F0F0;" href="../views/organizador.php?modo=cEvento">Criar Evento</a></li>
-                <li><a style="color: #F0F0F0;" href="../views/organizador.php?modo=cParticipante">Criar Participante</a></li>
+                <li><a style="color: #F0F0F0;" href="../model/criaParticipante.php">Criar Participante</a></li>
                 <li><a style="color: #F0F0F0;" href="../views/organizador.php?modo=eEvento">Editar Evento</a></li>
                 <li><a style="color: #F0F0F0;" href="../views/organizador.php?modo=exEvento">Excluir Evento</a></li>
                 <li><a style="color: #F0F0F0;" href="">Todos os cards</a></li>
