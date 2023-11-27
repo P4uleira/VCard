@@ -43,6 +43,12 @@
 
         if ($conn->query($sql) === FALSE) {
             echo "Erro ao inserir dados: " . $conn->error;            
+        } else {
+            $sql2 = "INSERT INTO participa (fk_Codigo_Evento, fk_ID_Participantes) VALUES ($evento, (SELECT ID_Participantes FROM participantes WHERE Usuario = '$usuario'))";
+
+            if ($conn->query($sql2) === FALSE) {
+                echo "Erro ao inserir dados: " . $conn->error; 
+            }
         }
         $conn->close();         
     }
