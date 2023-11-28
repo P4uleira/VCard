@@ -29,7 +29,7 @@
                 <li><a style="color: #F0F0F0;" href="../views/participante.php?modo=Qrcode">Gera QRcode</a></li>
                 <li><a style="color: #F0F0F0;" href="../views/participante.php?modo=excCard">Excluir Card</a></li>
                 <br>
-                <li><a style="color: #F0F0F0;" href="login.php"><strong>Sair</strong></a></li>
+                <li><a style="color: #F0F0F0;" href="../views/login.php"><strong>Sair</strong></a></li>
 
             </ul>
         </div>

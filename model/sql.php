@@ -418,13 +418,42 @@
     
     function excluirEvento($evento_a_excluir) {
         $conn = conection();
-        $sql = "DELETE FROM `eventos` WHERE `Codigo_Evento` =  $evento_a_excluir";
-
-        if ($conn->query($sql) === FALSE) {
-            echo "<script>alert(Erro ao deletar evento: " . $conn->error . ")</script>";
+        
+        $sqlParticipantes = "SELECT `fk_ID_Participantes` FROM `participa` WHERE `fk_Codigo_Evento` = $evento_a_excluir";
+        $resultParticipantes = $conn->query($sqlParticipantes);
+    
+        if ($resultParticipantes === FALSE) {
+            echo "<script>alert('Erro ao encontrar participantes: " . $conn->error . "')</script>";
+            $conn->close();
+            return;
         }
         
-        $conn->close();  
+        while ($rowParticipante = $resultParticipantes->fetch_assoc()) {
+            $idParticipante = $rowParticipante['fk_ID_Participantes'];
+    
+            $sqlDeleteCards = "DELETE FROM `cards` WHERE `fk_ID_Participantes` = $idParticipante";
+    
+            if ($conn->query($sqlDeleteCards) === FALSE) {
+                echo "<script>alert('Erro ao deletar cards: " . $conn->error . "')</script>";
+                $conn->close();
+                return;
+            }
+        }
+        $sqlDeleteParticipa = "DELETE FROM `participa` WHERE `fk_Codigo_Evento` = $evento_a_excluir";
+    
+        if ($conn->query($sqlDeleteParticipa) === FALSE) {
+            echo "<script>alert('Erro ao deletar participantes associados ao evento: " . $conn->error . "')</script>";
+            $conn->close();
+            return;
+        }
+
+        $sqlDeleteEvento = "DELETE FROM `eventos` WHERE `Codigo_Evento` = $evento_a_excluir";
+    
+        if ($conn->query($sqlDeleteEvento) === FALSE) {
+            echo "<script>alert('Erro ao deletar evento: " . $conn->error . "')</script>";
+        }
+    
+        $conn->close();
     }
 
 ?>

@@ -7,7 +7,7 @@ O que falta fazer:
 Organizador:
 //Arrumar o link do slide menu do cria Participante; >>
 //Arrumar TODAS as funções relacionadas a eventos (querys e colunas das tabelas); >>
-Fazer o Excluir Eventos;
+//Fazer o Excluir Eventos;
 Fazer a todos os cards do Organizador (select de eventos para mostrar todos os cards criados pelos participantes);
 
 Participante:
