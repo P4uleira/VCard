@@ -1,7 +1,7 @@
 <?php
     if(!session_start()){
         header('location: ../views/login.php');
-    }else if($_SESSION['user_type'] != 'organizador'){
+    }else if($_SESSION['user_type'] != 'organizacao'){
         header('location: ../views/login.php');
     }
 ?>

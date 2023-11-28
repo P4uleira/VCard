@@ -7,8 +7,8 @@ $(document).ready(function(){
     });
 
     $("#eventos").change(function(){ 
-        var url = new URL(window.location.href);       
         var idEvent = $(this).val();
+        var url = new URL(window.location.href);       
         var idOrg = url.searchParams.get("orgSelect");       
 
         window.location.href = "../views/visitante.php?modo=tCard&orgSelect=" + idOrg + "&evento=" + idEvent;      

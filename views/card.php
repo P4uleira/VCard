@@ -4,6 +4,19 @@
     }else if($_SESSION['user_type'] != 'visitante'){
         header('location: ./login.php');
     }
+
+    if ($_SESSION['user_type'] == 'visitante' && isset($_GET['id'])) {
+        $cardId = $_GET['id'];
+        $idVisitante = $_SESSION["user_id"];
+        include '../model/sql.php';
+        adicionaViewCard($cardId);
+        adicionaViewVisualizar($cardId, $idVisitante);
+
+        if (isset($_GET['fav'])) {
+            $cardFav = $_GET['fav'];
+            adicionaViewVisualizar($cardId, $idVisitante, $cardFav);
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -40,9 +53,7 @@
 
         if (isset($_GET['id'])) {
             $cardId = $_GET['id'];
-
-
-            include '../model/sql.php';
+            
             $conn = conection();
             $query = "SELECT * FROM `cards` WHERE `ID_Card` =  $cardId";
             $result = mysqli_query($conn, $query);
@@ -61,47 +72,39 @@
         } else {
             echo '<p>ID do card não fornecido</p>';
         }
+        $conn->close();
         ?>
     </header>
     <main>
-        <h4>Card:</h4><br><br>
-        <div id="card_container" class="card_container">
-            <div id="card_container_info" class="card_container_info">
-                <div style="height: 70px;">
-                    <h2>
-                        <?php echo $titulo; ?>
-                    </h2>
+        <h2 style="text-align: center; margin-top: 80px"><?php echo $titulo; ?></h2>
+            <div id="card_container" class="card_container">
+                <div id="card_container_info" class="card_container_info"> 
+                    <div style="height: 485px;display: flex;flex-direction: column;flex-wrap: nowrap;justify-content: space-between;" class="">
+                        <div>
+                            <?php echo "<img class=\"imagem-card\" src=\"../public/imgs/Uploads/$nomeArquivo\"> "; ?>
+                            <h4 style="text-align: justify;padding: 10px;"><?php echo $descricao; ?></h4>
+                        </div>
+
+                        <div class="card_links">
+                            <a href="#"><img id="icon_coracao" src="../public/imgs/coracao_branco.svg"></a>
+                            <a style="font-size: larger" onclick="rotacionar(0)">Mais informações</a>
+                            <a href="#"><img id="icon_star" src="../public/imgs/star_branca.svg"></a>
+                        </div>
+                    </div>
                 </div>
-                <?php echo "<img src=\"../public/imgs/Uploads/$nomeArquivo\"> "; ?>
-                <div style="height: 365px" class="">
-                    <h4 style="text-align: justify">
-                        <?php echo $descricao; ?>
-                    </h4>
-                </div>
-                <div class="card_links">
-                    <a href="#"><img id="icon_coracao" src="../public/imgs/coracao_branco.svg"></a>
-                    <a onclick="rotacionar(0)">Mais informações</a>
-                    <a href="#"><img id="icon_star" src="../public/imgs/star_branca.svg"></a>
-                </div>
-            </div>
-            <div id="card_container_info_costas" class="card_container_info_costas">
-                <div style="height: 70px;">
-                    <h2>
-                        <?php echo "Informações Adicionais"; ?>
-                    </h2>
-                </div>
-                <div style="height: 400px" class="">
-                    <h3>
-                        Contato:<br>Email:
-                        <?php echo $email; ?><br><br>Telefone: <br>
-                        <?php echo $telefone; ?>
-                    </h3>
-                </div>
-                <div class="card_links">
-                    <a onclick="rotacionar(1)">Voltar</a>
+                <div id="card_container_info_costas" class="card_container_info_costas">
+                    <div>
+                        <h2 style="text-align: center;font-size: larger;margin: 1rem 0;"><?php echo "Informações Adicionais"; ?></h2>                    
+                        <h3 style="padding: 10px; font-size: 1.25rem">
+                            Contato:<br>Email:<br> 
+                            <?php echo $email; ?><br><br>Telefone: <br> <?php echo $telefone; ?>
+                        </h3>
+                    </div>
+                    <div class="card_links">                        
+                        <a style="font-size: larger" onclick="rotacionar(1)">Voltar</a>                        
+                    </div>
                 </div>
             </div>
-        </div>
     </main>
     <script src="../public/javascript/card.js"></script>
 </body>

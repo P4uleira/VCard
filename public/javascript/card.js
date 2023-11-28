@@ -1,24 +1,23 @@
-$( document ).ready(function() {
-    var estadoCoracao = 0; 
-    $("#icon_coracao").click(function(){ 
-        if (estadoCoracao == 0) {
-            $("#icon_coracao").attr("src","../public/imgs/coracao_vermelho.svg");
-            estadoCoracao = 1;
-        } else {
-            $("#icon_coracao").attr("src","../public/imgs/coracao_branco.svg");
-            estadoCoracao = 0;
-        }
-
-    });
-
+$( document ).ready(function() {   
     var estadoEstrela = 0; 
     $("#icon_star").click(function(){ 
+            var url = new URL(window.location.href);       
+            var idCard = url.searchParams.get("id");
         if (estadoEstrela == 0) {
             $("#icon_star").attr("src","../public/imgs/star_amarela.svg");
-            estadoEstrela = 1;
+            estadoEstrela = 1;             
+
+            $.post("../views/card.php", { id: idCard, fav: estadoEstrela  }, function(data) { 
+                location.reload(true);                          
+            });
+
         } else {
-            $("#icon_star").attr("src","../public/imgs/star_branca.svg");
-            estadoEstrela = 0;
+            $("#icon_star").attr("src","../public/imgs/star_branca.svg");            
+            estadoEstrela = 0;           
+
+            $.post("../views/card.php", { id: idCard, fav: estadoEstrela  }, function(data) { 
+                location.reload(true);                          
+            });
         }
 
     });

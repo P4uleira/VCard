@@ -1,5 +1,5 @@
 <?php
-    function  conection(){
+    function conection(){
         $servername = "127.0.0.1";
         $username = "root";
         $password = "";
@@ -271,6 +271,42 @@
         }
         
         $conn->close();
+    }
+
+    function adicionaViewCard($idCard) {
+        $con = conection();
+
+        $sql = "UPDATE cards SET contagem = contagem + 1 WHERE ID_Card = $idCard";
+
+        if ($con->query($sql) === FALSE) {
+            echo "Erro ao inserir dados: " . $con->error;
+        } 
+        
+        $con->close();
+    }
+
+    function adicionaViewVisualizar($cardId, $idVisitante, $cardFav = -1) {
+        $con = conection();
+
+        $sql = "SELECT * FROM visualizar WHERE fk_ID_Card = $cardId AND fk_ID_Visitantes = $idVisitante";        
+        $result = $con->query($sql);
+
+        if ($result->num_rows <= 0) {
+            $sql1 = "INSERT INTO visualizar (fk_ID_Card, fk_ID_Visitantes) VALUES ($cardId, $idVisitante)";
+            if ($con->query($sql1) === FALSE) {
+                echo "Erro ao inserir dados: " . $con->error;
+            } 
+
+            if ($cardFav != -1) {
+                $sql2 = "UPDATE visualizar SET Favoritar = $cardFav WHERE fk_ID_Card = $cardId AND fk_ID_Visitantes = $idVisitante";
+                if ($con->query($sql2) === FALSE) {
+                    echo "Erro ao atualizar dados: " . $con->error;
+                } 
+            }
+        }
+
+
+        $con->close();
     }
 
     // Funções com a tabela de eventos.
