@@ -160,7 +160,7 @@ if (!session_start()) {
                                 <span></span>
                             </button>
 
-                            <div style="display: flex; padding-top: 50px; justify-content: center"id="qrcode-container"></div>
+                            <div style="display: flex; padding-top: 50px; justify-content: center" id="qrcode-container"></div>
                         </div>
                         </div>
 
@@ -181,51 +181,63 @@ if (!session_start()) {
                                         <br>
                                         <select class="form-select" id="eventoParticipa" onchange="eventoParticipar()">
                                             <option value="0">Selecione uma organização</option>
-                                            <?php
-                                            include '../model/sql.php';
-                                            $conn = conection();
-                                            $query = "SELECT `ID_Organizadores`, `Nome` FROM `organizadores`";
-                                            $result = mysqli_query($conn, $query);
-                                            while ($row = mysqli_fetch_assoc($result)) {
-                                                echo '<option value="' . $row['ID_Organizadores'] . '">' . $row['Nome'] . '</option>';
-                                            }
-                                            ?>
+                                <?php
+                                include '../model/sql.php';
+                                $conn = conection();
+                                $query = "SELECT `ID_Organizadores`, `Nome` FROM `organizadores`";
+                                $result = mysqli_query($conn, $query);
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    echo '<option value="' . $row['ID_Organizadores'] . '">' . $row['Nome'] . '</option>';
+                                }
+                                ?>
                                         </select>
-                                        <br>
-                                    </div>
-                                    <?php
-                                     if (isset($_GET['evento'])) { 
-                                        
-                                        $evento = $_GET['evento'];
-                                        listaEventos($evento);   
 
-                                    
-                                    ?>
-                                    <form action="../model/novoEventoParti.php" method="post">
-                                        <input type="text" name="chaveConvite" placeholder="Digite a chave convite">
-                                    </form>
-                                    <?php
-                                     }
-                                    ?>
-                        <?php
+                            <?php
+                            if (isset($_GET['evento'])) {
+
+                                $evento = $_GET['evento'];
+                                listaEventos($evento);
+
+
+                                ?>
+                                            <div class="ifeEvento">
+                                                <form action="../model/novoEventoParti.php" method="post">
+                                                    <div class="form-group">
+                                                        <input type="text" placeholder="Digite a chave convite" class="form-control" name="nome">
+                                                        <span class="highlight"></span>
+                                                        <span class="bar"></span>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div><br>
+                                        <button class="btn btn-primary btn-block">
+                                            <span>Participar do Evento</span>
+                                        </button>
+                                    </div>
+                                    <br>
+                                    </div>
+                    <?php
+                            }
+                            ?>
+                <?php
             } else {
                 ?>
-                                        <div class="eEvento list-group">
-                                            <h5 style="text-align: center">Opções de Participante</h5><br>
-                                            <a style="cursor: pointer" href="../views/participante.php?modo=cCard"
-                                                class="list-group-item list-group-item-action">Criar Card</a><br>
-                                            <a style="cursor: pointer" href="../views/participante.php?modo=eCard"
-                                                class="list-group-item list-group-item-action">Editar Card</a><br>
-                                            <a style="cursor: pointer" href="../views/participante.php?modo=Qrcode"
-                                                class="list-group-item list-group-item-action">Gerar QRCode</a><br>
-                                            <a style="cursor: pointer" href="../views/participante.php?modo=excCard"
-                                                class="list-group-item list-group-item-action">Excluir Card</a><br>
-                                        </div>
-                        <?php
+                                <div class="eEvento list-group">
+                                    <h5 style="text-align: center">Opções de Participante</h5><br>
+                                    <a style="cursor: pointer" href="../views/participante.php?modo=cCard"
+                                        class="list-group-item list-group-item-action">Criar Card</a><br>
+                                    <a style="cursor: pointer" href="../views/participante.php?modo=eCard"
+                                        class="list-group-item list-group-item-action">Editar Card</a><br>
+                                    <a style="cursor: pointer" href="../views/participante.php?modo=Qrcode"
+                                        class="list-group-item list-group-item-action">Gerar QRCode</a><br>
+                                    <a style="cursor: pointer" href="../views/participante.php?modo=excCard"
+                                        class="list-group-item list-group-item-action">Excluir Card</a><br>
+                                </div>
+                <?php
             }
         }
         ?>
-            </div>
+        </div>
     </main>
     <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
     <script>
