@@ -15,7 +15,9 @@ $(document).ready(function () {
 
     });
 
-    $("#reader__dashboard_section_csr > div > button").addClass("btn btn-primary");  
+    $("#reader__dashboard_section_csr > div > button").addClass("btn btn-primary");
+    $("#reader__filescan_input").addClass("btn btn-primary");
+    
 
 });
 
