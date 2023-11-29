@@ -29,7 +29,32 @@
         $visualizacao = 0;
         
         insereCard($idUsuario, $categoria, $titulo, $nomeArquivo, $descricao, $visualizacao, $email, $telefone, $dataNow);      
+        
+    } else if (isset($_POST['imagemAntiga']) && isset($_POST['aTitulo']) && isset($_POST['aConteudo'])&& isset($_POST['aCategoria']) && isset($_POST['aTelefone']) && isset($_POST['aEmail'])){
+        $titulo = $_POST['aTitulo'];
+        $descricao = $_POST['aConteudo'];
+        $categoria = $_POST['aCategoria'];
+        $telefone = $_POST['aTelefone'];
+        $email = $_POST['aEmail'];
+        $idUsuario = $_SESSION['user_id'];
+        $imagemAntiga = $_POST['imagemAntiga'];
+        
+        date_default_timezone_set('America/Sao_Paulo');
+        $dataNow = date("Y-m-d");
+        $dataNomeArquivo = date('H_i_s');
 
+        if (isset($_FILES["aImagem"])) {
+            unlink("../public/imgs/Uploads/$imagemAntiga");         
+            $capaCard = $_FILES['aImagem'];            
+            $extensaoCard = explode(".", $capaCard['name']);
+            $nomeArquivo  = $_SESSION['user_nickname']."_".$dataNomeArquivo.".".$extensaoCard[1];
+            move_uploaded_file($capaCard["tmp_name"], '../public/imgs/Uploads/'.$nomeArquivo);
+            atualizaCard($idUsuario, $categoria, $titulo, $descricao, $email, $telefone, $dataNow, $nomeArquivo);
+        } else {
+            echo "a imagem n chegou";
+            atualizaCard($idUsuario, $categoria, $titulo, $descricao, $email, $telefone, $dataNow);
+        }
+        header("location: ../views/participante.php"); 
     }
 
 ?>

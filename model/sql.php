@@ -329,18 +329,22 @@
         $cardEmail = $row['Email']; 
         $cardTel = $row['Telefone'];
 
-        echo "<img src=\"../public/imgs/Uploads/$cardImg\">";        
+        echo "<div style=\"display: flex; justify-content: center\"><img style=\"max-width: 325px\" src=\"../public/imgs/Uploads/$cardImg\"></div>";        
+        echo "<form action=\"../model/criaCard.php\" method=\"post\" enctype=\"multipart/form-data\">";
+
+        echo "<input name=\"imagemAntiga\" value=\"$cardImg\" style=\"display: none\">";
+
         echo "<div style=\"margin-top: 1rem\" class=\"input-group mb-3\"><div class=\"input-group-prepend\"><span class=\"input-group-text\">Substituir Imagem</span></div>";
-        echo "<div class=\"custom-file\"><input id=\"imgCard\" type=\"file\" class=\"custom-file-input\">";
+        echo "<div class=\"custom-file\"><input name=\"aImagem\" id=\"imgCard\" type=\"file\" class=\"custom-file-input\">";
         echo "<label class=\"custom-file-label\" for=\"imgCard\">Escolher Arquivo</label></div></div>";
 
         echo "<div class=\"input-group mb-3\"><div class=\"input-group-prepend\">";
         echo "<span class=\"input-group-text\" id=\"basic-addon1\">Titulo</span></div>";
-        echo "<input name=\"cardTit\" type=\"text\" class=\"form-control\" value=\"$cardTit\" aria-label=\"cardTit\" aria-describedby=\"basic-addon1\"></div>";
+        echo "<input name=\"aTitulo\" type=\"text\" class=\"form-control\" value=\"$cardTit\" aria-label=\"cardTit\" aria-describedby=\"basic-addon1\"></div>";
         
         echo "<div class=\"input-group mb-3\"><div class=\"input-group-prepend\">";
         echo "<span class=\"input-group-text\" id=\"basic-addon1\">Descrição</span></div>";
-        echo "<textarea rows=\"5\" name=\"cardDesc\" type=\"text\" class=\"form-control\" aria-label=\"cardDesc\" aria-describedby=\"basic-addon1\">$cardDesc</textarea></div>";
+        echo "<textarea rows=\"5\" name=\"aConteudo\" type=\"text\" class=\"form-control\" aria-label=\"cardDesc\" aria-describedby=\"basic-addon1\">$cardDesc</textarea></div>";
 
         echo "<div class=\"input-group mb-3\"><div class=\"input-group-prepend\">";
         echo "<label class=\"input-group-text\" for=\"selectCat\">Categoria</label></div>";
@@ -350,7 +354,7 @@
         $row2 = $result2->fetch_assoc();
         $cardCatNome = $row2['Nome_Categoria'];
 
-        echo "<select id=\"selectCat\" class=\"custom-select\" name=\"idEvento\">";
+        echo "<select id=\"selectCat\" class=\"custom-select\" name=\"aCategoria\">";
         echo "<option value=\"$cardCat\">$cardCatNome</option>";
                                                                                                         
         $query = "SELECT `ID_Categoria`, `Nome_Categoria` FROM `categorias` WHERE ID_Categoria <> $cardCat";
@@ -360,17 +364,32 @@
         }
         echo "</select></div>";
 
-        echo "<label>Informações de Contato</label>";
-        echo "<div class=\"form-row\"><div class=\"col\"><div class=\"input-group mb-3\"><div class=\"input-group-prepend\">";
+        echo "<label>Informações de Contato</label>";        
+        echo "<div class=\"input-group mb-3\"><div class=\"input-group-prepend\">";
         echo "<span class=\"input-group-text\" id=\"basic-addon1\">Email</span></div>";
-        echo "<input type=\"text\" class=\"form-control\" placeholder=\"Username\" aria-label=\"Username\" aria-describedby=\"basic-addon1\">";
-        echo "<div class=\"col\"><div class=\"input-group mb-3\"><div class=\"input-group-prepend\">";
-        echo "";
-
-
-
-        echo "</div>";   
+        echo "<input name=\"aEmail\" type=\"text\" class=\"form-control\" value=\"$cardEmail\" aria-label=\"Username\" aria-describedby=\"basic-addon1\"></div>";
+        echo "<div class=\"input-group mb-3\"><div class=\"input-group-prepend\">";
+        echo "<span class=\"input-group-text\" id=\"basic-addon1\">Telefone</span></div>";
+        echo "<input name=\"aTelefone\" type=\"text\" class=\"form-control\" value=\"$cardTel\" aria-label=\"Username\" aria-describedby=\"basic-addon1\"></div>";  
         
+        echo "<button type=\"submit\" class=\"btn btn-primary btn-block\">Atualizar</button>";
+        echo "</form>";
+
+        $conn->close();
+    }
+
+    function atualizaCard($idUsuario, $categoria, $titulo, $descricao, $email, $telefone, $dataNow, $nomeArquivo = "") {
+        $conn = conection();
+        if ($nomeArquivo != "") {
+            $sql = "UPDATE `cards` SET `fk_ID_Categoria` = $categoria, `Titulo` = '$titulo', Imagem = '$nomeArquivo', `Descricao` = '$descricao', `Email` = '$email', `Telefone` = '$telefone', `Data_publicacao` = '$dataNow' WHERE fk_ID_Participantes = $idUsuario";
+        } else {
+            $sql = "UPDATE `cards` SET `fk_ID_Categoria` = $categoria, `Titulo` = '$titulo', `Descricao` = '$descricao', `Email` = '$email', `Telefone` = '$telefone', `Data_publicacao` = '$dataNow' WHERE fk_ID_Participantes = $idUsuario";
+        }
+        if ($conn->query($sql) === FALSE) {
+            echo "Erro ao inserir dados: " . $conn->error;
+        } 
+        
+        $conn->close();
     }
 
     function excluirCards($idCard) {
