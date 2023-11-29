@@ -30,9 +30,10 @@ if (!session_start()) {
             if ($modo == 'eQr') {
                 ?>
                 <h3>Escanear QRcode</h3>
-
-                <button onclick="iniciarCamera()"><img src="../public/imgs/qrcode.png" alt="QRcode"></button>
-                <video id="video" style="display:none"></video>
+                <div class="qrcode" style="display: flex; justify-content: center; padding-top: 100px">
+                    <button onclick="iniciarCamera()"><img src="../public/imgs/qrcode.png" alt="QRcode"></button>
+                    <video id="video" style="display:none"></video>
+                </div>
                 <?php
             } else if (isset($_GET['modo'])) {
                 $modo = $_GET['modo'];
@@ -52,7 +53,7 @@ if (!session_start()) {
                     $modo = $_GET['modo'];
                     if ($modo == 'tCard') {
                         ?>
-                                <div class="container eEvento">
+                                <div style="display: flex;padding-top: 100px;flex-wrap: wrap;justify-content: center;align-items: center;flex-direction: column;"class="container eEvento">
                                     <h3>TODOS OS CARDs</h3>
 
                                     <div class="form-group">
