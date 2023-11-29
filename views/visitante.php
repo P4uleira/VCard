@@ -64,26 +64,42 @@ if (!session_start()) {
                                 $conn = conection();
                                 $sql = "SELECT `fk_ID_Card` FROM `visualizar` WHERE `fk_ID_Visitantes` = ".$_SESSION['user_id']." AND `Favoritar` = 1";
 
-                                $result1 = $conn->query($sql);
-                                if ($result1->num_rows > 0) {
+                                $result = $conn->query($sql);
+                                if ($result->num_rows > 0) {
                                     echo '<div class="container eEvento">';
                                     echo '<h3>Cards Favoritos</h3>';
                                     echo '<div class="form-group">';
                                 
-                                    while ($row1 = $result1->fetch_assoc()) {
-                                        $id_card = $row1['fk_ID_Card'];
-                            
-                                        $sql2 = "SELECT `Imagem`, `Titulo` FROM `cards` WHERE `ID_Card` = $id_card";
+                                    $cardCounter = 0; 
+                                
+                                    while ($row = $result->fetch_assoc()) {
+                                        $id_card = $row['fk_ID_Card'];
+                                
+                                       
+                                        $sql2 = "SELECT * FROM `cards` WHERE `ID_Card` = $id_card";
                                         $result2 = $conn->query($sql2);
-                                        
+                                
                                         if ($result2->num_rows > 0) {
-                                            // Exibir as informações do card
+                                            
                                             while ($row2 = $result2->fetch_assoc()) {
-                                                $cardImg = $row2['Imagem'];
-                                                echo "<img src=\"../public/imgs/Uploads/$cardImg\">";
-                                                echo 'Nome do Card: ' . $row2['Titulo'] . '<br>';
+                                                if ($cardCounter % 2 == 0) {
+                                                    
+                                                    echo '<div class="row">';
+                                                }
+                                
+                                                echo '<div class="col-md-6">';
                                                 
-                                                echo '</p>';
+                                                echo "<img src=\"../public/imgs/Uploads/{$row2['Imagem']}\" class=\"img-fluid\">";
+                                                
+                                                echo '<h4>' . $row2['Titulo'] . '</h4>';
+                                                echo '</div>';
+                                
+                                                if ($cardCounter % 2 != 0 || $cardCounter == $result->num_rows - 1) {
+                                                    
+                                                    echo '</div>';
+                                                }
+                                
+                                                $cardCounter++;
                                             }
                                         } else {
                                             echo 'Nenhum card favorito encontrado.';
