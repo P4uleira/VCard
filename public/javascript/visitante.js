@@ -15,30 +15,18 @@ $(document).ready(function () {
 
     });
 
+    $("#reader__dashboard_section_csr > div > button").addClass("btn btn-primary");  
 
 });
 
-async function iniciarCamera() {
-    try {
-        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-        const video = document.getElementById('video');
-        video.srcObject = stream;
-        video.style.display = 'block';
+function onScanSuccess(qrCodeMessage) {
+    $("#resultadoDoScan").css("display", "inline");    
+    document.getElementById('result').href = qrCodeMessage;
 
-        // Aqui você pode usar uma biblioteca para fazer a leitura do QR Code, como o 'instascan' ou 'jsQR'.
-        // Por exemplo, usando 'instascan':
-        const scanner = new Instascan.Scanner({ video: video });
-        scanner.addListener('scan', function (content) {
-            alert('Código QR lido: ' + content);
-        });
-        Instascan.Camera.getCameras().then(function (cameras) {
-            if (cameras.length > 0) {
-                scanner.start(cameras[0]);
-            } else {
-                console.error('Nenhuma câmera encontrada.');
-            }
-        });
-    } catch (error) {
-        console.error('Erro ao acessar a câmera: ', error);
-    }
 }
+function onScanError(errorMessage) {
+  //handle scan error
+}
+var html5QrcodeScanner = new Html5QrcodeScanner(
+    "reader", { fps: 10, qrbox: 250 });
+html5QrcodeScanner.render(onScanSuccess, onScanError);

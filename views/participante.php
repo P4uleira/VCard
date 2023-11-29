@@ -138,7 +138,7 @@ if (!session_start()) {
                         <div class="container eEvento">
 
                             <div class="form-group">
-                                <h3>Gerar QRcode</h3>
+                                <h3 style="display: flex;justify-content: center;padding: 0 0 20px;">Gerar QRcode</h3>
 
                                 <select class="form-select" id="qrcode">
                                     <option value="0">Selecione o card que deseja gerar o QR code</option>
@@ -160,7 +160,7 @@ if (!session_start()) {
                                 <span></span>
                             </button>
 
-                            <div id="qrcode-container"></div>
+                            <div style="display: flex; padding-top: 50px; justify-content: center"id="qrcode-container"></div>
                         </div>
                         </div>
 

@@ -16,6 +16,7 @@ if (!session_start()) {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../public/javascript/qr.min.js"></script>
     <title>VCard</title>
 </head>
 
@@ -29,9 +30,21 @@ if (!session_start()) {
             $modo = $_GET['modo'];
             if ($modo == 'eQr') {
                 ?>
-                <h3>Escanear QRcode</h3>
+                <div style="margin-top: 80px" class="">
+                    <div class="row2">
+                        <div class="col">
+                            <div style="width:500px;" id="reader"></div>
+                        </div>
+                        <div id="resultadoDoScan" style="display: none">
+                            <div class="col" style="padding:30px;">
+                                <h4>Acessar Card</h4>
+                                <a class="btn btn-info" href="#" id="result">Visualizar Card</a>
+                            </div>
+                        </div>
+                    </div>         
+                </div>
 
-                <button onclick="iniciarCamera()"><img src="../public/imgs/qrcode.png" alt="QRcode"></button>
+                
                 <video id="video" style="display:none"></video>
                 <?php
             } else if (isset($_GET['modo'])) {
@@ -52,7 +65,7 @@ if (!session_start()) {
                     $modo = $_GET['modo'];
                     if ($modo == 'tCard') {
                         ?>
-                                <div class="container eEvento">
+                                <div style="display: flex;padding-top: 100px;flex-wrap: wrap;justify-content: center;align-items: center;flex-direction: column;"class="container eEvento">
                                     <h3>TODOS OS CARDs</h3>
 
                                     <div class="form-group">
