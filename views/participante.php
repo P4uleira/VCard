@@ -1,9 +1,9 @@
 <?php
-    if(!session_start()){
-        header('location: ./login.php');
-    }else if($_SESSION['user_type'] != 'participante'){
-        header('location: ./login.php');
-    }
+if (!session_start()) {
+    header('location: ./login.php');
+} else if ($_SESSION['user_type'] != 'participante') {
+    header('location: ./login.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -92,8 +92,8 @@
                 </div><br>
 
                 <button class="buttonPart btn-block">
-                                <span>Criar Card</span>
-                                <span></span>
+                    <span>Criar Card</span>
+                    <span></span>
                 </button>
                 </div>
                 </form>
@@ -102,34 +102,34 @@
                 <?php
             } else if ($modo == 'eCard') {
                 ?>
-                    <div class="container eEvento">                        
-                            <div class="form-group">
-                                
-                                <select class="form-select" id="editCard" onchange="cardSelecionado()">
-                                        <option value="0">Selecione o card que deseja editar</option>
-                                    <?php
-                                    include '../model/sql.php';
-                                    $conn = conection();
-                                    $query = "SELECT `ID_Card`, `Titulo` FROM `cards` WHERE fk_ID_Participantes = " . $_SESSION["user_id"];
-                                    $result = mysqli_query($conn, $query);
-                                    while ($row = mysqli_fetch_assoc($result)) {
-                                        echo '<option value="' . $row['ID_Card'] . '">' . $row['Titulo'] . '</option>';
-                                    }
-                                    $conn->close();
-                                    ?>
-                                </select><br>
+                    <div class="container eEvento">
+                        <div class="form-group">
 
-                            </div><br>
-                            <button class="btn btn-primary btn-block">
-                                <span>Cadastrar</span>                                
-                            </button>
-                    </div> 
+                            <select class="form-select" id="editCard" onchange="cardSelecionado()">
+                                <option value="0">Selecione o card que deseja editar</option>
+                                <?php
+                                include '../model/sql.php';
+                                $conn = conection();
+                                $query = "SELECT `ID_Card`, `Titulo` FROM `cards` WHERE fk_ID_Participantes = " . $_SESSION["user_id"];
+                                $result = mysqli_query($conn, $query);
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    echo '<option value="' . $row['ID_Card'] . '">' . $row['Titulo'] . '</option>';
+                                }
+                                $conn->close();
+                                ?>
+                            </select><br>
+
+                        </div><br>
+                        <button class="btn btn-primary btn-block">
+                            <span>Cadastrar</span>
+                        </button>
+                    </div>
                     <?php
-                        if (isset($_GET['user'])) {
-                            
-                        }
+                    if (isset($_GET['user'])) {
+
+                    }
                     ?>
-                    
+
 
                 <?php
             } else if ($modo == 'Qrcode') {
@@ -167,27 +167,65 @@
                 <?php
             } else if ($modo == 'excCard') {
                 ?>
-                <div class="eEvento">
-                <h3 style="text-align: center; margin-bottom: 1.5rem">Excluir Card</h3>
-                <br>  
-                <?php
-                $idParticipante = $_SESSION['user_id'];
-                include '../model/sql.php';
-                listaCards($idParticipante);                
+                            <div class="eEvento">
+                                <h3 style="text-align: center; margin-bottom: 1.5rem">Excluir Card</h3>
+                                <br>
+                        <?php
+                        $idParticipante = $_SESSION['user_id'];
+                        include '../model/sql.php';
+                        listaCards($idParticipante);
+            } else if ($modo == 'eEvento') {
+                ?>
+                                    <div class="eEvento">
+                                        <h3 style="text-align: center; margin-bottom: 1.5rem">Participar de um Evento</h3>
+                                        <br>
+                                        <select class="form-select" id="eventoParticipa" onchange="eventoParticipar()">
+                                            <option value="0">Selecione uma organização</option>
+                                            <?php
+                                            include '../model/sql.php';
+                                            $conn = conection();
+                                            $query = "SELECT `ID_Organizadores`, `Nome` FROM `organizadores`";
+                                            $result = mysqli_query($conn, $query);
+                                            while ($row = mysqli_fetch_assoc($result)) {
+                                                echo '<option value="' . $row['ID_Organizadores'] . '">' . $row['Nome'] . '</option>';
+                                            }
+                                            ?>
+                                        </select>
+                                        <br>
+                                    </div>
+                                    <?php
+                                     if (isset($_GET['evento'])) { 
+                                        
+                                        $evento = $_GET['evento'];
+                                        listaEventos($evento);   
+
+                                    
+                                    ?>
+                                    <form action="../model/novoEventoParti.php" method="post">
+                                        <input type="text" name="chaveConvite" placeholder="Digite a chave convite">
+                                    </form>
+                                    <?php
+                                     }
+                                    ?>
+                        <?php
+            } else {
+                ?>
+                                        <div class="eEvento list-group">
+                                            <h5 style="text-align: center">Opções de Participante</h5><br>
+                                            <a style="cursor: pointer" href="../views/participante.php?modo=cCard"
+                                                class="list-group-item list-group-item-action">Criar Card</a><br>
+                                            <a style="cursor: pointer" href="../views/participante.php?modo=eCard"
+                                                class="list-group-item list-group-item-action">Editar Card</a><br>
+                                            <a style="cursor: pointer" href="../views/participante.php?modo=Qrcode"
+                                                class="list-group-item list-group-item-action">Gerar QRCode</a><br>
+                                            <a style="cursor: pointer" href="../views/participante.php?modo=excCard"
+                                                class="list-group-item list-group-item-action">Excluir Card</a><br>
+                                        </div>
+                        <?php
             }
-        } else {
+        }
         ?>
-            <div class="eEvento list-group">
-                <h5 style="text-align: center">Opções de Participante</h5><br>
-                <a style="cursor: pointer" href="../views/participante.php?modo=cCard" class="list-group-item list-group-item-action">Criar Card</a><br>
-                <a style="cursor: pointer" href="../views/participante.php?modo=eCard" class="list-group-item list-group-item-action">Editar Card</a><br>
-                <a style="cursor: pointer" href="../views/participante.php?modo=Qrcode" class="list-group-item list-group-item-action">Gerar QRCode</a><br>
-                <a style="cursor: pointer" href="../views/participante.php?modo=excCard" class="list-group-item list-group-item-action">Excluir Card</a><br>
             </div>
-        <?php
-            }
-        ?>            
-            </div>           
     </main>
     <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
     <script>
