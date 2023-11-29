@@ -58,6 +58,45 @@ if (!session_start()) {
 
                             <div class="form-group">
 
+                            <?php
+                                include '../model/sql.php';
+                                $conn = conection();
+                                $sql = "SELECT `fk_ID_Card` FROM `visualizar` WHERE `fk_ID_Visitantes` = ".$_SESSION['user_id']." AND `Favoritar` = 1";
+
+                                $result1 = $conn->query($sql);
+                                if ($result1->num_rows > 0) {
+                                    echo '<div class="container eEvento">';
+                                    echo '<h3>Cards Favoritos</h3>';
+                                    echo '<div class="form-group">';
+                                
+                                    while ($row1 = $result1->fetch_assoc()) {
+                                        $id_card = $row1['fk_ID_Card'];
+                            
+                                        $sql2 = "SELECT `Imagem`, `Titulo` FROM `cards` WHERE `ID_Card` = $id_card";
+                                        $result2 = $conn->query($sql2);
+                                        
+                                        if ($result2->num_rows > 0) {
+                                            // Exibir as informações do card
+                                            while ($row2 = $result2->fetch_assoc()) {
+                                                $cardImg = $row2['Imagem'];
+                                                echo "<img src=\"../public/imgs/Uploads/$cardImg\">";
+                                                echo 'Nome do Card: ' . $row2['Titulo'] . '<br>';
+                                                
+                                                echo '</p>';
+                                            }
+                                        } else {
+                                            echo 'Nenhum card favorito encontrado.';
+                                        }
+                                    }
+                                
+                                    echo '</div>';
+                                    echo '</div>';
+                                } else {
+                                    echo 'Nenhum card favorito encontrado.';
+                                }
+                                
+                                $conn->close();
+                            ?>
                             </div>
                         </div>
 
@@ -100,7 +139,7 @@ if (!session_start()) {
                                 <a style="cursor: pointer" href="../views/visitante.php?modo=eQr"
                                     class="list-group-item list-group-item-action">Escanear QRcode</a><br>
                                 <a style="cursor: pointer" href="../views/visitante.php?modo=fCard"
-                                    class="list-group-item list-group-item-action">Meus favorito</a><br>
+                                    class="list-group-item list-group-item-action">Meus favoritos</a><br>
                                 <a style="cursor: pointer" href="../views/visitante.php?modo=tCard"
                                     class="list-group-item list-group-item-action">Todos os cards</a><br>
                             </div>
