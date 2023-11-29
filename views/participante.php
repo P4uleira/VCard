@@ -102,22 +102,34 @@
                 <?php
             } else if ($modo == 'eCard') {
                 ?>
-                    <div class="container eEvento">
-                        <form class="form-group">
+                    <div class="container eEvento">                        
                             <div class="form-group">
                                 
-                                <select class="form-select" name="editarCard" id="editarCard">
-                                    <option value="0">Selecione um cartão</option>
+                                <select class="form-select" id="editCard" onchange="cardSelecionado()">
+                                        <option value="0">Selecione o card que deseja editar</option>
+                                    <?php
+                                    include '../model/sql.php';
+                                    $conn = conection();
+                                    $query = "SELECT `ID_Card`, `Titulo` FROM `cards` WHERE fk_ID_Participantes = " . $_SESSION["user_id"];
+                                    $result = mysqli_query($conn, $query);
+                                    while ($row = mysqli_fetch_assoc($result)) {
+                                        echo '<option value="' . $row['ID_Card'] . '">' . $row['Titulo'] . '</option>';
+                                    }
+                                    $conn->close();
+                                    ?>
                                 </select><br>
-                            </div><br>
 
-                            <button class="buttonPart btn-block">
-                                <span>Cadastrar</span>
-                                <span></span>
+                            </div><br>
+                            <button class="btn btn-primary btn-block">
+                                <span>Cadastrar</span>                                
                             </button>
-                    </div>
-                    </form>
-                    </div>
+                    </div> 
+                    <?php
+                        if (isset($_GET['user'])) {
+                            
+                        }
+                    ?>
+                    
 
                 <?php
             } else if ($modo == 'Qrcode') {
