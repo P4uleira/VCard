@@ -1,27 +1,30 @@
-$( document ).ready(function() {   
-    var estadoEstrela = 0; 
+$( document ).ready(function() {  
+    
+    var url = new URL(window.location.href);
+    var estrela = url.searchParams.get("fav");
+    if (estrela === null) {
+        // Se não estiver presente, atribui o valor 0 a 'estrela'
+        estrela = 0;
+    }
+
+    if (estrela == 1) {
+        $("#icon_star").attr("src","../public/imgs/star_amarela.svg");
+    } else {
+        $("#icon_star").attr("src","../public/imgs/star_branca.svg");        
+    }
+
     $("#icon_star").click(function(){ 
-            var url = new URL(window.location.href);       
-            var idCard = url.searchParams.get("id");
-        if (estadoEstrela == 0) {
-            $("#icon_star").attr("src","../public/imgs/star_amarela.svg");
-            estadoEstrela = 1;             
+               
+        var idCard = url.searchParams.get("id");       
 
-            $.post("../views/card.php", { id: idCard, fav: estadoEstrela  }, function(data) { 
-                location.reload(true);                          
-            });
-
-        } else {
-            $("#icon_star").attr("src","../public/imgs/star_branca.svg");            
-            estadoEstrela = 0;           
-
-            $.post("../views/card.php", { id: idCard, fav: estadoEstrela  }, function(data) { 
-                location.reload(true);                          
-            });
+        if (estrela == 0) {            
+            estrela = 1;
+        } else {            
+            estrela = 0;
         }
 
+        window.location.href = "../views/card.php?id="+ idCard + "&fav=" + estrela;
     });
-
 
 });
 

@@ -13,7 +13,6 @@ if ($isVisitante && isset($_GET['id'])) {
 
 
     adicionaViewCard($cardId);
-
     adicionaViewVisualizar($cardId, $idVisitante);
 
 

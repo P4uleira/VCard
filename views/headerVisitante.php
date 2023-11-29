@@ -3,7 +3,7 @@
 
 <body>
     <header>
-        <div class="header">
+        <div class="header" style="z-index: 11;">
             <div class="header_logo">
                 <a class="tituloPrincipal" href="../views/visitante.php">
                     <img width="60px" src="../public/imgs/logo_vcards_branco.png" alt="logo vCards">
@@ -16,7 +16,7 @@
             <div class="spinner horizontal"></div>
             <div class="spinner diagonal part-2"></div>
         </label>
-        <div id="sidebarMenu">
+        <div id="sidebarMenu" style="z-index: 10;">
             <ul class="sidebarMenuInner">
             <div style="display: flex; align-items: center; flex-direction: column; margin-top: 2.5rem">
                 

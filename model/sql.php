@@ -315,11 +315,39 @@
 
     }
 
-    /*function exibeCards($idOrg, $evento) {
+    function listaCardSelecionado($idCard) {
         $conn = conection();
 
-        $sql = "SELECT ID_Card, Titulo";
-    }*/
+        $sql = "SELECT fk_ID_Categoria, Titulo, Imagem, Descricao, Email, Telefone FROM cards WHERE ID_Card = $idCard";
+        $result = $conn->query($sql);
+        $row = $result->fetch_assoc();
+
+        $cardCat = $row['fk_ID_Categoria'];                    
+        $cardTit = $row['Titulo'];//
+        $cardImg = $row['Imagem'];//
+        $cardDesc = $row['Descricao']; //                   
+        $cardEmail = $row['Email']; 
+        $cardTel = $row['Telefone'];
+
+        echo "<img src=\"../public/imgs/Uploads/$cardImg\">";        
+        echo "<div style=\"margin-top: 1rem\" class=\"input-group mb-3\"><div class=\"input-group-prepend\"><span class=\"input-group-text\">Substituir Imagem</span></div>";
+        echo "<div class=\"custom-file\"><input id=\"imgCard\" type=\"file\" class=\"custom-file-input\">";
+        echo "<label class=\"custom-file-label\" for=\"imgCard\">Escolher Arquivo</label></div></div>";
+
+        echo "<div class=\"input-group mb-3\"><div class=\"input-group-prepend\">";
+        echo "<span class=\"input-group-text\" id=\"basic-addon1\">Titulo</span></div>";
+        echo "<input name=\"cardTit\" type=\"text\" class=\"form-control\" value=\"$cardTit\" aria-label=\"cardTit\" aria-describedby=\"basic-addon1\"></div>";
+        
+        echo "<div class=\"input-group mb-3\"><div class=\"input-group-prepend\">";
+        echo "<span class=\"input-group-text\" id=\"basic-addon1\">Descrição</span></div>";
+        echo "<textarea rows=\"5\" name=\"cardDesc\" type=\"text\" class=\"form-control\" aria-label=\"cardDesc\" aria-describedby=\"basic-addon1\">$cardDesc</textarea></div>";
+
+        echo "<div class=\"input-group mb-3\"><div class=\"input-group-prepend\">";
+        echo "<span class=\"input-group-text\" id=\"basic-addon1\">Categoria</span></div>";
+        echo "<input name=\"cardCat\" type=\"text\" class=\"form-control\" value=\"$cardCat\" aria-label=\"cardCat\" aria-describedby=\"basic-addon1\"></div>";
+
+
+    }
 
     function excluirCards($idCard) {
         $conn = conection();
@@ -356,12 +384,11 @@
             if ($con->query($sql1) === FALSE) {
                 echo "Erro ao inserir dados: " . $con->error;
             } 
-
-            if ($cardFav != -1) {
-                $sql2 = "UPDATE visualizar SET Favoritar = $cardFav WHERE fk_ID_Card = $cardId AND fk_ID_Visitantes = $idVisitante";
-                if ($con->query($sql2) === FALSE) {
-                    echo "Erro ao atualizar dados: " . $con->error;
-                } 
+            
+        } else if ($cardFav != -1) {
+            $sql2 = "UPDATE visualizar SET Favoritar = $cardFav WHERE fk_ID_Card = $cardId AND fk_ID_Visitantes = $idVisitante";
+            if ($con->query($sql2) === FALSE) {
+                echo "Erro ao atualizar dados: " . $con->error;
             }
         }
 

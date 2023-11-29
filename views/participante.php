@@ -89,15 +89,14 @@ if (!session_start()) {
                                 aria-describedby="basic-addon1">
                         </div>
 
-                </div><br>
+                        </div><br>
 
-                <button class="buttonPart btn-block">
-                    <span>Criar Card</span>
-                    <span></span>
-                </button>
-                </div>
+                            <button class="buttonPart btn-block">
+                                <span>Criar Card</span>                        
+                            </button>
+                        </div>
                 </form>
-                </div>
+            </div>
 
                 <?php
             } else if ($modo == 'eCard') {
@@ -105,6 +104,7 @@ if (!session_start()) {
                     <div class="container eEvento">
                         <div class="form-group">
 
+                            <h4 style="text-align: center; margin-bottom: 1rem">Editar Card</h4>
                             <select class="form-select" id="editCard" onchange="cardSelecionado()">
                                 <option value="0">Selecione o card que deseja editar</option>
                                 <?php
@@ -117,18 +117,15 @@ if (!session_start()) {
                                 }
                                 $conn->close();
                                 ?>
-                            </select><br>
-
-                        </div><br>
-                        <button class="btn btn-primary btn-block">
-                            <span>Cadastrar</span>
-                        </button>
-                    </div>
+                            </select>
+                        </div>                        
                     <?php
-                    if (isset($_GET['user'])) {
-
+                    if (isset($_GET['card'])) {
+                        $idCard = $_GET['card'];
+                        listaCardSelecionado($idCard);
                     }
                     ?>
+                    </div>
 
 
                 <?php
@@ -208,24 +205,28 @@ if (!session_start()) {
                                      }
                                     ?>
                         <?php
-            } else {
-                ?>
-                                        <div class="eEvento list-group">
-                                            <h5 style="text-align: center">Opções de Participante</h5><br>
-                                            <a style="cursor: pointer" href="../views/participante.php?modo=cCard"
-                                                class="list-group-item list-group-item-action">Criar Card</a><br>
-                                            <a style="cursor: pointer" href="../views/participante.php?modo=eCard"
-                                                class="list-group-item list-group-item-action">Editar Card</a><br>
-                                            <a style="cursor: pointer" href="../views/participante.php?modo=Qrcode"
-                                                class="list-group-item list-group-item-action">Gerar QRCode</a><br>
-                                            <a style="cursor: pointer" href="../views/participante.php?modo=excCard"
-                                                class="list-group-item list-group-item-action">Excluir Card</a><br>
-                                        </div>
+            } 
+            ?>
+                    
                         <?php
-            }
-        }
-        ?>
+        } else {
+        ?>  
+            <div class="eEvento list-group">
+                <h5 style="text-align: center">Opções de Participante</h5><br>
+                <a style="cursor: pointer" href="../views/participante.php?modo=cCard"
+                    class="list-group-item list-group-item-action">Criar Card</a><br>
+                <a style="cursor: pointer" href="../views/participante.php?modo=eCard"
+                    class="list-group-item list-group-item-action">Editar Card</a><br>
+                <a style="cursor: pointer" href="../views/participante.php?modo=Qrcode"
+                    class="list-group-item list-group-item-action">Gerar QRCode</a><br>
+                <a style="cursor: pointer" href="../views/participante.php?modo=excCard"
+                    class="list-group-item list-group-item-action">Excluir Card</a><br>
+                <a style="cursor: pointer" href="../views/participante.php?modo=eEvento"
+                    class="list-group-item list-group-item-action">Participar de um Evento</a><br>
             </div>
+
+            </div>
+        <?php } ?>
     </main>
     <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
     <script>

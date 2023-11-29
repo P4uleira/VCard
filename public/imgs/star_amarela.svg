@@ -1,7 +1,4 @@
-<?xml version="1.0"?>
-<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" clip-rule="evenodd" fill-rule="evenodd">
- <g class="layer">
-  <title>Layer 1</title>
-  <path d="m1.52,9.43l8.17,0l2.53,-7.73l2.53,7.73l8.17,0l-6.61,4.78l2.53,7.73l-6.61,-4.78l-6.61,4.78l2.53,-7.73l-6.61,-4.78z" fill="#ffff00" id="svg_2" stroke="#ffff00"/>
- </g>
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="-3.677 -4.818 31.102 29.579" width="31.102px" height="29.579px" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
+  <path d="M 11.874 -4.818 L 15.43 6.639 L 27.425 6.48 L 17.628 13.403 L 21.485 24.761 L 11.874 17.583 L 2.263 24.761 L 6.12 13.403 L -3.677 6.48 L 8.318 6.639 Z" style="stroke-width: 2px; stroke-linejoin: round; paint-order: stroke; fill: rgb(255, 232, 0); stroke: rgb(255, 255, 255); stroke-opacity: 0;" transform="matrix(0.9999999999999999, 0, 0, 0.9999999999999999, 0, 0)" bx:shape="star 11.874 11.533 16.351 16.351 0.37 5 1@ab89661c"/>
 </svg>

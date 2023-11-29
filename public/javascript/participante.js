@@ -9,7 +9,7 @@ function removeCard(idCard) {
 }
 
 function cardSelecionado() {
-    var selectCard = $("#tipousereditar");
+    var selectCard = $("#editCard");
     var cardSelected = selectCard.val();    
     
     window.location.href = "../views/participante.php?modo=eCard&card=" + cardSelected;
