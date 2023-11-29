@@ -548,42 +548,72 @@
     
     function excluirEvento($evento_a_excluir) {
         $conn = conection();
-        
+    
+        // Seleciona os participantes associados ao evento
         $sqlParticipantes = "SELECT `fk_ID_Participantes` FROM `participa` WHERE `fk_Codigo_Evento` = $evento_a_excluir";
         $resultParticipantes = $conn->query($sqlParticipantes);
     
         if ($resultParticipantes === FALSE) {
-            echo "<script>alert('Erro ao encontrar participantes: " . $conn->error . "')</script>";
+            echo "<script>alert('Erro ao encontrar eventos: " . $conn->error . "')</script>";
             $conn->close();
             return;
         }
-        
+    
+        // Itera sobre os participantes
         while ($rowParticipante = $resultParticipantes->fetch_assoc()) {
             $idParticipante = $rowParticipante['fk_ID_Participantes'];
     
-            $sqlDeleteCards = "DELETE FROM `cards` WHERE `fk_ID_Participantes` = $idParticipante";
+            // Obtém o nome do arquivo da imagem para o participante atual
+            $sqlImagem = "SELECT `Imagem` FROM `cards` WHERE `fk_ID_Participantes` = $idParticipante";
+            $resultImagem = $conn->query($sqlImagem);
     
+            if ($resultImagem === FALSE) {
+                echo "<script>alert('Erro ao obter o nome do arquivo da imagem: " . $conn->error . "')</script>";
+                $conn->close();
+                return;
+            }
+    
+            $rowImagem = $resultImagem->fetch_assoc();
+            $nomeArquivo = $rowImagem['Imagem'];
+    
+            // Constrói o caminho completo para o arquivo
+            $caminhoDaImagem = "../public/imgs/Uploads/$nomeArquivo";
+    
+            // Verifica se o arquivo existe antes de tentar excluir
+            if (file_exists($caminhoDaImagem)) {
+                // Tenta excluir a imagem
+                if (unlink($caminhoDaImagem)) {
+                    echo 'Imagem removida com sucesso.';
+                } else {
+                    echo 'Erro ao remover a imagem.';
+                }
+            } else {
+                echo 'A imagem não foi encontrada.';
+            }
+    
+            // Deleta os cards associados ao participante
+            $sqlDeleteCards = "DELETE FROM `cards` WHERE `fk_ID_Participantes` = $idParticipante";
             if ($conn->query($sqlDeleteCards) === FALSE) {
                 echo "<script>alert('Erro ao deletar cards: " . $conn->error . "')</script>";
                 $conn->close();
                 return;
             }
         }
-        $sqlDeleteParticipa = "DELETE FROM `participa` WHERE `fk_Codigo_Evento` = $evento_a_excluir";
     
+        // Deleta os participantes associados ao evento
+        $sqlDeleteParticipa = "DELETE FROM `participa` WHERE `fk_Codigo_Evento` = $evento_a_excluir";
         if ($conn->query($sqlDeleteParticipa) === FALSE) {
             echo "<script>alert('Erro ao deletar participantes associados ao evento: " . $conn->error . "')</script>";
             $conn->close();
             return;
         }
-
-        $sqlDeleteEvento = "DELETE FROM `eventos` WHERE `Codigo_Evento` = $evento_a_excluir";
     
+        // Deleta o evento
+        $sqlDeleteEvento = "DELETE FROM `eventos` WHERE `Codigo_Evento` = $evento_a_excluir";
         if ($conn->query($sqlDeleteEvento) === FALSE) {
             echo "<script>alert('Erro ao deletar evento: " . $conn->error . "')</script>";
         }
     
         $conn->close();
     }
-
 ?>
