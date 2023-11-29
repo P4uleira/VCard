@@ -18,9 +18,8 @@ Select do Editar cartão não funciona;
 
 Visitante:
 //Por que o CSS do visitante ta sempre diferente, o fundo é pra ser azulado assim?>>
-Pesquisar e implementar como pedir permissão e abrir a camera do dispositivo ao clicar no botão de Escanear QRcode
 Fazer a Meus favoritos
 Fazer a Todos os cards visitante (É diferente da do organizador).
-Tirar o coração do Card;
+//Tirar o coração do Card;
 
 
