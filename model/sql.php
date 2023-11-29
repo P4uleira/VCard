@@ -322,7 +322,7 @@
         $result = $conn->query($sql);
         $row = $result->fetch_assoc();
 
-        $cardCat = $row['fk_ID_Categoria'];                    
+        $cardCat = $row['fk_ID_Categoria']; //                   
         $cardTit = $row['Titulo'];//
         $cardImg = $row['Imagem'];//
         $cardDesc = $row['Descricao']; //                   
@@ -343,10 +343,41 @@
         echo "<textarea rows=\"5\" name=\"cardDesc\" type=\"text\" class=\"form-control\" aria-label=\"cardDesc\" aria-describedby=\"basic-addon1\">$cardDesc</textarea></div>";
 
         echo "<div class=\"input-group mb-3\"><div class=\"input-group-prepend\">";
-        echo "<span class=\"input-group-text\" id=\"basic-addon1\">Categoria</span></div>";
-        echo "<input name=\"cardCat\" type=\"text\" class=\"form-control\" value=\"$cardCat\" aria-label=\"cardCat\" aria-describedby=\"basic-addon1\"></div>";
+        echo "<label class=\"input-group-text\" for=\"selectCat\">Categoria</label></div>";
+
+        $sql2 = "SELECT Nome_Categoria FROM categorias WHERE ID_Categoria = $cardCat";
+        $result2 = $conn->query($sql2);
+        $row2 = $result2->fetch_assoc();
+        $cardCatNome = $row2['Nome_Categoria'];
+
+        echo "<select id=\"selectCat\" class=\"custom-select\" name=\"idEvento\">";
+        echo "<option value=\"$cardCat\">$cardCatNome</option>";
+                                                                                                        
+        $query = "SELECT `ID_Categoria`, `Nome_Categoria` FROM `categorias` WHERE ID_Categoria <> $cardCat";
+        $result = mysqli_query($conn, $query);
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo '<option value="' . $row['ID_Categoria'] . '">' . $row['Nome_Categoria'] . '</option>';
+        }
+        echo "</select></div>";
+
+        echo "<label>Informações de Contato</label>";
+        echo "<div class=\"form-row\"><div class=\"col\"><div class=\"input-group mb-3\"><div class=\"input-group-prepend\">";
+        echo "<span class=\"input-group-text\" id=\"basic-addon1\">Email</span></div>";
+        echo "<input type=\"text\" class=\"form-control\" placeholder=\"Username\" aria-label=\"Username\" aria-describedby=\"basic-addon1\">";
+        echo "<div class=\"col\"><div class=\"input-group mb-3\"><div class=\"input-group-prepend\">";
+        echo "";
 
 
+
+        echo "</div>";
+
+        <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">@</span>
+        </div>
+        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+        
     }
 
     function excluirCards($idCard) {
