@@ -174,24 +174,58 @@ if (!session_start()) {
                         $idParticipante = $_SESSION['user_id'];
                         include '../model/sql.php';
                         listaCards($idParticipante);
+            } else if ($modo == 'eEvento') {
+                ?>
+                                    <div class="eEvento">
+                                        <h3 style="text-align: center; margin-bottom: 1.5rem">Participar de um Evento</h3>
+                                        <br>
+                                        <select class="form-select" id="eventoParticipa" onchange="eventoParticipar()">
+                                            <option value="0">Selecione uma organização</option>
+                                            <?php
+                                            include '../model/sql.php';
+                                            $conn = conection();
+                                            $query = "SELECT `ID_Organizadores`, `Nome` FROM `organizadores`";
+                                            $result = mysqli_query($conn, $query);
+                                            while ($row = mysqli_fetch_assoc($result)) {
+                                                echo '<option value="' . $row['ID_Organizadores'] . '">' . $row['Nome'] . '</option>';
+                                            }
+                                            ?>
+                                        </select>
+                                        <br>
+                                    </div>
+                                    <?php
+                                     if (isset($_GET['evento'])) { 
+                                        
+                                        $evento = $_GET['evento'];
+                                        listaEventos($evento);   
+
+                                    
+                                    ?>
+                                    <form action="../model/novoEventoParti.php" method="post">
+                                        <input type="text" name="chaveConvite" placeholder="Digite a chave convite">
+                                    </form>
+                                    <?php
+                                     }
+                                    ?>
+                        <?php
+            } else {
+                ?>
+                                        <div class="eEvento list-group">
+                                            <h5 style="text-align: center">Opções de Participante</h5><br>
+                                            <a style="cursor: pointer" href="../views/participante.php?modo=cCard"
+                                                class="list-group-item list-group-item-action">Criar Card</a><br>
+                                            <a style="cursor: pointer" href="../views/participante.php?modo=eCard"
+                                                class="list-group-item list-group-item-action">Editar Card</a><br>
+                                            <a style="cursor: pointer" href="../views/participante.php?modo=Qrcode"
+                                                class="list-group-item list-group-item-action">Gerar QRCode</a><br>
+                                            <a style="cursor: pointer" href="../views/participante.php?modo=excCard"
+                                                class="list-group-item list-group-item-action">Excluir Card</a><br>
+                                        </div>
+                        <?php
             }
-        } else {
-            ?>
-                <div class="eEvento list-group">
-                    <h5 style="text-align: center">Opções de Participante</h5><br>
-                    <a style="cursor: pointer" href="../views/participante.php?modo=cCard"
-                        class="list-group-item list-group-item-action">Criar Card</a><br>
-                    <a style="cursor: pointer" href="../views/participante.php?modo=eCard"
-                        class="list-group-item list-group-item-action">Editar Card</a><br>
-                    <a style="cursor: pointer" href="../views/participante.php?modo=Qrcode"
-                        class="list-group-item list-group-item-action">Gerar QRCode</a><br>
-                    <a style="cursor: pointer" href="../views/participante.php?modo=excCard"
-                        class="list-group-item list-group-item-action">Excluir Card</a><br>
-                </div>
-                <?php
         }
         ?>
-        </div>
+            </div>
     </main>
     <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
     <script>

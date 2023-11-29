@@ -195,6 +195,66 @@
         $conn->close();    
     }
 
+    function listaEventos($idOrganizacao) {
+        $conn = conection();
+        $sql = "SELECT Nome, Chave_Convite From eventos WHERE fk_ID_Organizadores = $idOrganizacao";
+
+        $result = $conn->query($sql);
+
+        if ($result) {
+            if ($result->num_rows > 0) {
+                echo "<h3 style=\"text-align: center; margin-bottom: 1.5rem; text-transform: capitalize;\"></h3>";
+                echo "<table class=\"container table table-sm table-hover\" style=\"text-align: center\"><thead><tr>";
+                echo "<th scope=\"col\">Nome</th><th scope=\"col\">Chave Convite</th><th</tr></thead>";
+                echo "<tbody>";
+                while ($row2 = $result->fetch_assoc()) {
+                            
+                    $nome = $row2['Nome'];
+                    $codigo = $row2['Chave_Convite'];
+                    
+                    
+                    echo "<tr>";
+                    echo "<th scope=\"row\">$nome</th>";
+                    echo "<td>$codigo</td>";
+                    echo "</tr>";                          
+                    
+                }
+                echo "</tbody></table>";
+
+            }else {
+                echo "<h3 style=\"text-align: center; margin-bottom: 1.5rem\">Ainda não foi criado nenhum evento</h3>";
+            }
+        }
+        $conn->close();    
+    }
+
+    function insereNovoEventoParticipante($chaveConvite, $idParticipante){
+        $conn = conection();
+        $sqlEvento = "SELECT Codigo_Evento FROM eventos WHERE Chave_Convite = $chaveConvite";
+        $resultEvento = $conn->query($sqlEvento);
+
+        if ($resultEvento && $resultEvento->num_rows > 0) {
+            $rowEvento = $resultEvento->fetch_assoc();
+            $codigoEvento = $rowEvento['Codigo_Evento'];
+
+            // Insere na tabela participa
+            $sqlInserirParticipa = "INSERT INTO participa (fk_Codigo_Evento, fk_ID_Participantes) VALUES ($codigoEvento, $idParticipante)";
+            
+            if ($conn->query($sqlInserirParticipa) === TRUE) {
+                // Inserção bem-sucedida
+                echo "Novo evento inserido para o participante!";
+            } else {
+                // Erro na inserção
+                echo "Erro ao inserir evento: " . $conn->error;
+            }
+        } else {
+            // Evento não encontrado
+            echo "Evento não encontrado com a chave de convite fornecida.";
+        }
+
+    // Fecha a conexão
+    $conn->close();
+    }
     function excluirUsuario($usuario_a_excluir){
         $conn = conection();
 

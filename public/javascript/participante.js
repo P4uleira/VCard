@@ -14,3 +14,10 @@ function cardSelecionado() {
     
     window.location.href = "../views/participante.php?modo=eCard&card=" + cardSelected;
 }
+
+function eventoParticipar() {
+    var eventoSeleciona = $("#eventoParticipa");
+    var eventoSelected = eventoSeleciona.val();    
+    
+    window.location.href = "../views/participante.php?modo=eEvento&evento=" + eventoSelected;
+}

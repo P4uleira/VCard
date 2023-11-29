@@ -28,6 +28,7 @@
                 <li><a style="color: #F0F0F0;" href="../views/participante.php?modo=eCard">Editar Card</a></li>
                 <li><a style="color: #F0F0F0;" href="../views/participante.php?modo=Qrcode">Gera QRcode</a></li>
                 <li><a style="color: #F0F0F0;" href="../views/participante.php?modo=excCard">Excluir Card</a></li>
+                <li><a style="color: #F0F0F0;" href="../views/participante.php?modo=eEvento">Participar de um Evento</a></li>
                 <br>
                 <li><a style="color: #F0F0F0;" href="../views/login.php"><strong>Sair</strong></a></li>
 
