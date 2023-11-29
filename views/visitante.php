@@ -65,7 +65,7 @@ if (!session_start()) {
                     $modo = $_GET['modo'];
                     if ($modo == 'tCard') {
                         ?>
-                                <div class="container eEvento">
+                                <div style="display: flex;padding-top: 100px;flex-wrap: wrap;justify-content: center;align-items: center;flex-direction: column;"class="container eEvento">
                                     <h3>TODOS OS CARDs</h3>
 
                                     <div class="form-group">
