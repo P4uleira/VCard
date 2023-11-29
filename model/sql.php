@@ -222,7 +222,7 @@
                 echo "</tbody></table>";
 
             }else {
-                echo "<h3 style=\"text-align: center; margin-bottom: 1.5rem\">Ainda não foi criado nenhum evento</h3>";
+                echo "<h5 style=\"padding-top: 30px;text-align: center; margin-bottom: 1.5rem\">Ainda não foi criado nenhum evento</h5>";
             }
         }
         $conn->close();    

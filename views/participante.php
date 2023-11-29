@@ -157,7 +157,7 @@ if (!session_start()) {
                                 <span></span>
                             </button>
 
-                            <div style="display: flex; padding-top: 50px; justify-content: center"id="qrcode-container"></div>
+                            <div style="display: flex; padding-top: 50px; justify-content: center" id="qrcode-container"></div>
                         </div>
                         </div>
 
@@ -178,23 +178,16 @@ if (!session_start()) {
                                         <br>
                                         <select class="form-select" id="eventoParticipa" onchange="eventoParticipar()">
                                             <option value="0">Selecione uma organização</option>
-                                            <?php
-                                            include '../model/sql.php';
-                                            $conn = conection();
-                                            $query = "SELECT `ID_Organizadores`, `Nome` FROM `organizadores`";
-                                            $result = mysqli_query($conn, $query);
-                                            while ($row = mysqli_fetch_assoc($result)) {
-                                                echo '<option value="' . $row['ID_Organizadores'] . '">' . $row['Nome'] . '</option>';
-                                            }
-                                            ?>
+                                <?php
+                                include '../model/sql.php';
+                                $conn = conection();
+                                $query = "SELECT `ID_Organizadores`, `Nome` FROM `organizadores`";
+                                $result = mysqli_query($conn, $query);
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    echo '<option value="' . $row['ID_Organizadores'] . '">' . $row['Nome'] . '</option>';
+                                }
+                                ?>
                                         </select>
-                                        <br>
-                                    </div>
-                                    <?php
-                                     if (isset($_GET['evento'])) { 
-                                        
-                                        $evento = $_GET['evento'];
-                                        listaEventos($evento);   
 
                                     
                                     ?>

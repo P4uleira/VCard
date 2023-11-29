@@ -147,5 +147,8 @@ body {
   display: block;
 }
 
-  
-  
+.ifeEvento{
+display: flex;
+justify-content: center;
+
+}
