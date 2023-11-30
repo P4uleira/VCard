@@ -1,16 +1,17 @@
 <?php
 
 session_start();
-
-$isVisitante = isset($_SESSION['user_type']) && $_SESSION['user_type'] == 'visitante';
+include '../model/sql.php';
+if (isset($_SESSION["user_type"]) && $_SESSION["user_type"] == "visitante") {
+    $isVisitante = true;
+} else {
+    $isVisitante = false;
+}
 
 
 if ($isVisitante && isset($_GET['id'])) {
     $cardId = $_GET['id'];
     $idVisitante = $_SESSION["user_id"];
-
-    include '../model/sql.php';
-
 
     adicionaViewCard($cardId);
     adicionaViewVisualizar($cardId, $idVisitante);
@@ -58,8 +59,8 @@ if ($isVisitante && isset($_GET['id'])) {
             include './headerVisitante.php';
         }
         
-        if (isset($_GET['id'])) {
-            $cardId = $_GET['id'];
+        if (isset($_GET['id'])) {            
+            $cardId = $_GET['id'];            
             $conn = conection();
             $query = "SELECT * FROM `cards` WHERE `ID_Card` =  $cardId";
             $result = mysqli_query($conn, $query);
@@ -121,4 +122,3 @@ if ($isVisitante && isset($_GET['id'])) {
 </body>
 
 </html>
-?>

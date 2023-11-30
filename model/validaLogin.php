@@ -1,7 +1,38 @@
 <?php
     include 'sql.php';
 
-    if(isset($_POST['validaNick'])) {
+    if (isset($_POST['validaNick']) && isset($_POST['userID']) && isset($_POST['userTypeUser'])) {
+
+        $nickname = $_POST['validaNick'];
+        $userID = $_POST['userID'];
+        $userType = $_POST['userTypeUser'];       
+        $encontrou = "nexiste";
+        $conn = conection();
+
+        if ($userType == "organizadores") {
+            $sql = "SELECT Usuario from visitantes WHERE Usuario = '$nickname' UNION 
+                SELECT Usuario from participantes WHERE Usuario = '$nickname' UNION 
+                SELECT Usuario from organizadores WHERE Usuario = '$nickname' AND ID_Organizadores <> $userID UNION 
+                SELECT Usuario from administradores WHERE Usuario = '$nickname'";
+        } else if ($userType == "visitantes") {
+            $sql = "SELECT Usuario from visitantes WHERE Usuario = '$nickname' AND ID_Visitantes <> $userID UNION 
+                SELECT Usuario from participantes WHERE Usuario = '$nickname' UNION 
+                SELECT Usuario from organizadores WHERE Usuario = '$nickname' UNION 
+                SELECT Usuario from administradores WHERE Usuario = '$nickname'";
+        } else {
+            $sql = "SELECT Usuario from visitantes WHERE Usuario = '$nickname' UNION 
+                SELECT Usuario from participantes WHERE Usuario = '$nickname' AND ID_Participantes <> $userID UNION 
+                SELECT Usuario from organizadores WHERE Usuario = '$nickname' UNION 
+                SELECT Usuario from administradores WHERE Usuario = '$nickname'";
+        }
+        $resultado = $conn->query($sql);
+        if ($resultado->num_rows > 0) {
+            $encontrou = "existe";            
+        }
+        echo json_encode(array("encontrou"=>$encontrou));
+        $conn->close();
+
+    } else if(isset($_POST['validaNick'])) {
         $nickname = $_POST['validaNick'];        
         $encontrou = "nexiste";
         $conn = conection();

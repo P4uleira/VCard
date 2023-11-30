@@ -7,6 +7,9 @@
 ?>
 <?php
     include 'sql.php';
+    date_default_timezone_set('America/Sao_Paulo');
+    $dataNow = date("Y-m-d");
+    $dataNomeArquivo = date('H_i_s');
 
     if(isset($_FILES['imagem']) && isset($_POST['titulo']) && isset($_POST['conteudo'])&& isset($_POST['categoria']) && isset($_POST['telefone']) && isset($_POST['email'])){
         
@@ -18,12 +21,8 @@
         $capaCard = $_FILES['imagem'];
 
         $extensaoCard = explode(".", $capaCard['name']);
-        $nomeArquivo  = $_SESSION['user_nickname'].".".$extensaoCard[1];
-
-        date_default_timezone_set('America/Sao_Paulo');
-        $dataNow = date('Y-m-d'); 
-
-        move_uploaded_file($capaCard["tmp_name"], '../public/imgs/Uploads/'.$nomeArquivo); 
+        $nomeArquivo  = $_SESSION['user_nickname']."_".$dataNomeArquivo.".".$extensaoCard[1];
+        move_uploaded_file($capaCard["tmp_name"], '../public/imgs/Uploads/'.$nomeArquivo);
 
         $idUsuario = $_SESSION['user_id'];
         $visualizacao = 0;
@@ -39,9 +38,7 @@
         $idUsuario = $_SESSION['user_id'];
         $imagemAntiga = $_POST['imagemAntiga'];
         
-        date_default_timezone_set('America/Sao_Paulo');
-        $dataNow = date("Y-m-d");
-        $dataNomeArquivo = date('H_i_s');
+        
 
         if (isset($_FILES["aImagem"])) {
             unlink("../public/imgs/Uploads/$imagemAntiga");         
@@ -67,6 +64,10 @@
     <link rel="stylesheet" href="../public/css/organizadores.css">
     <link rel="stylesheet" href="../public/css/cadProjeto.css">
     <link rel="stylesheet" href="../public/css/slidemenu.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
@@ -77,9 +78,8 @@
     <main>
         <?php 
             if (isset($_FILES['imagem']) && isset($_POST['titulo']) && isset($_POST['conteudo']) && isset($_POST['telefone']) && isset($_POST['email'])) {
-        ?>
-            <h4>Card:</h4><br>
-            <h2 style="text-align: center;"><?php echo $titulo; ?></h2>
+        ?>            
+            <h2 style="text-align: center; margin-top: 80px"><?php echo $titulo; ?></h2>
             <div id="card_container" class="card_container">
                 <div id="card_container_info" class="card_container_info"> 
                     <div style="height: 485px;display: flex;flex-direction: column;flex-wrap: nowrap;justify-content: space-between;" class="">
@@ -88,17 +88,16 @@
                             <h4 style="text-align: justify;padding: 10px;"><?php echo $descricao; ?></h4>
                         </div>
 
-                        <div class="card_links">
-                            <a href="#"><img id="icon_coracao" src="../public/imgs/coracao_branco.svg"></a>
+                        <div class="card_links">                            
                             <a onclick="rotacionar(0)">Mais informações</a>
-                            <a href="#"><img id="icon_star" src="../public/imgs/star_branca.svg"></a>
+                            <a href="#"><img src="../public/imgs/star_branca.svg"></a>
                         </div>
                     </div>
                 </div>
                 <div id="card_container_info_costas" class="card_container_info_costas">
                     <div style="height: 70px;">
-                        <h2 style="text-align: center"><?php echo "Informações Adicionais"; ?></h2>                    
-                        <h3 style="padding: 10px">
+                        <h2 style="font-size:medium; margin-top: 1rem; text-align: center"><?php echo "Informações Adicionais"; ?></h2>                    
+                        <h3 style="font-size:medium; padding: 10px">
                             Contato:<br>Email: 
                             <?php echo $email; ?><br><br>Telefone: <br> <?php echo $telefone; ?>
                         </h3>
@@ -108,6 +107,11 @@
                     </div>
                 </div>
             </div>
+            <div style="display: flex; gap: 5%; justify-content: center;">
+                <a style="margin-top: 1rem; width:150px" class="btn btn-primary" href="../views/participante.php?modo=eCard">Editar Card</a>
+                <a style="margin-top: 1rem; width:150px" class="btn btn-primary" href="../views/participante.php">Voltar</a>
+            </div>
+
         <?php } ?>
     </main>
     <script src="../public/javascript/card.js"></script>

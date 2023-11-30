@@ -36,18 +36,19 @@ if (!session_start()) {
             if ($modo == 'cCard') {
                 ?>
                 <div class="container eEvento">
+                    <h4 style="text-align: center; margin-bottom: 1rem">Criar Card</h4>
                     <form method="post" action="../model/criaCard.php" enctype="multipart/form-data">
                         <div style="display: flex; flex-direction: column; align-items: center">
                             <label for="imagem" class="file-upload-label">
-                                <div class="file-upload-design">
-                                    <svg viewBox="0 0 640 512" height="1em">
-                                        <path
-                                            d="M144 480C64.5 480 0 415.5 0 336c0-62.8 40.2-116.2 96.2-135.9c-.1-2.7-.2-5.4-.2-8.1c0-88.4 71.6-160 160-160c59.3 0 111 32.2 138.7 80.2C409.9 102 428.3 96 448 96c53 0 96 43 96 96c0 12.2-2.3 23.8-6.4 34.6C596 238.4 640 290.1 640 352c0 70.7-57.3 128-128 128H144zm79-217c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l39-39V392c0 13.3 10.7 24 24 24s24-10.7 24-24V257.9l39 39c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-80-80c-9.4-9.4-24.6-9.4-33.9 0l-80 80z">
-                                        </path>
-                                    </svg>
-                                    <p style="text-align: center">Insira a capa do card aqui</p>
-                                </div>
-                                <input id="imagem" type="file" name="imagem" />
+                            <div class="file-upload-design">
+                                <svg viewBox="0 0 640 512" height="1em">
+                                    <path
+                                        d="M144 480C64.5 480 0 415.5 0 336c0-62.8 40.2-116.2 96.2-135.9c-.1-2.7-.2-5.4-.2-8.1c0-88.4 71.6-160 160-160c59.3 0 111 32.2 138.7 80.2C409.9 102 428.3 96 448 96c53 0 96 43 96 96c0 12.2-2.3 23.8-6.4 34.6C596 238.4 640 290.1 640 352c0 70.7-57.3 128-128 128H144zm79-217c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l39-39V392c0 13.3 10.7 24 24 24s24-10.7 24-24V257.9l39 39c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-80-80c-9.4-9.4-24.6-9.4-33.9 0l-80 80z">
+                                    </path>
+                                </svg>
+                                <p style="text-align: center">Insira a capa do card aqui</p>
+                            </div>
+                            <input id="imagem" type="file" name="imagem" />
                             </label>
                         </div>
 
@@ -85,19 +86,11 @@ if (!session_start()) {
                             <div class="input-group-prepend">
                                 <img style="margin: 10px" width="20px" height="20px" src="../public/imgs/email.png">
                             </div>
-                            <input name="email" type="text" class="form-control" placeholder="Email" aria-label="Email"
-                                aria-describedby="basic-addon1">
+                            <input name="email" type="text" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1">
                         </div>
-
-                </div><br>
-
-                <button class="buttonPart btn-block">
-                    <span>Criar Card</span>
-                </button>
-                </div>
-                </form>
-                </div>
-
+                        <button class="btn btn-primary btn-block">Criar</button>
+                    </form>
+                </div>               
                 <?php
             } else if ($modo == 'eCard') {
                 ?>
@@ -149,10 +142,8 @@ if (!session_start()) {
                                 }
                                 ?>
                                 </select><br>
-
-                            </div><br>
-
-                            <button onclick="generateQRCode()" class="buttonPart btn-block">
+                            </div>
+                            <button onclick="generateQRCode()" class="btn btn-primary btn-block">
                                 <span>Gerar QR Code</span>
                                 <span></span>
                             </button>
@@ -171,38 +162,37 @@ if (!session_start()) {
                         $idParticipante = $_SESSION['user_id'];
                         include '../model/sql.php';
                         listaCards($idParticipante);
-            } else if ($modo == 'eEvento') {
-                ?>
-                                    <div class="eEvento">
-                                        <h3 style="text-align: center; margin-bottom: 1.5rem">Participar de um Evento</h3>
-                                        <br>
-                                        <select class="form-select" id="eventoParticipa" onchange="eventoParticipar()">
-                                            <option value="0">Selecione uma organização</option>
-                                <?php
-                                include '../model/sql.php';
-                                $conn = conection();
-                                $query = "SELECT `ID_Organizadores`, `Nome` FROM `organizadores`";
-                                $result = mysqli_query($conn, $query);
-                                while ($row = mysqli_fetch_assoc($result)) {
-                                    echo '<option value="' . $row['ID_Organizadores'] . '">' . $row['Nome'] . '</option>';
-                                }
-                                ?>
-                                        </select>
-                                        <br>
-                                    </div>
-                        <?php
-                        if (isset($_GET['evento'])) {
-
-                            $evento = $_GET['evento'];
-                            listaEventos($evento);
-
-
-                            ?>
-                                        <form action="../model/novoEventoParti.php" method="post">
-                                            <input type="text" name="chaveConvite" placeholder="Digite a chave convite">
-                                        </form>
-                        <?php
-                        }
+            } else if ($modo == 'eEvento') { ?>
+                <div class="eEvento">
+                    <h3 style="text-align: center; margin-bottom: 1.5rem">Participar de um Evento</h3><br>
+                        <select class="form-select" id="eventoParticipa" onchange="eventoParticipar()">
+                            <option value="0">Selecione uma organização</option>
+            <?php
+                    include '../model/sql.php';
+                    $conn = conection();
+                    $query = "SELECT `ID_Organizadores`, `Nome` FROM `organizadores`";
+                    $result = mysqli_query($conn, $query);
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        echo '<option value="' . $row['ID_Organizadores'] . '">' . $row['Nome'] . '</option>';
+                    }
+            ?>
+                        </select><br>                                    
+            <?php if (isset($_GET['evento'])) {
+                $evento = $_GET['evento'];
+                listaEventos($evento);
+            ?>
+                <form action="../model/novoEventoParti.php" method="post">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Chave</span>
+                        </div>
+                        <input class="form-control" type="text" name="chaveConvite" placeholder="Digite a chave convite">
+                    </div>
+                    <button type="button" class="btn btn-primary btn-block">Entrar no Evento</button>
+                </form>
+                </div>
+            <?php
+                }
             }
             ?>
 

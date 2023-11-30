@@ -1,13 +1,10 @@
 # VCard
 
-Sugestão: Remover o campo Endereço pq nao faz mt sentido, mas será que da mt trabalho? 
-
 O que falta fazer:
 
+Quando Deleta um card, não esta apagando o registro da visualizar
+
 Organizador:
-//Arrumar o link do slide menu do cria Participante; >>
-//Arrumar TODAS as funções relacionadas a eventos (querys e colunas das tabelas); >>
-//Fazer o Excluir Eventos;
 Fazer a todos os cards do Organizador (select de eventos para mostrar todos os cards criados pelos participantes);
 
 Participante:

@@ -40,7 +40,7 @@ if (!session_start()) {
                             <span class="highlight"></span>
                             <span class="bar"></span>
                         </div>
-                        <input class="btn btn-primary" style="text-align: center" type="submit" value="Criar Evento">
+                        <input class="btn btn-primary btn-block" style="text-align: center" type="submit" value="Criar Evento">
                     </form>
                     <?php
             } else if ($modo == 'eEvento') {
@@ -84,7 +84,7 @@ if (!session_start()) {
                                         ?>
                                         </select><br>
 
-                                        <button type="submit" class="buttonPart btn-block">
+                                        <button type="submit" class="btn btn-primary btn-block">
                                             <span>Excluir evento selecionado</span>
                                             <span></span>
                                         </button>

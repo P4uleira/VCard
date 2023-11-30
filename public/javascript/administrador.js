@@ -14,11 +14,16 @@ $(document).ready(function(){
 
     // validação Usuario
     var userNickname = $("#aUser").val();
+    var userID = $("#aID").val();
+    var url = window.location.href;
+    var urlObj = new URL(url);
+    var userTypeUser = urlObj.searchParams.get("user");
+    
     
     $.ajax({
         type: "POST",
         url: "../model/validaLogin.php",
-        data: { validaNick: userNickname },
+        data: { validaNick: userNickname, userID: userID, userTypeUser: userTypeUser },
         dataType: 'JSON',
         success: function(response) {
             console.log(response)
@@ -26,8 +31,7 @@ $(document).ready(function(){
                 $("#mensagemUsuario").text("O nome de Usuário ja está em uso! Utilize Outro.");
                 $("#mensagemUsuario").css("display", "block");
             } else {
-                $("#mensagemUsuario").css("display", "none");
-                console.log(temErro)
+                $("#mensagemUsuario").css("display", "none");                
                 if (temErro <= 0) {
                     $('#formAtualiza')[0].submit(); 
                 }

@@ -12,6 +12,7 @@ if (!session_start()) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../public/css/slidemenu.css">
+    <link rel="stylesheet" href="../public/css/organizadores.css">
     <link rel="stylesheet" href="../public/css/visitante.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -55,7 +56,7 @@ if (!session_start()) {
 
                     ?>
                         <div class="container eEvento">
-                            <h3>Cards Favoritos</h3>
+                            <h3 style="text-align: center">Cards Favoritos</h3>
 
                             <div class="form-group">
 
@@ -64,18 +65,17 @@ if (!session_start()) {
                                 $conn = conection();
                                 $sql = "SELECT `fk_ID_Card` FROM `visualizar` WHERE `fk_ID_Visitantes` = ".$_SESSION['user_id']." AND `Favoritar` = 1";
 
-                                $result = $conn->query($sql);
+                                $result = $conn->query($sql);                                
                                 if ($result->num_rows > 0) {
-                                    echo '<div class="container eEvento">';
-                                    echo '<h3>Cards Favoritos</h3>';
+                                    echo '<div class="container">';                                    
                                     echo '<div class="form-group">';
                                 
                                     $cardCounter = 0; 
                                 
                                     while ($row = $result->fetch_assoc()) {
-                                        $id_card = $row['fk_ID_Card'];
-                                
-                                       
+                                        $id_card = $row['fk_ID_Card'];                                        
+                                        
+
                                         $sql2 = "SELECT * FROM `cards` WHERE `ID_Card` = $id_card";
                                         $result2 = $conn->query($sql2);
                                 
@@ -87,11 +87,13 @@ if (!session_start()) {
                                                     echo '<div class="row">';
                                                 }
                                 
-                                                echo '<div class="col-md-6">';
+                                                echo '<div style="margin-bottom: 1rem" class="col-md-6">';
                                                 
-                                                echo "<img src=\"../public/imgs/Uploads/{$row2['Imagem']}\" class=\"img-fluid\">";
+                                                echo "<img style=\"width: 325px; height: 220px;\" src=\"../public/imgs/Uploads/{$row2['Imagem']}\" class=\"img-fluid\">";
                                                 
-                                                echo '<h4>' . $row2['Titulo'] . '</h4>';
+                                                echo '<h4 style="text-align: center; margin-top: 5px">' . $row2['Titulo'] . '</h4>';
+                                                
+                                                echo "<a class=\"btn btn-primary btn-block\" href=\"../views/card.php?id=$id_card&fav=1\">Visualizar Card</a>";
                                                 echo '</div>';
                                 
                                                 if ($cardCounter % 2 != 0 || $cardCounter == $result->num_rows - 1) {
@@ -102,14 +104,14 @@ if (!session_start()) {
                                                 $cardCounter++;
                                             }
                                         } else {
-                                            echo 'Nenhum card favorito encontrado.';
+                                            echo '<h3 style="text-align: center">Você ainda não tem um card favoritado.</h3>';
                                         }
                                     }
                                 
                                     echo '</div>';
                                     echo '</div>';
                                 } else {
-                                    echo 'Nenhum card favorito encontrado.';
+                                    echo '<h3 style="text-align: center">Você ainda não tem um card favoritado.</h3>';
                                 }
                                 
                                 $conn->close();
@@ -149,12 +151,12 @@ if (!session_start()) {
         }
             else {
                     ?>
-                            <div class="container visitante_main">
+                            <div class="eEvento list-group">
+                            <div class="container">
                                 <h4 class="h_qrCode">Bem vindo
                             <?php echo $_SESSION['user_nickname'] ?>
                                 </h4>
                             </div>
-                            <div class="eEvento list-group">
                                 <h5 style="text-align: center">Opções de Participante</h5><br>
                                 <a style="cursor: pointer" href="../views/visitante.php?modo=eQr"
                                     class="list-group-item list-group-item-action">Escanear QRcode</a><br>

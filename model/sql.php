@@ -98,7 +98,7 @@
 
                         echo "<div class=\"input-group mb-3\"><div class=\"input-group-prepend\">";
                         echo "<span class=\"input-group-text\" id=\"basic-addon1\">ID</span></div>";
-                        echo "<input readonly name=\"id\" type=\"text\" class=\"form-control\" value=\"$id\" aria-label=\"ID\" aria-describedby=\"basic-addon1\"></div>";
+                        echo "<input id=\"aID\" readonly name=\"id\" type=\"text\" class=\"form-control\" value=\"$id\" aria-label=\"ID\" aria-describedby=\"basic-addon1\"></div>";
                     }                  
                                                             
                     echo "<div class=\"input-group mb-3\"><div class=\"input-group-prepend\">";
@@ -116,20 +116,16 @@
                     
                     if ($userEdit == "participantes") {
                         $id = $row2['ID_Participantes'];
-                        $idOrgS = $row2['fk_ID_Organizadores']; 
-                        $codigoEventoS = $row2['fk_Codigo_Evento']; 
-
+                        $idOrgS = $row2['fk_ID_Organizadores'];
+                         
                         echo "<div class=\"input-group mb-3\"><div class=\"input-group-prepend\">";
                         echo "<span class=\"input-group-text\" id=\"basic-addon1\">ID</span></div>";
-                        echo "<input readonly name=\"id\" type=\"text\" class=\"form-control\" value=\"$id\" aria-label=\"ID\" aria-describedby=\"basic-addon1\"></div>";
+                        echo "<input id=\"aID\" readonly name=\"id\" type=\"text\" class=\"form-control\" value=\"$id\" aria-label=\"ID\" aria-describedby=\"basic-addon1\"></div>";
 
                         echo "<div class=\"input-group mb-3\"><div class=\"input-group-prepend\">";
                         echo "<span class=\"input-group-text\" id=\"basic-addon1\">ID Organizador</span></div>";
                         echo "<input name=\"aIdOrg\" type=\"text\" class=\"form-control\" value=\"$idOrgS\" aria-label=\"ID Organizador\" aria-describedby=\"basic-addon1\"></div>"; 
-                        
-                        echo "<div class=\"input-group mb-3\"><div class=\"input-group-prepend\">";
-                        echo "<span class=\"input-group-text\" id=\"basic-addon1\">ID Evento</span></div>";
-                        echo "<input name=\"aIdEvento\" type=\"text\" class=\"form-control\" value=\"$codigoEventoS\" aria-label=\"ID Evento\" aria-describedby=\"basic-addon1\"></div>"; 
+
                     } else if ($userEdit == "visitantes") {
                         $id = $row2['ID_Visitantes'];                       
                         $telS = $row2['Telefone'];
@@ -138,7 +134,7 @@
                         
                         echo "<div class=\"input-group mb-3\"><div class=\"input-group-prepend\">";
                         echo "<span class=\"input-group-text\" id=\"basic-addon1\">ID</span></div>";
-                        echo "<input readonly name=\"id\" type=\"text\" class=\"form-control\" value=\"$id\" aria-label=\"ID\" aria-describedby=\"basic-addon1\"></div>";
+                        echo "<input id=\"aID\" readonly name=\"id\" type=\"text\" class=\"form-control\" value=\"$id\" aria-label=\"ID\" aria-describedby=\"basic-addon1\"></div>";
 
                         echo "<div class=\"input-group mb-3\"><div class=\"input-group-prepend\">";
                         echo "<span class=\"input-group-text\" id=\"basic-addon1\">Telefone</span></div>";
