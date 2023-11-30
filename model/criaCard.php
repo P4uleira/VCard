@@ -82,7 +82,7 @@
             <h2 style="text-align: center; margin-top: 80px"><?php echo $titulo; ?></h2>
             <div id="card_container" class="card_container">
                 <div id="card_container_info" class="card_container_info"> 
-                    <div style="height: 485px;display: flex;flex-direction: column;flex-wrap: nowrap;justify-content: space-between; max-width: 325px; word-wrap: break-word;" class="">
+                    <div style="display: flex;flex-direction: column;flex-wrap: nowrap;justify-content: space-between; max-width: 325px; word-wrap: break-word;" class="">
                         <div>
                             <?php echo "<img class=\"imagem-card\" src=\"../public/imgs/Uploads/$nomeArquivo\"> "; ?>
                             <h4 style="text-align: justify;padding: 10px;"><?php echo $descricao; ?></h4>

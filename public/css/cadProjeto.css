@@ -37,6 +37,7 @@
     border-radius: 10px;
     border: 1px solid;
     transition: transform 0.5s;
+    min-height: 485px;
           
 }
 
