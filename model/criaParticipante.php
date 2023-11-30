@@ -76,15 +76,6 @@
                         ?>
                         </select>
                     </div>                 
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">Foto</span>
-                        </div>
-                        <div class="custom-file">
-                            <input disabled type="file" class="custom-file-input" id="inputGroupFile01">
-                            <label class="custom-file-label" for="inputGroupFile01">Escolha uma imagem</label>
-                        </div>
-                    </div>
                     <div class="div_btn_criaParticipante">             
                         <input class="btn_criaParticipante btn btn-primary" style="text-align: center" type="submit" value="Cadastrar">
                         <button class="btn_criaParticipante btn btn-primary" type="reset" style="text-align: center">Limpar Formulário</button>

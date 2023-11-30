@@ -14,8 +14,13 @@
     width: 160px;
 }
 
+.btn-primary{
+  background-color: #2B2D5A !important;
+  opacity: 0.85;
+}
+
 body {
-    background: #ffffff !important;
+    background: #EDF2FA !important;
     font-family: 'Inria Sans', sans-serif;
 }
 

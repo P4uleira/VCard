@@ -4,14 +4,13 @@
     flex-direction: column;
     flex-wrap: wrap;
     padding-top: 70px;
-    min-height: 667px;
-    max-height: 915px;
+    height: auto;
     justify-content: space-around;
 }
 
 .imagem-card {
-    max-width: 325px;
-    border-radius: 5px;
+    width: 323.5px;
+    border-radius: 8px;
 }
 
 .card_container {
@@ -24,7 +23,6 @@
 .card_container_info {
     display: flex;
     width: 325px;
-    height: 485px;  
     border-radius: 10px;
     border: 1px solid;
     transition: transform 0.5s;   
@@ -33,7 +31,6 @@
 .card_container_info_costas {
     display: none;
     width: 325px;
-    height: 485px;  
     flex-direction: column;
     justify-content: space-between;
     align-items: center;    
