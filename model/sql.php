@@ -38,6 +38,83 @@
         $con->close();
     }
 
+    function listaTodosCardsOrg($idVisitante, $orgSelect) {
+        $conn = conection();
+        $sql = "SELECT * FROM cards AS C 
+                WHERE c.ID_Card in 
+                    (SELECT fk_ID_Card FROM visualizar WHERE fk_ID_Visitantes = $idVisitante)
+                AND c.fk_ID_Participantes IN 
+                    (SELECT fk_ID_Participantes FROM participa WHERE fk_Codigo_Evento = 
+                        (SELECT Codigo_Evento FROM eventos WHERE fk_ID_Organizadores = $orgSelect))";
+        
+        $result = $conn->query($sql);
+
+        if ($result) {
+            if ($result->num_rows > 0) {                                             
+
+                echo '<div class="container">';                                    
+                echo '<div class="form-group">';
+                
+                while ($row = $result->fetch_assoc()) {
+                            
+                    $id_card = $row['ID_Card']; 
+                    
+                    echo '<div style="max-width: 325px; margin: 1rem 0" class="col-md-6">';
+                                                
+                    echo "<img style=\"width: 325px; border-radius: 8px; height: 220px;\" src=\"../public/imgs/Uploads/{$row['Imagem']}\" class=\"img-fluid\">";
+                    
+                    echo '<h4 style="text-align: center; margin-top: 5px; max-width: 325px;">' . $row['Titulo'] . '</h4>';
+                    
+                    echo "<a style=\"max-width: 325px;\" class=\"btn btn-primary btn-block\" href=\"../views/card.php?id=$id_card&fav=1\">Visualizar Card</a>";
+                    echo '</div></div>';
+                    
+                }                
+
+            } else {
+                echo "<h3 style=\"text-align: center; margin-bottom: 1.5rem\">Você ainda não visualizou nenhum card dessa organização.</h3>";
+            }
+        } 
+
+        $conn->close(); 
+
+    }
+
+    function listaTodosCardsParaOrg($idOrg) {
+        $conn = conection();
+        $sql = "SELECT * FROM cards AS C 
+            WHERE c.fk_ID_Participantes in (SELECT fk_ID_Participantes FROM participa WHERE fk_Codigo_Evento = (SELECT Codigo_Evento from eventos WHERE fk_ID_Organizadores = $idOrg))";
+
+        $result = $conn->query($sql);
+
+        if ($result) {
+            if ($result->num_rows > 0) {                                             
+
+                echo '<div class="container">';                                    
+                echo '<div class="form-group">';
+                
+                while ($row = $result->fetch_assoc()) {
+                            
+                    $id_card = $row['ID_Card']; 
+                    
+                    echo '<div style="max-width: 325px; margin: 1rem 0" class="col-md-6">';
+                                                
+                    echo "<img style=\"width: 325px; border-radius: 8px; height: 220px;\" src=\"../public/imgs/Uploads/{$row['Imagem']}\" class=\"img-fluid\">";
+                    
+                    echo '<h4 style="text-align: center; margin-top: 5px; max-width: 325px;">' . $row['Titulo'] . '</h4>';
+                    
+                    echo "<a style=\"max-width: 325px;\" class=\"btn btn-primary btn-block\" href=\"../views/card.php?id=$id_card&fav=1\">Visualizar Card</a>";
+                    echo '</div></div>';
+                    
+                }                
+
+            } else {
+                echo "<h3 style=\"text-align: center; margin-bottom: 1.5rem\">Você ainda não visualizou nenhum card dessa organização.</h3>";
+            }
+        } 
+
+        $conn->close(); 
+    }
+
     function insereParticipante($idOrg, $nome, $usuario, $senha, $evento) {
         $conn = conection();
         $sql = "INSERT INTO participantes (fk_ID_Organizadores, Nome, Usuario, Senha) VALUES ($idOrg, '$nome', '$usuario', '$senha')";

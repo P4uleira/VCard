@@ -56,8 +56,8 @@ body {
     margin-top: 60px;
     transform: translateX(-250px);
     transition: transform 250ms ease-in-out;
-    background: #2B2D5A;    
-    opacity: 0.85;
+    background: #2B2D5A;   
+    
 }
 .sidebarMenuInner{
     margin:0;

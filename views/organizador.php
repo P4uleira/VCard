@@ -84,7 +84,7 @@ if (!session_start()) {
                                         ?>
                                         </select><br>
 
-                                        <button type="submit" class="btn btn-primary btn-block">
+                                        <button type="submit" class="btn btn-primarybtn btn-primary  btn-block">
                                             <span>Excluir evento selecionado</span>
                                             <span></span>
                                         </button>
@@ -93,45 +93,29 @@ if (!session_start()) {
                         <?php
             } else if ($modo == 'tCards') {
                 ?>
-                                    <div class="containerImg">
-                                        <div class="image-container2">
-                                            <img src="../public/imgs/example.png" alt="Imagem 1"><br>
-                                            <button class="buttonPart">Visualizar</button>
-                                        </div>
-                                        <div class="image-container2">
-                                            <img src="../public/imgs/example.png" alt="Imagem 2"><br>
-                                        </div>
-                                        <button class="buttonPart">Visualizar</button>
-                                    </div>
-                                    <div class="containerImg">
-                                        <div class="image-container2">
-                                            <img src="../public/imgs/example.png" alt="Imagem 1"><br>
-                                            <button class="buttonPart">Visualizar</button>
-                                        </div>
-                                        <div class="image-container2">
-                                            <img src="../public/imgs/example.png" alt="Imagem 2"><br>
-                                            <button class="buttonPart">Visualizar</button>
-                                        </div>
-                                    </div>
+                        <div class="eEvento">
+                            <h4 style="text-align: center">Todos os Cards</h4>
                             <?php
                             $idOrganizador = $_SESSION['user_id'];
-                            include '../model/sql.php';
-                            listarEventos($idOrganizador); /*alterar para id card*/
+                            include '../model/sql.php'; 
+                            listaTodosCardsParaOrg($idOrganizador);
+                            /*alterar para id card*/
+                        echo "</div>";
             }
         } else {
             ?>
                     <div class="eEvento list-group">
-                        <h5 style="text-align: center">Opções de Organizador</h5><br>
-                        <a style="cursor: pointer" href="../views/organizador.php?modo=cEvento"
-                            class="list-group-item list-group-item-action">Criar Evento</a><br>
-                        <a style="cursor: pointer" href="../model/criaParticipante.php"
-                            class="list-group-item list-group-item-action">Criar Participante</a><br>
-                        <a style="cursor: pointer" href="../views/organizador.php?modo=eEvento"
-                            class="list-group-item list-group-item-action">Editar Evento</a><br>
-                        <a style="cursor: pointer" href="../views/organizador.php?modo=exEvento"
-                            class="list-group-item list-group-item-action">Excluir Evento</a><br>
-                        <a style="cursor: pointer" href="../views/organizador.php?modo=tCards"
-                            class="list-group-item list-group-item-action">Todos os Cards</a><br>
+                        <h5 style="text-align: center;">Opções de Organizador</h5><br>
+                        <a style="text-align: center;cursor: pointer" href="../views/organizador.php?modo=cEvento"
+                            class="btn btn-primary list-group-item list-group-item-action">Criar Evento</a><br>
+                        <a style="text-align: center;cursor: pointer" href="../model/criaParticipante.php"
+                            class="btn btn-primary list-group-item list-group-item-action">Criar Participante</a><br>
+                        <a style="text-align: center;cursor: pointer" href="../views/organizador.php?modo=eEvento"
+                            class="btn btn-primary list-group-item list-group-item-action">Editar Evento</a><br>
+                        <a style="text-align: center;cursor: pointer" href="../views/organizador.php?modo=exEvento"
+                            class="btn btn-primary list-group-item list-group-item-action">Excluir Evento</a><br>
+                        <a style="text-align: center;cursor: pointer" href="../views/organizador.php?modo=tCards"
+                            class="btn btn-primary list-group-item list-group-item-action">Todos os Cards</a><br>
                     </div>
                     <?php
         }

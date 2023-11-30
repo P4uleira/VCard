@@ -162,7 +162,7 @@ if (!session_start()) {
                         $idParticipante = $_SESSION['user_id'];
                         include '../model/sql.php';
                         listaCards($idParticipante);
-                        
+
             } else if ($modo == 'eEvento') { ?>
                 <div class="eEvento">
                     <h3 style="text-align: center; margin-bottom: 1.5rem">Participar de um Evento</h3><br>
@@ -201,17 +201,17 @@ if (!session_start()) {
         } else {
             ?>
                 <div class="eEvento list-group">
-                    <h5 style="text-align: center">Opções de Participante</h5><br>
-                    <a style="cursor: pointer" href="../views/participante.php?modo=cCard"
-                        class="list-group-item list-group-item-action">Criar Card</a><br>
-                    <a style="cursor: pointer" href="../views/participante.php?modo=eCard"
-                        class="list-group-item list-group-item-action">Editar Card</a><br>
-                    <a style="cursor: pointer" href="../views/participante.php?modo=Qrcode"
-                        class="list-group-item list-group-item-action">Gerar QRCode</a><br>
-                    <a style="cursor: pointer" href="../views/participante.php?modo=excCard"
-                        class="list-group-item list-group-item-action">Excluir Card</a><br>
-                    <a style="cursor: pointer" href="../views/participante.php?modo=eEvento"
-                        class="list-group-item list-group-item-action">Participar de um Evento</a><br>
+                    <h5 style="text-align: center;">Opções de Participante</h5><br>
+                    <a style="text-align: center;cursor: pointer" href="../views/participante.php?modo=cCard"
+                        class="btn btn-primary list-group-item list-group-item-action">Criar Card</a><br>
+                    <a style="text-align: center;cursor: pointer" href="../views/participante.php?modo=eCard"
+                        class="btn btn-primary list-group-item list-group-item-action">Editar Card</a><br>
+                    <a style="text-align: center;cursor: pointer" href="../views/participante.php?modo=Qrcode"
+                        class="btn btn-primary list-group-item list-group-item-action">Gerar QRCode</a><br>
+                    <a style="text-align: center;cursor: pointer" href="../views/participante.php?modo=excCard"
+                        class="btn btn-primary list-group-item list-group-item-action">Excluir Card</a><br>
+                    <a style="text-align: center;cursor: pointer" href="../views/participante.php?modo=eEvento"
+                        class="btn btn-primary list-group-item list-group-item-action">Participar de um Evento</a><br>
                 </div>
 
             </div>

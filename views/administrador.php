@@ -121,11 +121,11 @@
                 } else {
             ?>
             <div class="eEvento list-group">
-                <h5 style="text-align: center">Opções de Administrador</h5><br>
-                <a style="cursor: pointer" class="list-group-item list-group-item-action" href="../views/administrador.php?cOrg">Criar Organizador</a><br>
-                <a style="cursor: pointer" class="list-group-item list-group-item-action" href="../views/administrador.php?cCat">Criar Categoria</a><br>
-                <a style="cursor: pointer" class="list-group-item list-group-item-action" href="../views/administrador.php?esc">Excluir usuário</a><br>
-                <a style="cursor: pointer" class="list-group-item list-group-item-action" href="../views/administrador.php?edit">Editar usuário</a><br>                        
+                <h5 style="text-align: center;">Opções de Administrador</h5><br>
+                <a style="text-align: center; cursor: pointer" class="btn btn-primary list-group-item list-group-item-action" href="../views/administrador.php?cOrg">Criar Organizador</a><br>
+                <a style="text-align: center; cursor: pointer" class="btn btn-primary list-group-item list-group-item-action" href="../views/administrador.php?cCat">Criar Categoria</a><br>
+                <a style="text-align: center; cursor: pointer" class="btn btn-primary list-group-item list-group-item-action" href="../views/administrador.php?esc">Excluir usuário</a><br>
+                <a style="text-align: center; cursor: pointer" class="btn btn-primary list-group-item list-group-item-action" href="../views/administrador.php?edit">Editar usuário</a><br>                        
             </div>
             <?php
                 }

@@ -20,7 +20,7 @@
             <ul class="sidebarMenuInner">
             <div style="display: flex; align-items: center; flex-direction: column; margin-top: 2.5rem">
                 
-                <a class="tituloPrincipal" href="index.php">
+                <a class="tituloPrincipal" href="#">
                     <div style="width: 100px; height: 100px; border-radius: 100%; background-image: url('../public/imgs/mm.jpg'); background-size: cover"></div>
                 </a>        
                 

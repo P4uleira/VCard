@@ -1,4 +1,5 @@
 <?php
+include '../model/sql.php';
 if (!session_start()) {
     header('location: ./login.php');
 } else if ($_SESSION['user_type'] != 'visitante') {
@@ -61,7 +62,7 @@ if (!session_start()) {
                             <div class="form-group">
 
                             <?php
-                                include '../model/sql.php';
+                                
                                 $conn = conection();
                                 $sql = "SELECT `fk_ID_Card` FROM `visualizar` WHERE `fk_ID_Visitantes` = ".$_SESSION['user_id']." AND `Favoritar` = 1";
 
@@ -124,27 +125,33 @@ if (!session_start()) {
                     $modo = $_GET['modo'];
                     if ($modo == 'tCard') {
                         ?>
-                                <div style="display: flex;padding-top: 100px;flex-wrap: wrap;justify-content: center;align-items: center;flex-direction: column;"class="container eEvento">
-                                    <h3>TODOS OS CARDs</h3>
+                                <div style="display: flex;flex-wrap: wrap;justify-content: center;align-items: center;flex-direction: column;"class="container eEvento">
+                                    <h3>Todos os Cards</h3>
 
-                                    <div class="form-group">
-                                        <select class="form-select" id="organizacao" onchange="organizacaoSelecionada()">
-                                            <option value="0">Selecione a organização</option>
-                                        <?php
-                                        include '../model/sql.php';
-                                        $conn = conection();
-                                        $query = "SELECT `ID_Organizadores`, `Nome` FROM `organizadores`";
-                                        $result = mysqli_query($conn, $query);
-                                        while ($row = mysqli_fetch_assoc($result)) {
-                                            echo '<option value="' . $row['ID_Organizadores'] . '">' . $row['Nome'] . '</option>';
-                                        }
+                                    
+                                    <select class="form-select" id="organizacao" onchange="organizacaoSelecionada()">
+                                        <option value="0">Selecione a organização</option>
+                                    <?php
+                                    
+                                    $conn = conection();
+                                    $query = "SELECT `ID_Organizadores`, `Nome` FROM `organizadores`";
+                                    $result = mysqli_query($conn, $query);
+                                    while ($row = mysqli_fetch_assoc($result)) {
+                                        echo '<option value="' . $row['ID_Organizadores'] . '">' . $row['Nome'] . '</option>';
+                                    }
 
-                                        $conn->close();
-                                        ?>
-                                        </select>
-                                    </div>
-                                </div>
+                                    $conn->close();
+                                    ?>
+                                    </select>
+                                    
+                                
                         <?php
+                        if (isset($_GET['orgSelect'])) {
+                            $orgSelect = $_GET['orgSelect'];
+                            $idVisitante = $_SESSION['user_id'];
+                            listaTodosCardsOrg($idVisitante, $orgSelect);                            
+                        }
+                        echo "</div>";
                     }
                 }
             } 
@@ -158,12 +165,12 @@ if (!session_start()) {
                                 </h4>
                             </div>
                                 <h5 style="text-align: center">Opções de Participante</h5><br>
-                                <a style="cursor: pointer" href="../views/visitante.php?modo=eQr"
-                                    class="list-group-item list-group-item-action">Escanear QRcode</a><br>
-                                <a style="cursor: pointer" href="../views/visitante.php?modo=fCard"
-                                    class="list-group-item list-group-item-action">Meus favoritos</a><br>
-                                <a style="cursor: pointer" href="../views/visitante.php?modo=tCard"
-                                    class="list-group-item list-group-item-action">Todos os cards</a><br>
+                                <a style="text-align: center; cursor: pointer" href="../views/visitante.php?modo=eQr"
+                                    class="btn btn-primary list-group-item list-group-item-action">Escanear QRcode</a><br>
+                                <a style="text-align: center; cursor: pointer" href="../views/visitante.php?modo=fCard"
+                                    class="btn btn-primary list-group-item list-group-item-action">Meus favoritos</a><br>
+                                <a style="text-align: center; cursor: pointer" href="../views/visitante.php?modo=tCard"
+                                    class="btn btn-primary list-group-item list-group-item-action">Todos os cards</a><br>
                             </div>
                     <?php
                 }

@@ -2,14 +2,14 @@
 
 session_start();
 include '../model/sql.php';
-if (isset($_SESSION["user_type"]) && $_SESSION["user_type"] == "visitante") {
-    $isVisitante = true;
+if (isset($_SESSION["user_type"]) && $_SESSION["user_type"] == "visitante" || $_SESSION["user_type"] == "organizacao" ) {
+    $isLogado = true;
 } else {
-    $isVisitante = false;
+    $isLogado = false;
 }
 
 
-if ($isVisitante && isset($_GET['id'])) {
+if ($isLogado && isset($_GET['id'])) {
     $cardId = $_GET['id'];
     $idVisitante = $_SESSION["user_id"];
 
@@ -22,6 +22,7 @@ if ($isVisitante && isset($_GET['id'])) {
         adicionaViewVisualizar($cardId, $idVisitante, $cardFav);
     }
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -53,10 +54,12 @@ if ($isVisitante && isset($_GET['id'])) {
 <body>
     <header>
         <?php
-        if(!$isVisitante){
+        if(!$isLogado) {
             include './headerAnonimo.php';
-        }else{
+        }else if ($_SESSION["user_type"] == "visitante")  {
             include './headerVisitante.php';
+        }else {
+            include './headerOrganizador.php';
         }
         
         if (isset($_GET['id'])) {            
@@ -86,7 +89,7 @@ if ($isVisitante && isset($_GET['id'])) {
         </h2>
         <div id="card_container" class="card_container">
             <div id="card_container_info" class="card_container_info">
-                <div style="height: 485px;display: flex;flex-direction: column;flex-wrap: nowrap;justify-content: space-between;"
+                <div style="display: flex;flex-direction: column;flex-wrap: nowrap;justify-content: space-between;"
                     class="">
                     <div>
                         <?php echo "<img class=\"imagem-card\" src=\"../public/imgs/Uploads/$nomeArquivo\"> "; ?>
