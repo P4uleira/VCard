@@ -64,7 +64,6 @@
                         }
                     ?>
                 </form>
-                <a class="login_links" href="login.php?modo=rSenha">Esqueci minha senha</a>
                 <a class="login_links" href="login.php?modo=criar">Criar conta</a>
             </div>
         <?php 
@@ -118,53 +117,6 @@
                         </div>                         
                     </form>                    
                     <a style="margin-bottom: 2rem" class="login_links" href="login.php">Voltar</a>
-                </div>
-        <?php
-                } else if ($modo == "rSenha") {
-        ?>
-                <div class="container login_main">
-                    <h3>Recuperar Conta</h3><br>
-                    <h6 style="text-align: center; color: #887F7F;">Insira seu e-mail cadastrado para</br>conseguir redefinir sua senha</h6>
-                    
-                    <form style="margin-top: 5%" class="login_form" action="login.php?modo=rSenhaEnviado" method="post">
-                        <div style="margin: 20% 0" class="group">
-                            <input required="" type="Email" placeholder="Email" class="input">
-                            <span class="highlight"></span>
-                            <span class="bar"></span>                        
-                        </div>                                               
-                        <button class="login_submit" style="text-align: center">Enviar Email</button>
-                    </form>                    
-                    <a class="login_links" href="login.php">Voltar</a>
-                </div>
-        <?php
-                } else if ($modo == "rSenhaEnviado") {
-        ?>
-                <div class="container login_main">
-                    <h3>Recuperar Conta</h3><br>
-                    <h6 style="text-align: center; color: #887F7F;">Email de recuperação enviado
-                        </br></br>Confira sua caixa de mensagens para</br>redefinir sua senha
-                    </h6>                                       
-                    <a style="text-align:center" class="login_submit" href="login.php">Voltar</a>
-                </div>
-        <?php
-                } else if ($modo == "rSenhaNova") {
-        ?>
-                <div class="container login_main">
-                    <h3>Recuperar Conta</h3>                
-                    <form style="margin-top: 5%" class="login_form" action="login.php?modo=rSenhaEnviado" method="post">
-                        <div style="margin: 20% 0" class="group">
-                            <input name="senha" type="password" placeholder="Nova Senha" class="input">
-                            <span class="highlight"></span>
-                            <span class="bar"></span>                        
-                        </div>
-                        <div style="margin: 5% 0 20% 0" class="group">
-                            <input type="password" placeholder="Repetir Nova Senha" class="input">
-                            <span class="highlight"></span>
-                            <span class="bar"></span>                        
-                        </div>                                                
-                        <button class="login_submit" style="text-align: center">Confirmar Senha</button>
-                    </form>                    
-                    <a class="login_links" href="login.php">Sair</a>
                 </div>
         <?php
                 }
