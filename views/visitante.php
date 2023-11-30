@@ -84,16 +84,16 @@ if (!session_start()) {
                                             while ($row2 = $result2->fetch_assoc()) {
                                                 if ($cardCounter % 2 == 0) {
                                                     
-                                                    echo '<div class="row">';
+                                                    echo '<div style="display: flex; justify-content: space-around;" class="row">';
                                                 }
                                 
-                                                echo '<div style="margin-bottom: 1rem" class="col-md-6">';
+                                                echo '<div style="max-width: 325px; margin: 1rem 0" class="col-md-6">';
                                                 
-                                                echo "<img style=\"width: 325px; height: 220px;\" src=\"../public/imgs/Uploads/{$row2['Imagem']}\" class=\"img-fluid\">";
+                                                echo "<img style=\"width: 325px; border-radius: 8px; height: 220px;\" src=\"../public/imgs/Uploads/{$row2['Imagem']}\" class=\"img-fluid\">";
                                                 
-                                                echo '<h4 style="text-align: center; margin-top: 5px">' . $row2['Titulo'] . '</h4>';
+                                                echo '<h4 style="text-align: center; margin-top: 5px; max-width: 325px;">' . $row2['Titulo'] . '</h4>';
                                                 
-                                                echo "<a class=\"btn btn-primary btn-block\" href=\"../views/card.php?id=$id_card&fav=1\">Visualizar Card</a>";
+                                                echo "<a style=\"max-width: 325px;\" class=\"btn btn-primary btn-block\" href=\"../views/card.php?id=$id_card&fav=1\">Visualizar Card</a>";
                                                 echo '</div>';
                                 
                                                 if ($cardCounter % 2 != 0 || $cardCounter == $result->num_rows - 1) {
