@@ -108,7 +108,7 @@
                 }                
 
             } else {
-                echo "<h3 style=\"text-align: center; margin-bottom: 1.5rem\">Você ainda não visualizou nenhum card dessa organização.</h3>";
+                echo "<h3 style=\"text-align: center; margin-bottom: 1.5rem\">Está organização ainda não possui cards.</h3>";
             }
         } 
 
