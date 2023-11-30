@@ -43,7 +43,7 @@
             unlink("../public/imgs/Uploads/$imagemAntiga");         
             $capaCard = $_FILES['aImagem'];            
             $extensaoCard = explode(".", $capaCard['name']);
-            $nomeArquivo  = $_SESSION['user_nickname']."_".$dataNomeArquivo.".".$extensaoCard[1];
+            $nomeArquivo  = $idCard."_".$_SESSION['user_nickname']."_".$dataNomeArquivo.".".$extensaoCard[1];
             move_uploaded_file($capaCard["tmp_name"], '../public/imgs/Uploads/'.$nomeArquivo);
             atualizaCard($idCard, $idUsuario, $categoria, $titulo, $descricao, $email, $telefone, $dataNow, $nomeArquivo);
         } else {
