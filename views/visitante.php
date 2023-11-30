@@ -144,7 +144,10 @@ if (!session_start()) {
                                 </div>
                         <?php
                     }
-                } else {
+                }
+            } 
+        }
+            else {
                     ?>
                             <div class="container visitante_main">
                                 <h4 class="h_qrCode">Bem vindo
@@ -162,9 +165,6 @@ if (!session_start()) {
                             </div>
                     <?php
                 }
-            }
-        }
-
         ?>
     </main>
 </body>
