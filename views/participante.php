@@ -162,6 +162,7 @@ if (!session_start()) {
                         $idParticipante = $_SESSION['user_id'];
                         include '../model/sql.php';
                         listaCards($idParticipante);
+                        
             } else if ($modo == 'eEvento') { ?>
                 <div class="eEvento">
                     <h3 style="text-align: center; margin-bottom: 1.5rem">Participar de um Evento</h3><br>

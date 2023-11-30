@@ -329,6 +329,7 @@
         echo "<form action=\"../model/criaCard.php\" method=\"post\" enctype=\"multipart/form-data\">";
 
         echo "<input name=\"imagemAntiga\" value=\"$cardImg\" style=\"display: none\">";
+        echo "<input name=\"idCard\" value=\"$idCard\" style=\"display: none\">";
 
         echo "<div style=\"margin-top: 1rem\" class=\"input-group mb-3\"><div class=\"input-group-prepend\"><span class=\"input-group-text\">Substituir Imagem</span></div>";
         echo "<div class=\"custom-file\"><input name=\"aImagem\" id=\"imgCard\" type=\"file\" class=\"custom-file-input\">";
@@ -374,12 +375,12 @@
         $conn->close();
     }
 
-    function atualizaCard($idUsuario, $categoria, $titulo, $descricao, $email, $telefone, $dataNow, $nomeArquivo = "") {
+    function atualizaCard($idCard, $idUsuario, $categoria, $titulo, $descricao, $email, $telefone, $dataNow, $nomeArquivo = "") {
         $conn = conection();
         if ($nomeArquivo != "") {
-            $sql = "UPDATE `cards` SET `fk_ID_Categoria` = $categoria, `Titulo` = '$titulo', Imagem = '$nomeArquivo', `Descricao` = '$descricao', `Email` = '$email', `Telefone` = '$telefone', `Data_publicacao` = '$dataNow' WHERE fk_ID_Participantes = $idUsuario";
+            $sql = "UPDATE `cards` SET `fk_ID_Categoria` = $categoria, `Titulo` = '$titulo', Imagem = '$nomeArquivo', `Descricao` = '$descricao', `Email` = '$email', `Telefone` = '$telefone', `Data_publicacao` = '$dataNow' WHERE ID_Card = $idCard";
         } else {
-            $sql = "UPDATE `cards` SET `fk_ID_Categoria` = $categoria, `Titulo` = '$titulo', `Descricao` = '$descricao', `Email` = '$email', `Telefone` = '$telefone', `Data_publicacao` = '$dataNow' WHERE fk_ID_Participantes = $idUsuario";
+            $sql = "UPDATE `cards` SET `fk_ID_Categoria` = $categoria, `Titulo` = '$titulo', `Descricao` = '$descricao', `Email` = '$email', `Telefone` = '$telefone', `Data_publicacao` = '$dataNow' WHERE ID_Card = $idCard";
         }
         if ($conn->query($sql) === FALSE) {
             echo "Erro ao inserir dados: " . $conn->error;
@@ -395,6 +396,8 @@
 
         if ($conn->query($sql) === FALSE) {
             echo "<script>alert(Erro ao deletar card: " . $conn->error . ")</script>";
+        } else {
+            //$sql2 = "DELETE FROM visualizar WHERE fk_ID_Card = $idCard";
         }
         
         $conn->close();

@@ -37,8 +37,7 @@
         $email = $_POST['aEmail'];
         $idUsuario = $_SESSION['user_id'];
         $imagemAntiga = $_POST['imagemAntiga'];
-        
-        
+        $idCard = $_POST['idCard'];
 
         if (isset($_FILES["aImagem"])) {
             unlink("../public/imgs/Uploads/$imagemAntiga");         
@@ -46,10 +45,10 @@
             $extensaoCard = explode(".", $capaCard['name']);
             $nomeArquivo  = $_SESSION['user_nickname']."_".$dataNomeArquivo.".".$extensaoCard[1];
             move_uploaded_file($capaCard["tmp_name"], '../public/imgs/Uploads/'.$nomeArquivo);
-            atualizaCard($idUsuario, $categoria, $titulo, $descricao, $email, $telefone, $dataNow, $nomeArquivo);
+            atualizaCard($idCard, $idUsuario, $categoria, $titulo, $descricao, $email, $telefone, $dataNow, $nomeArquivo);
         } else {
             echo "a imagem n chegou";
-            atualizaCard($idUsuario, $categoria, $titulo, $descricao, $email, $telefone, $dataNow);
+            atualizaCard($idCard, $idUsuario, $categoria, $titulo, $descricao, $email, $telefone, $dataNow);
         }
         header("location: ../views/participante.php"); 
     }
