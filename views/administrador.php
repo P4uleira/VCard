@@ -101,8 +101,8 @@
             }
         } else if(isset($_GET['cCat'])) {
         ?>
-               <div class="container login_main">
-                <h3>Criar uma nova categoria</h3>
+               <div class="container eEvento">
+                <h3 style="text-align: center;">Criar uma nova categoria</h3>
 
                 <form class="login_form" action="../model/criaCategoria.php" method="post">
                     <br>
@@ -116,7 +116,7 @@
                     <br>
                     <input class="btn btn-info btn-block" style="text-align: center" type="submit" value="Criar Categoria">
                 </form>
-            </div>
+                </div>
             <?php
                 } else {
             ?>
